@@ -1,0 +1,105 @@
+<template name='etudiant'>
+<body>
+		<div class="container">
+			<div class="jumbotron">
+				<p> Liste des etudiants a venir... </p>
+				
+			</div>
+		</div>
+		
+		
+		<div class="container">
+	<div class="jumbotron">
+	<div class="row">
+		 <form class="form-horizontal">
+            <fieldset>
+
+         
+                <h2>Ajoutez un etudiant</h2>
+         
+                <!-- nom -->
+                <div class="control-group">
+                    <label class="control-label">Nom</label>
+                    <div class="controls">
+                        <input id="nom" name="nom" type="text" placeholder="nom"
+                        class="input-xlarge">
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+				
+				
+				<!-- prenom -->
+                <div class="control-group">
+                    <label class="control-label">Prenom</label>
+                    <div class="controls">
+                        <input id="prenom" name="prenom" type="text" placeholder="prenom"
+                        class="input-xlarge">
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+				
+				
+				 <!-- groupe -->
+                <div class="control-group">
+                    <label class="control-label">Groupe</label>
+                    <div class="controls">
+                        <select id="Groupe" name="Groupe" class="input-xlarge">
+                            <option value="" selected="selected">(choisissez un groupe)</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+						</select>
+                    </div>
+                </div>
+                
+				
+                <!-- mail-->
+                <div class="control-group">
+                    <label class="control-label">Mail</label>
+                    <div class="controls">
+                        <input id="mail" name="mail" type="text" placeholder="mail" class="input-xlarge">
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+				
+				
+                <!-- adresse -->
+                <div class="control-group">
+                    <label class="control-label">Adresse</label>
+                    <div class="controls">
+                        <input id="adresse" name="adresse" type="text" placeholder="adresse"
+                        class="input-xlarge">
+                    </div>
+                </div>
+				
+                <!-- Ville-->
+                <div class="control-group">
+                    <label class="control-label">ville</label>
+                    <div class="controls">
+                        <input id="ville" name="ville" type="text" placeholder="ville"
+                        class="input-xlarge">
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+				
+				
+                <!-- code postal-->
+                <div class="control-group">
+                    <label class="control-label">Code postal</label>
+                    <div class="controls">
+                        <input id="cp" name="cp" type="text" placeholder="cp"
+                        class="input-xlarge">
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+	</div>
+	
+	<input class="add" type="button" value="Valider"  />
+	</div>
+</div>
+		
+</body>
+</template>

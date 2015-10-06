@@ -2,27 +2,50 @@
 <body>
 		<div class="container">
 			<div class="jumbotron">
-				<p> Liste des etudiants a venir... </p>
-				<ul>
-				{{#each etudiants}}
-					<li>{{ nom }}</li>
-					<li>{{ prenom }}</li>
-					<li>{{ groupe }}</li>
-					<li>{{ mail }}</li>
-					<li>{{ adresse }}</li>
-					<li>{{ cp }}</li>
-					<li>{{ ville }}</li>
-				{{/each}}
-				</ul>
-			</div>
+				<div class="row">
+					<div class="panel panel-primary filterable">
+						<div class="panel-heading">
+							<h3 class="panel-title">Etudiants</h3>
+							<div class="pull-right">
+								<button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filtre(NI)</button>
+							</div>
+						</div>
+						<table class="table">
+							<thead>
+								<tr class="filters">
+									<th><input type="text" class="form-control" placeholder="Nom" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Prenom" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Groupe" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Mail" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Adresse" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Code postal" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Ville" disabled></th>
+								</tr>
+							</thead>
+							<tbody>
+								{{#each etudiants}}
+								<tr>
+									<td>{{ nom }}</td>
+									<td>{{ prenom }}</td>
+									<td>{{ groupe }}</td>
+									<td>{{ mail }}</td>
+									<td>{{ adresse }}</td>
+									<td>{{ cp }}</td>
+									<td>{{ ville }}</td>
+								</tr>
+								{{/each}}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>	
 		</div>
 		
-		
 		<div class="container">
-	<div class="jumbotron">
-	<div class="row">
-		 <form class="form-horizontal">
-            <fieldset>
+			<div class="jumbotron">
+				<div class="row">
+				<form class="form-horizontal">
+					<fieldset>
 
          
                 <h2>Ajoutez un etudiant</h2>
@@ -109,7 +132,7 @@
 	
 	<input class="add" type="button" value="Valider"  />
 	</div>
-</div>
+	</div>
 		
 </body>
 </template>

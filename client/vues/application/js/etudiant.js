@@ -21,5 +21,15 @@ Template.etudiant.events({
 		}
         
         Etudiant.insert(etudiant);
-	}
+	},
+	
+	  'click .delete': function(e) {
+    e.preventDefault();
+
+    if (confirm("supprimer l'étudiant ?")) {
+      var etudiantCourant = this._id;
+      Etudiant.remove(etudiantCourant);
+      Router.go('/etudiant');
+    }
+  }
 });

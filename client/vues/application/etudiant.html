@@ -1,4 +1,4 @@
-<template name='etudiant'>
+﻿<template name='etudiant'>
 	<body>
 		<div class="container">
 			<div class="jumbotron">
@@ -7,7 +7,7 @@
 						<div class="panel-heading">
 							<h3 class="panel-title">Etudiants</h3>
 							<div class="pull-right">
-								<button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filtre(NI)</button>
+								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
 							</div>
 						</div>
 						<table class="table">
@@ -20,18 +20,20 @@
 									<th><input type="text" class="form-control" placeholder="Adresse" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Code postal" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Ville" disabled></th>
+									<th> Actions </th> 
 								</tr>
 							</thead>
 							<tbody>
 								{{#each etudiants}}
 								<tr>
-									<td>{{ nom }}</td>
-									<td>{{ prenom }}</td>
-									<td>{{ groupe }}</td>
-									<td>{{ mail }}</td>
-									<td>{{ adresse }}</td>
-									<td>{{ cp }}</td>
-									<td>{{ ville }}</td>
+									<td name="nom">{{ nom }}</td>
+									<td name="prenom">{{ prenom }}</td>
+									<td name="groupe">{{ groupe }}</td>
+									<td name="mail">{{ mail }}</td>
+									<td name="adresse">{{ adresse }}</td>
+									<td name="cp">{{ cp }}</td>
+									<td name="ville">{{ ville }}</td>
+									<td>  <a class="btn btn-danger delete" href="#">Suppr</a> </td>
 								</tr>
 								{{/each}}
 							</tbody>
@@ -177,7 +179,7 @@
 					$filteredRows.hide();
 					/* Prepend no-result row if all rows are filtered */
 					if ($filteredRows.length === $rows.length) {
-						$table.find('tbody').prepend($('<tr class="no-result text-center"><td colspan="'+ $table.find('.filters th').length +'">No result found</td></tr>'));
+						$table.find('tbody').prepend($('<tr class="no-result text-center"><td colspan="'+ $table.find('.filters th').length +'">Aucun résultat pour cette recherche !</td></tr>'));
 					}
 				});
 			});

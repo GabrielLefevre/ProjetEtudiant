@@ -7,9 +7,9 @@ Template.notes.events({
 		var idDevoir = $("input[name='idDevoir']").val();
 		
 		var notes = {
-			note: note,
-			idEtudiant: idEtudiant,
-			idDevoir: idDevoir
+				note: note,
+				idEtudiant: idEtudiant,
+				idDevoir: idDevoir
 		}
         
         Notes.insert(notes);
@@ -18,7 +18,7 @@ Template.notes.events({
 	'click .delete': function(e) {
     e.preventDefault();
 
-    if (confirm("supprimer le notes ?")) {
+    if (confirm("supprimer les notes ?")) {
       var notesCourant = this._id;
       Notes.remove(notesCourant);
       Router.go('/etudiant/notes');

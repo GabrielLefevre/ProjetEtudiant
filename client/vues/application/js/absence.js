@@ -6,8 +6,8 @@ Template.absence.events({
 		var id_date = $("input[name='id_date']").val();
 		
 		var absence = {
-				id_absence: id_absence,
-				id_date: id_date
+			id_absence: id_absence,
+			id_date: id_date
 		}
         
         Absence.insert(absence);

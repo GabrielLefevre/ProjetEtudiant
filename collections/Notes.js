@@ -1,1 +1,1 @@
-Profs = new Mongo.Collection("profs");
+Notes = new Mongo.Collection("notes");

@@ -1,4 +1,4 @@
-Meteor.publish("allProfsHeaders", function(){
+Meteor.publish("allNotesHeaders", function(){
     return Profs.find({}, {
         fields: {content: 0}
     });

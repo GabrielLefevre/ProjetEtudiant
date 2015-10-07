@@ -1,5 +1,5 @@
 Meteor.publish("allNotesHeaders", function(){
-    return Profs.find({}, {
+    return Notes.find({}, {
         fields: {content: 0}
     });
 });

@@ -1,0 +1,40 @@
+﻿<template name='devoir'>
+	<body>
+	<p> hello worlds ! </p>
+		<div class="container">
+			<div class="jumbotron">
+				<div class="row">
+					<div class="panel panel-primary filterable">
+						<div class="panel-heading">
+							<h3 class="panel-title">Devoir</h3>
+							<div class="pull-right">
+								<button class="btn btn-default btn-xs btn-filter">Filtre(NI)</button>
+							</div>
+						</div>
+						<table class="table">
+							<thead>
+								<tr class="filters">
+									<th><input type="text" class="form-control" placeholder="Nom" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Matière" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Coeff" disabled></th>
+									<!--<th> Actions </th> -->
+								</tr>
+							</thead>
+							<tbody>
+								{{#each devoir}}
+								<tr>
+									<td name="nom">{{ nom }}</td>
+									<td name="matiere">{{ matiere }}</td>
+									<td name="coeff">{{ coeff }}</td>
+									<!--<td>  <a class="btn btn-danger delete" href="#">Suppr</a> </td>-->
+								</tr>
+								{{/each}}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>	
+		</div>
+	
+	</body>
+</template>

@@ -1,4 +1,4 @@
-Template.prof.events({
+Template.profs.events({
     'submit form': function(e){
 		e.preventDefault();
 		
@@ -9,7 +9,7 @@ Template.prof.events({
 		var cp = $("input[name='cp']").val();
 		var ville = $("input[name='ville']").val();
 		
-		var prof = {
+		var profs = {
 			nom: nom,
 			prenom: prenom,
 			mail: mail,
@@ -18,7 +18,7 @@ Template.prof.events({
 			ville: ville
 		}
         
-        Profs.insert(prof);
+        Profs.insert(profs);
 	},
 	
 	  'click .delete': function(e) {

@@ -16,4 +16,14 @@ Template.devoir.events({
         
         Devoir.insert(devoir);
 	},
+	
+		  'click .delete': function(e) {
+    e.preventDefault();
+
+    if (confirm("supprimer le devoir ?")) {
+      var devoirCourant = this._id;
+      Devoir.remove(devoirCourant);
+      Router.go('/devoir');
+    }
+  }
 });

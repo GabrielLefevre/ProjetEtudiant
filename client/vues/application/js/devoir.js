@@ -4,11 +4,13 @@ Template.devoir.events({
 		
 		var nom = $("input[name='nom']").val();
 		var matiere = $("input[name='matiere']").val();
-		var coeff = $("select[name='coeff']").val();
+		var date = $("input[name='date']").val();
+		var coeff = $("input[name='coeff']").val();
 		
 		var devoir = {
 				nom: nom,
 				matiere: matiere,
+				date: date,
 				coeff: coeff
 		}
         

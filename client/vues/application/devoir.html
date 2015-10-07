@@ -1,6 +1,5 @@
 ﻿<template name='devoir'>
 	<body>
-	<p> hello worlds ! </p>
 		<div class="container">
 			<div class="jumbotron">
 				<div class="row">
@@ -16,7 +15,8 @@
 								<tr class="filters">
 									<th><input type="text" class="form-control" placeholder="Nom" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Matière" disabled></th>
-									<th><input type="text" class="form-control" placeholder="Coeff" disabled></th>
+									<!--<th><input type="text" class="form-control" placeholder="Date" disabled></th>-->
+									<th><input type="text" class="form-control" placeholder="Coefficient" disabled></th>
 									<!--<th> Actions </th> -->
 								</tr>
 							</thead>
@@ -25,6 +25,7 @@
 								<tr>
 									<td name="nom">{{ nom }}</td>
 									<td name="matiere">{{ matiere }}</td>
+									<!--<td name="date">{{ Date }}</td>-->
 									<td name="coeff">{{ coeff }}</td>
 									<!--<td>  <a class="btn btn-danger delete" href="#">Suppr</a> </td>-->
 								</tr>
@@ -36,5 +37,60 @@
 			</div>	
 		</div>
 	
+	
+	<div class="container">
+			<div class="jumbotron">
+				<div class="row">
+					<form class="form-horizontal">
+					<fieldset>
+					<h2>Ajoutez un Devoir</h2>
+         
+					<!-- nom -->
+					<div class="control-group">
+						<label class="control-label">Nom</label>
+						<div class="controls">
+							<input id="nom" name="nom" type="text" placeholder="nom"
+							class="input-xlarge">
+							<p class="help-block"></p>
+						</div>
+					</div>
+					
+					<!-- matiere -->
+					<div class="control-group">
+						<label class="control-label">Matière</label>
+						<div class="controls">
+							<input id="matiere" name="matiere" type="text" placeholder="matiere"
+							class="input-xlarge">
+							<p class="help-block"></p>
+						</div>
+					</div>
+					
+					 <!-- coeff -->
+					<div class="control-group">
+						<label class="control-label">Coeff</label>
+						<div class="controls">
+							<select id="coeff" name="coeff" class="input-xlarge">
+								<option value="" selected="selected">(choisissez un coefficient)</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+							</select>
+						</div>
+					</div>
+					
+					<input class="add" type="submit" value="Valider"  />
+					</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
 	</body>
 </template>

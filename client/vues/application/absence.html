@@ -13,15 +13,15 @@
 						<table class="table">
 							<thead>
 								<tr class="filters">
-									<th><input type="text" class="form-control" placeholder="date_abs" disabled></th>
-									<th><input type="text" class="form-control" placeholder="date_id" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Date Absence" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Date ID" disabled></th>
 									<th> Actions </th> 
 								</tr>
 							</thead>
 							<tbody>
 								{{#each absence}}
 								<tr>
-									<td name="date_abs">{{ date_abs }}</td>
+									<td name="date_abs">{{ date_absence }}</td>
 									<td name="date_id">{{ date_id }}</td>
 									<td>  <a class="btn btn-danger delete" href="#">Suppr</a> </td>
 								</tr>
@@ -44,7 +44,7 @@
 					<div class="control-group">
 						<label class="control-label">Date Absence</label>
 						<div class="controls">
-							<input id="date_abs" name="date_abs" type="text" placeholder="date_abs"
+							<input id="date_absence" name="date_absence" type="date" placeholder="date_absence"
 							class="input-xlarge">
 							<p class="help-block"></p>
 						</div>

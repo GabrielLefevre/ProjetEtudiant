@@ -2,12 +2,12 @@ Template.absence.events({
     'submit form': function(e){
 		e.preventDefault();
 		
-		var id_absence = $("input[name='id_absence']").val();
-		var id_date = $("input[name='id_date']").val();
+		var date_absence = $("input[name='date_absence']").val();
+		var date_id = $("input[name='date_id']").val();
 		
 		var absence = {
-			id_absence: id_absence,
-			id_date: id_date
+			date_absence: id_absence,
+			date_id: date_id
 		}
         
         Absence.insert(absence);
@@ -19,7 +19,7 @@ Template.absence.events({
     if (confirm("supprimer l'absence ?")) {
       var absenceCourant = this._id;
       Absence.remove(absenceCourant);
-      Router.go('/etudiant/absence');
+      Router.go('/absence');
     }
   }
 });

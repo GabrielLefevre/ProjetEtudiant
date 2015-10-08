@@ -19,7 +19,7 @@ Template.absence.events({
     if (confirm("supprimer l'absence ?")) {
       var absenceCourant = this._id;
       Absence.remove(absenceCourant);
-      Router.go('etudiant/absence');
+      Router.go('/absence');
     }
   }
 });

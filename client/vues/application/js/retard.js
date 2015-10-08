@@ -21,7 +21,7 @@ Template.retard.events({
     if (confirm("supprimer l'absence ?")) {
       var retardCourant = this._id;
       Retard.remove(retardCourant);
-      Router.go('/etudiant/retard');
+      Router.go('/retard');
     }
   }
 });

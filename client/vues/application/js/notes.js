@@ -5,23 +5,23 @@ Template.notes.events({
 		var note = $("input[name='note']").val();
 		var idEtudiant = $("input[name='idEtudiant']").val();
 		var idDevoir = $("input[name='idDevoir']").val();
-		
-		var notes = {
-				note: note,
-				idEtudiant: idEtudiant,
-				idDevoir: idDevoir
+
+		var note = {
+			note: note,
+			idEtudiant: idEtudiant,
+			idDevoir: idDevoir
 		}
         
-        Notes.insert(notes);
+        Notes.insert(note);
 	},
 	
-	'click .delete': function(e) {
+	  'click .delete': function(e) {
     e.preventDefault();
 
-    if (confirm("supprimer les notes ?")) {
-      var notesCourant = this._id;
-      Notes.remove(notesCourant);
-      Router.go('/etudiant/notes');
+    if (confirm("supprimer la note ?")) {
+      var noteCourant = this._id;
+      Notes.remove(noteCourant);
+      Router.go('/notes');
     }
   }
 });

@@ -3,16 +3,16 @@ Template.notes.events({
 		e.preventDefault();
 		
 		var note = $("input[name='note']").val();
-		var idEtudiant = $("input[name='idEtudiant']").val();
-		var idDevoir = $("input[name='idDevoir']").val();
+		var etudiant_id = $("input[name='etudiant_id']").val();
+		var devoir_id = $("input[name='devoir_id']").val();
 
-		var note = {
+		var note2 = {
 			note: note,
-			idEtudiant: idEtudiant,
-			idDevoir: idDevoir
+			etudiant_id: etudiant_id,
+			devoir_id: devoir_id
 		}
         
-        Notes.insert(note);
+        Notes.insert(note2);
 	},
 	
 	  'click .delete': function(e) {
@@ -21,7 +21,7 @@ Template.notes.events({
     if (confirm("supprimer la note ?")) {
       var noteCourant = this._id;
       Notes.remove(noteCourant);
-      Router.go('/notes');
+      Router.go('/etudiant/notes');
     }
   }
 });

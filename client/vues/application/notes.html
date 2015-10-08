@@ -14,8 +14,8 @@
 							<thead>
 								<tr class="filters">
 									<th><input type="text" class="form-control" placeholder="note" disabled></th>
-									<th><input type="text" class="form-control" placeholder="idEtudiant" disabled></th>
-									<th><input type="text" class="form-control" placeholder="idMatiere" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Etudiant ID" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Devoir ID" disabled></th>
 									<th> Actions </th> 
 								</tr>
 							</thead>
@@ -23,8 +23,8 @@
 								{{#each notes}}
 								<tr>
 									<td name="nom">{{ note }}</td>
-									<td name="prenom">{{ idEtudiant }}</td>
-									<td name="groupe">{{ idMatiere }}</td>
+									<td name="prenom">{{ etudiant_id }}</td>
+									<td name="groupe">{{ devoir_id }}</td>
 									<td>  <a class="btn btn-danger delete" href="#">Suppr</a> </td>
 								</tr>
 								{{/each}}
@@ -53,22 +53,22 @@
 					</div>
 				
 				
-					<!-- idEtudiant -->
+					<!-- etudiant_id -->
 					<div class="control-group">
-						<label class="control-label">idEtudiant</label>
+						<label class="control-label">Etudiant ID</label>
 						<div class="controls">
-							<input id="idEtudiant" name="idEtudiant" type="text" placeholder="idEtudiant"
+							<input id="etudiant_id" name="etudiant_id" type="text" placeholder="etudiant_id"
 							class="input-xlarge">
 							<p class="help-block"></p>
 						</div>
 					</div>
 				
 				
-					<!-- idMatiere -->
+					<!-- devoir_id -->
 					<div class="control-group">
-						<label class="control-label">idMatiere</label>
+						<label class="control-label">Devoir ID</label>
 						<div class="controls">
-							<input id="idMatiere" name="idMatiere" type="text" placeholder="idMatiere"
+							<input id="devoir_id" name="devoir_id" type="text" placeholder="devoir_id"
 							class="input-xlarge">
 							<p class="help-block"></p>
 						</div>

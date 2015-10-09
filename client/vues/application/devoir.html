@@ -1,11 +1,11 @@
-<template name='devoir'>
+﻿<template name='devoir'>
 	<body>
 		<div class="container">
 			<div class="jumbotron">
 				<div class="row">
 					<div class="panel panel-primary filterable">
 						<div class="panel-heading">
-							<h3 class="panel-title">Devoirs</h3>
+							<h3 class="panel-title">Devoir</h3>
 							<div class="pull-right">
 								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
 							</div>
@@ -14,20 +14,18 @@
 							<thead>
 								<tr class="filters">
 									<th><input type="text" class="form-control" placeholder="Nom" disabled></th>
-									<th><input type="text" class="form-control" placeholder="Coefficient" disabled></th>
-									<th><input type="text" class="form-control" placeholder="Matiere" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Matière" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Date" disabled></th>
-									<th> Actions </th> 
+									<th><input type="text" class="form-control" placeholder="Coefficient" disabled></th>
 								</tr>
 							</thead>
 							<tbody>
 								{{#each devoir}}
 								<tr>
 									<td name="nom">{{ nom }}</td>
-									<td name="prenom">{{ coeff }}</td>
-									<td name="groupe">{{ matiere }}</td>
-									<td name="mail">{{ date }}</td>
-									<td>  <a class="btn btn-danger delete" href="#">Suppr</a> </td>
+									<td name="matiere">{{ matiere }}</td>
+									<td name="date">{{ date }}</td>
+									<td name="coeff">{{ coeff }}</td>
 								</tr>
 								{{/each}}
 							</tbody>
@@ -36,13 +34,14 @@
 				</div>
 			</div>	
 		</div>
-		
-		<div class="container">
+	
+	
+	<div class="container">
 			<div class="jumbotron">
 				<div class="row">
 					<form class="form-horizontal">
 					<fieldset>
-					<h2>Ajoutez un devoir</h2>
+					<h2>Ajoutez un Devoir</h2>
          
 					<!-- nom -->
 					<div class="control-group">
@@ -53,35 +52,33 @@
 							<p class="help-block"></p>
 						</div>
 					</div>
-				
-				
-					<!-- coeff -->
+					
+					<!-- matiere -->
 					<div class="control-group">
-						<label class="control-label">Coeff</label>
-						<div class="controls">
-							<input id="coeff" name="coeff" type="text" placeholder="coeff"
-							class="input-xlarge">
-							<p class="help-block"></p>
-						</div>
-					</div>
-				
-				
-					<!-- coeff -->
-					<div class="control-group">
-						<label class="control-label">Matiere</label>
+						<label class="control-label">Matière</label>
 						<div class="controls">
 							<input id="matiere" name="matiere" type="text" placeholder="matiere"
 							class="input-xlarge">
 							<p class="help-block"></p>
 						</div>
 					</div>
-                
-				
-					<!-- date-->
+					
+					<!-- date -->
 					<div class="control-group">
-						<label class="control-label">Date</label>
+						<label class="control-label">date</label>
 						<div class="controls">
-							<input id="date" name="date" type="date" placeholder="date" class="input-xlarge">
+							<input id="date" name="date" type="date" placeholder="date"
+							class="input-xlarge">
+							<p class="help-block"></p>
+						</div>
+					</div>
+					
+					 <!-- coeff -->
+					<div class="control-group">
+						<label class="control-label">coeff</label>
+						<div class="controls">
+							<input id="coeff" name="coeff" min=1 max=12 type="number" placeholder="coeff"
+							class="input-xlarge">
 							<p class="help-block"></p>
 						</div>
 					</div>
@@ -132,7 +129,7 @@
 					$filteredRows.hide();
 					/* Prepend no-result row if all rows are filtered */
 					if ($filteredRows.length === $rows.length) {
-						$table.find('tbody').prepend($('<tr class="no-result text-center"><td colspan="'+ $table.find('.filters th').length +'">Aucun r�sultat pour cette recherche !</td></tr>'));
+						$table.find('tbody').prepend($('<tr class="no-result text-center"><td colspan="'+ $table.find('.filters th').length +'">Aucun résultat pour cette recherche !</td></tr>'));
 					}
 				});
 			});

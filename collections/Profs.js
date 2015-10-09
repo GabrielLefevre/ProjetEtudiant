@@ -1,1 +1,0 @@
-Profs = new Mongo.Collection("profs");

@@ -28,6 +28,7 @@ td, th /* Mettre une bordure sur les td ET les th */
     padding: 0;
     height: auto;
 }
+
 .filterable .filters input[disabled]::-webkit-input-placeholder {
     color: #333;
 }
@@ -41,3 +42,5 @@ td, th /* Mettre une bordure sur les td ET les th */
 
 .btn-glyphicon { padding:8px; background:#ffffff; margin-right:4px; }
 .icon-btn { padding: 1px 15px 3px 2px; border-radius:50px;}
+
+

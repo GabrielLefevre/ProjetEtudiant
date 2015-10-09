@@ -1,6 +1,0 @@
-﻿07/10/2015
-
-	Ajout de la vue Devoir, gestion de son affichage de ses ajouts et de ses suppresions.
-	Documentaion sur la possibilité de faire des "jointures" de collection MongoDB ( pour pouvoir definir des notes aux étudiants par la suite )
-	Commencement du rapport de stage
-	

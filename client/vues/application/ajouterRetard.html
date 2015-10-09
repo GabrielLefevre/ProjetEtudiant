@@ -22,6 +22,8 @@
 									<th><input type="text" class="form-control" placeholder="Groupe" disabled></th>
 									<th> Date Retard </th>
 									<th> Minutes </th>
+									<th> Raison </th>
+									<th> Justifier </th>									
 								</tr>
 							</thead>
 							<tbody>
@@ -32,6 +34,9 @@
 									<td name="groupe">{{ groupe }}</td>
 									<td name="date_retard"> <input id="date_retard" name="date_retard" type="date" placeholder="date_retard"> </td>
 									<td name="minutes"> <input id="minutes" name="minutes" type="text" placeholder="minutes"> </td>
+									<td name="raison"> <input id="raison" name="raison" type="text" placeholder="raison"> </td>
+									<td name="justifier"> <input id="justifier" name="justifier" type="text" placeholder="justifier"> </td>
+									
 									<td> <input class="add" type="submit" value="Valider"  /> </td>
 								</tr>
 								{{/each}}

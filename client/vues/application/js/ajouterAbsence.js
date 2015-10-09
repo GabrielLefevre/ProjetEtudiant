@@ -1,17 +1,24 @@
 Template.ajouterAbsence.events({
 	'click .add': function(e){
 		e.preventDefault();
-		//alert("Test");
-		var note = $("input[name='note']").val();
-		var devoir = $("i[name='devoir']").val();
+		var date_absence = $("input[name='date_absence']").val();
+		var date = $("i[name='date']").val();
 		var etudiantCourant = this._id;
+		var raison  = $("input[name='raison']").val();
+		var justifier = $("input[name='justifier']").val();
 		
-		var evaluation = {
-				note: note,
-				devoir: devoir
+		var absence = {
+				date_absence: date_absence,
+				date: date
 		}
 		
-		Note.insert(evaluation);
+		var date = {
+				raison: raison,
+				justifier: justifier
+		}
+		
+		Absence.insert(absence);
+		Dates.insert(date);
 	}
 	
 	

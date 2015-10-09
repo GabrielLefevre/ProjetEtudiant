@@ -1,0 +1,1 @@
+Absence = new Mongo.Collection("absence");

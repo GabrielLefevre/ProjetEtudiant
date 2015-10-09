@@ -21,6 +21,8 @@
 									<th><input type="text" class="form-control" placeholder="Prenom" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Groupe" disabled></th>
 									<th> Date Absence </th>
+									<th> Raison </th>
+									<th> Justifier </th>
 								</tr>
 							</thead>
 							<tbody>
@@ -30,6 +32,9 @@
 									<td name="prenom">{{ prenom }}</td>
 									<td name="groupe">{{ groupe }}</td>
 									<td name="date_absence"> <input id="date_absence" name="date_absence" type="date" placeholder="date_absence"> </td>
+									<td name="raison"> <input id="raison" name="raison" type="text" placeholder="raison"> </td>
+									<td name="justifier"> <input id="justifier" name="justifier" type="text" placeholder="justifier"> </td>
+									
 									<td> <input class="add" type="submit" value="Valider"  /> </td>
 								</tr>
 								{{/each}}

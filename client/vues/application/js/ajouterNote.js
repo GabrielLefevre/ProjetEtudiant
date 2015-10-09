@@ -3,16 +3,16 @@ Template.ajouterNote.events({
 		e.preventDefault();
 		//alert("Test");
 		var note = $("input[name='note']").val();
-		var devoir = $("i[name='devoir']").val();
+		var nom = $("input[name='nom']").val();
 		var etudiantCourant = this._id;
-		
 		var evaluation = {
 				note: note,
-				devoir: devoir
+				devoir: nom
 		}
 		
 		Note.insert(evaluation);
-		//Router.go('/devoir/{{nom}}');
+		Etudiant.update(etudiantCourant,{$push:{notes:evaluation}});
+		
 	}
 	
 	

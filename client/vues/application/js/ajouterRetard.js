@@ -6,19 +6,23 @@ Template.ajouterRetard.events({
 		var minutes = $("input[name='minutes']").val();
 		var raison  = $("input[name='raison']").val();
 		var justifier = $("input[name='justifier']").val();
-		
 		var retard = {
+				date_retard: date_retard,
 				minutes: minutes,
-				date: date
-		}
-		
-		var date = {
 				raison: raison,
 				justifier: justifier
 		}
 		
-		Retard.insert(retard);
+		/*
+		var date = {
+				raison: raison,
+				justifier: justifier
+		}
 		Dates.insert(date);	
+		*/
+		
+		Retard.insert(retard);
+		
 	}
 	
 

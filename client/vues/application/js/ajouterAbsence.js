@@ -6,19 +6,25 @@ Template.ajouterAbsence.events({
 		var etudiantCourant = this._id;
 		var raison  = $("input[name='raison']").val();
 		var justifier = $("input[name='justifier']").val();
-		
+		var etudiant_id = $("input[name='_id']").val();
 		var absence = {
 				date_absence: date_absence,
-				date: date
-		}
-		
-		var date = {
 				raison: raison,
 				justifier: justifier
 		}
+		/*
 		
-		Absence.insert(absence);
+		var date = {
+				raison: raison,
+				justifier: justifier,
+				etudiant_id: etu
+		}
+		
 		Dates.insert(date);
+		
+		*/
+		Absence.insert(absence);
+		
 	}
 	
 	

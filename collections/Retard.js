@@ -1,1 +1,0 @@
-Retard = new Mongo.Collection("retard");

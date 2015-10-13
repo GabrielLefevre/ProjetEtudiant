@@ -12,6 +12,9 @@ td, th /* Mettre une bordure sur les td ET les th */
     border: 1px solid black;
 	text-align:center;
 }
+.btn-danger{
+	margin: 2px;
+}
 
 .informationEtu li {
 		font-size:14px;
@@ -51,6 +54,9 @@ td, th /* Mettre une bordure sur les td ET les th */
 .filterable .filters input[disabled]:-ms-input-placeholder {
     color: #333;
 }
+
+
+input, select { padding:5px; border:1px solid #999; border-radius:4px; -moz-border-radius:4px; -web-kit-border-radius:4px; -khtml-border-radius:4px; }
 
 
 .btn-glyphicon { padding:8px; background:#ffffff; margin-right:4px; }

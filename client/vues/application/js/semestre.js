@@ -23,7 +23,7 @@ Template.semestre.events({
     if (confirm("supprimer module ?")) {
       var semestreCourant = this._id;
       InfosS1.remove(semestreCourant);
-      Router.go('/infosS1');
+      Router.go('/semestre');
     }
   }
 });

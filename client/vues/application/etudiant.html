@@ -33,7 +33,8 @@
 									<td name="adresse">{{ adresse }}</td>
 									<td name="cp">{{ cp }}</td>
 									<td name="ville">{{ ville }}</td>
-									<td> <a class="btn btn-danger delete" href="#">Suppr</a> <a class="button" href="/absence/{{nom}}">add abs</a>&nbsp;<a class="button" href="/retard/{{prenom}}">add retard</a></td>
+									<td> <a class="btn btn-danger delete" href="#">Suppr</a> 
+									<a class="button" href="/absence/{{nom}}">add abs</a>&nbsp;<a class="button" href="/retard/{{prenom}}">add retard</a></td>
 								</tr>
 								{{/each}}
 							</tbody>
@@ -42,7 +43,6 @@
 				</div>
 			</div>	
 		</div>
-		
 		<div class="container">
 			<div class="jumbotron">
 				<div class="row">
@@ -132,14 +132,12 @@
 						</div>
 					</div>
 					
-					
 					<input class="add" type="submit" value="Valider"  />
 					</fieldset>
 					</form>
 				</div>
 			</div>
-		</div>
-		
+		</div>-->
 		<script>
 			$(document).ready(function(){
 				$('.filterable .btn-filter').click(function(){

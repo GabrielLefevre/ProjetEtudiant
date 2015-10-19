@@ -43,21 +43,50 @@
 					<div class="control-group">
 						<label class="control-label">Nom du semestre</label>
 						<div class="controls">
-							<input id="nom" name="nom" type="text" placeholder="nom semestre"
+							<input id="nom" name="nomSemestre" type="text" placeholder="nom semestre"
 							class="input-xlarge">
 							<p class="help-block"></p>
 						</div>
 					</div>
 					
-					<!-- UE -->
+					<!-- UE 1 -->
 					<div class="control-group">
 						<label class="control-label">Nom de l'UE 1</label>
 						<div class="controls">
-							<input id="nom" name="nom" type="text" placeholder="Nom de l'UE 1"
+							<input id="nom" name="nomUE1" type="text" placeholder="Nom de l'UE 1"
 							class="input-xlarge">
 							<p class="help-block"></p>
 						</div>
 					</div>
+					
+					<div id="nouvelle_matiere1"></div>
+					<input class="ue1" type="button" onclick="nouveauInput1()" value="Ajouter une matière à l'UE1"/>
+					
+					<!-- UE 2 -->
+					<div class="control-group">
+						<label class="control-label">Nom de l'UE 2</label>
+						<div class="controls">
+							<input id="nom" name="nomUE2" type="text" placeholder="Nom de l'UE 2"
+							class="input-xlarge">
+							<p class="help-block"></p>
+						</div>
+					</div>
+
+					<div id="nouvelle_matiere2"></div>
+					<input class="ue2" type="button" onclick="nouveauInput2()" value="Ajouter une matière à l'UE2"/>
+					
+					<!-- UE 3 -->
+					<div class="control-group">
+						<label class="control-label">Nom de l'UE 3</label>
+						<div class="controls">
+							<input id="nom" name="nomUE3" type="text" placeholder="Nom de l'UE 3"
+							class="input-xlarge">
+							<p class="help-block"></p>
+						</div>
+					</div>
+					
+					<div id="nouvelle_matiere3"></div>
+					<input class="ue3" type="button" onclick="nouveauInput3()" value="Ajouter une matière à l'UE3"/><br />
 					
 					<input class="add" type="submit" value="Valider"  />
 					</fieldset>
@@ -65,5 +94,34 @@
 				</div>
 			</div>
 		</div>
+		
+		<script type="text/javascript">
+		var i = 0;
+		var j =0;
+		var k = 0;
+		var contenu1 = "";
+		var contenu2 = "";
+		var contenu3 = "";
+			 
+		function nouveauInput1(){
+			i = i + 1;
+			contenu1 = contenu1 + "<label class=\"control-label\">Matiere "+ i + " <input type='text' name='UE1matiere" + i + "' /><br />";
+			contenu1 = contenu1 + "<label class=\"control-label\">Coeff Matiere "+ i + " <input type='int' name='UE1coeff" + i + "' /><br />";
+			document.getElementById('nouvelle_matiere1').innerHTML = contenu1;
+		}
+			 
+		function nouveauInput2(){
+			j = j + 1;
+			contenu2 = contenu2 + "<label class=\"control-label\">Matiere "+ j + " <input  type='text' name='UE2matiere" + j + "' /><br />";
+			contenu2 = contenu2 + "<label class=\"control-label\">Coeff Matiere "+ j + " <input type='int' name='UE2coeff" + j + "' /><br />";
+			document.getElementById('nouvelle_matiere2').innerHTML = contenu2;
+		}
+		function nouveauInput3(){
+			k = k + 1;
+			contenu3 = contenu3 + "<label class=\"control-label\">Matiere "+ k + " <input type='text' name='UE3matiere" + k + "' /><br />";
+			contenu3 = contenu3 + "<label class=\"control-label\">Coeff Matiere "+ k + " <input type='int' name='UE3coeff" + k + "' /><br />";
+			document.getElementById('nouvelle_matiere3').innerHTML = contenu3;
+		}
+</script>
 	</body>
 </template>

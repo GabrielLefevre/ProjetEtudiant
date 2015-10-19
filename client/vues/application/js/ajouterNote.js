@@ -14,8 +14,4 @@ Template.ajouterNote.events({
 		Etudiant.update(etudiantCourant,{$push:{notes:evaluation}});
 		
 	}
-	
-	
-	
-	
-});
+}); 

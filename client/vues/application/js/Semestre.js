@@ -2,33 +2,77 @@ Template.semestre.events({
     'submit form': function(e){
 		e.preventDefault();
 		var nomSemestre = $("input[name='nomSemestre']").val();
+		var dd = $("input[name='dateD']").val();
+		var df = $("input[name='dateF']").val();
 		var nomUE1 = $("input[name='nomUE1']").val();
 		var nomUE2 = $("input[name='nomUE2']").val();
 		var nomUE3 = $("input[name='nomUE3']").val();
-		var i=1;
-		var j=1;
-		var k=1;
-		var  tabUE1 = [][2];
-		var  tabUE2 = [][2];
-		var  tabUE3 = [][2];
-		while(i<8) {
-			if(document.getElementByName("UE1matiere" + i +"") {
-				tabUE1[i][1]=$("input[name='UE1matiere" + i + "']").val();
-				tabUE1[i][2]=$("input[name='UE1coeff" + i + "']").val();
+		var i=0;
+		var j=0;
+		var k=0;
+		var  tabMatUE1 = new Array();
+		var  tabCoeffUE1 = new Array();
+		var  tabMatUE2 = new Array();
+		var  tabCoeffUE2= new Array();
+		var  tabMatUE3 = new Array();
+		var  tabCoeffUE3 = new Array();
+
+		while(document.getElementById("UE1matiere" +i) || document.getElementById("UE2matiere" +j) || document.getElementById("UE3matiere" +k)) {
+			if(document.getElementById("UE1matiere" +i)) {
+				tabMatUE1[i]=$("input[name='UE1matiere" + i + "']").val();
+				tabCoeffUE1[i]=$("input[name='UE1coeff" + i + "']").val();
+				i++;
 			}
-			if(document.getElementByName("UE2matiere" + j +"") {
-				tabUE2[j][1]=$("input[name='UE2matiere" + j + "']").val();
-				tabUE2[j][2]=$("input[name='UE2coeff" + j + "']").val();
+			if(document.getElementById("UE2matiere" +j)) {
+				tabMatUE2[j]=$("input[name='UE2matiere" + j + "']").val();
+				tabCoeffUE2[j]=$("input[name='UE2coeff" + j + "']").val();
+				j++;
 			}
-			if(document.getElementByName("UE3matiere" + k +"") {
-				tabUE3[k][1]=$("input[name='UE3matiere" + k + "']").val();
-				tabUE3[k][2]=$("input[name='UE3coeff" + k + "']").val();
-			}
-			i++;
-			j++;
-			k++;
-		} // while
-       // Semestre.insert(semestre);
+			if(document.getElementById("UE3matiere" +k)) {
+				tabMatUE3[k]=$("input[name='UE3matiere" + k + "']").val();
+				tabCoeffUE3[k]=$("input[name='UE3coeff" + k + "']").val();
+				k++;
+			}	
+		} // while 
+		
+		var semestre = {
+			nom: nomSemestre,
+			dateDebut: dd,
+			dateFin: df,
+			UE: [{
+				nom: nomUE1,
+				matiere: [] 
+			} // ue1
+			/*{
+			nom: nomUE2,
+				matiere: [
+					for ( var l = 0; l<tabMatUE2.length; l++) {
+						{
+							nom:tabMatUE2[l],
+							coeff:tabCoeffUE2[l],
+							note:[]
+						}
+					} // for 
+				] // matiere
+			}, // ue2
+			{
+			nom: nomUE3,
+				matiere: [
+					for ( var l = 0; l<tabMatUE3.length; l++) {
+						{
+							nom:tabMatUE3[l],
+							coeff:tabCoeffUE3[l],
+							note:[]
+						}
+					} // for 
+				] // matiere
+			} // ue3*/
+			] // UE 
+		} // var semestre 
+       
+
+		 //Semestre.insert(semestre);
+	   
 	}, // formulaire
 	
 	  'click .delete': function(e) {

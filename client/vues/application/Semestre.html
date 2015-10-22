@@ -22,7 +22,7 @@
 								<tr>
 									<td name="nom">{{ nom }}</td>
 
-									<td>  <a class="btn btn-danger delete" href="#">Suppr</a> <a class="btn btn-info" href="/etudiant/{{_id}}">carnet</a></td>
+									<td>  <a class="btn btn-danger delete" href="#">Suppr</a></td>
 								</tr>
 								{{/each}}
 							</tbody>
@@ -43,7 +43,27 @@
 					<div class="control-group">
 						<label class="control-label">Nom du semestre</label>
 						<div class="controls">
-							<input id="nom" name="nomSemestre" type="text" placeholder="nom semestre"
+							<input id="nomSemestre" name="nomSemestre" type="text" placeholder="nom semestre"
+							class="input-xlarge">
+							<p class="help-block"></p>
+						</div>
+					</div>
+					
+					<!-- dateDebut -->
+					<div class="control-group">
+						<label class="control-label">date debut</label>
+						<div class="controls">
+							<input id="dateD" name="dateD" type="date" placeholder="date"
+							class="input-xlarge">
+							<p class="help-block"></p>
+						</div>
+					</div>
+					
+					<!-- dateFin -->
+					<div class="control-group">
+						<label class="control-label">date fin</label>
+						<div class="controls">
+							<input id="date" name="dateF" type="date" placeholder="date"
 							class="input-xlarge">
 							<p class="help-block"></p>
 						</div>
@@ -104,22 +124,22 @@
 		var contenu3 = "";
 			 
 		function nouveauInput1(){
+			contenu1 = contenu1 + "<label class=\"control-label\">Matiere "+ i + " <input id='UE1matiere"+i+"'  type='text' name='UE1matiere" + i + "' /><br />";
+			contenu1 = contenu1 + "<label class=\"control-label\">Coeff Matiere "+ i + " <input id='UE1coeff"+i+"' type='int' name='UE1coeff" + i + "' /><br />";
 			i = i + 1;
-			contenu1 = contenu1 + "<label class=\"control-label\">Matiere "+ i + " <input type='text' name='UE1matiere" + i + "' /><br />";
-			contenu1 = contenu1 + "<label class=\"control-label\">Coeff Matiere "+ i + " <input type='int' name='UE1coeff" + i + "' /><br />";
 			document.getElementById('nouvelle_matiere1').innerHTML = contenu1;
 		}
 			 
 		function nouveauInput2(){
+			contenu2 = contenu2 + "<label class=\"control-label\">Matiere "+ j + " <input id='UE2matiere"+j+"' type='text' name='UE2matiere" + j + "' /><br />";
+			contenu2 = contenu2 + "<label class=\"control-label\">Coeff Matiere "+ j + " <input id='UE2coeff"+j+"' type='int' name='UE2coeff" + j + "' /><br />";
 			j = j + 1;
-			contenu2 = contenu2 + "<label class=\"control-label\">Matiere "+ j + " <input  type='text' name='UE2matiere" + j + "' /><br />";
-			contenu2 = contenu2 + "<label class=\"control-label\">Coeff Matiere "+ j + " <input type='int' name='UE2coeff" + j + "' /><br />";
 			document.getElementById('nouvelle_matiere2').innerHTML = contenu2;
 		}
 		function nouveauInput3(){
+			contenu3 = contenu3 + "<label class=\"control-label\">Matiere "+ k + " <input id='UE3matiere"+k+"' type='text' name='UE3matiere" + k + "' /><br />";
+			contenu3 = contenu3 + "<label class=\"control-label\">Coeff Matiere "+ k + " <input id='UE3matiere"+k+"' type='int' name='UE3coeff" + k + "' /><br />";
 			k = k + 1;
-			contenu3 = contenu3 + "<label class=\"control-label\">Matiere "+ k + " <input type='text' name='UE3matiere" + k + "' /><br />";
-			contenu3 = contenu3 + "<label class=\"control-label\">Coeff Matiere "+ k + " <input type='int' name='UE3coeff" + k + "' /><br />";
 			document.getElementById('nouvelle_matiere3').innerHTML = contenu3;
 		}
 </script>

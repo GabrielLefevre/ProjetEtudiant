@@ -9,6 +9,8 @@ Template.etudiant.events({
 		var adresse = $("input[name='adresse']").val();
 		var cp = $("input[name='cp']").val();
 		var ville = $("input[name='ville']").val();
+		var sem = $("select[name='semestre']").val();
+		var semestretmp = Semestre.find({'nom': sem});
 		
 		var etudiant = {
 				nom: nom,
@@ -18,7 +20,7 @@ Template.etudiant.events({
 				adresse: adresse,
 				cp: cp,
 				ville: ville,
-				semestre:[]
+				semestre:[semestretmp[0]]
 		}
         
         Etudiant.insert(etudiant);

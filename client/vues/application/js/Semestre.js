@@ -35,43 +35,81 @@ Template.semestre.events({
 			}	
 		} // while 
 		
+		//---------------------------------------------------------
+		// A FINIR !!!
+		//---------------------------------------------------------
 		var semestre = {
 			nom: nomSemestre,
 			dateDebut: dd,
 			dateFin: df,
-			UE: [{
-				nom: nomUE1,
-				matiere: [] 
-			} // ue1
-			/*{
-			nom: nomUE2,
-				matiere: [
-					for ( var l = 0; l<tabMatUE2.length; l++) {
-						{
-							nom:tabMatUE2[l],
-							coeff:tabCoeffUE2[l],
-							note:[]
-						}
-					} // for 
-				] // matiere
-			}, // ue2
-			{
-			nom: nomUE3,
-				matiere: [
-					for ( var l = 0; l<tabMatUE3.length; l++) {
-						{
-							nom:tabMatUE3[l],
-							coeff:tabCoeffUE3[l],
-							note:[]
-						}
-					} // for 
-				] // matiere
-			} // ue3*/
-			] // UE 
-		} // var semestre 
-       
+			UE:[]
+		}
+		Semestre.insert(semestre, function(err,res) {
+			var idSemestre = res;
 
-		 //Semestre.insert(semestre);
+			var UE1TMP = {
+				nom:nomUE1,
+				matiereUE1:[]
+			}
+			UE.insert(UE1TMP, function(err, res) {
+				var idUE1 = res;
+			for ( var l = 0; l<tabMatUE1.length;l++) {
+				var matiereTMP;
+				matiereTMP = {
+					nom: tabMatUE1[l],
+					coeff: tabCoeffUE1[l],
+					note: []
+				};
+				Matiere.insert(matiereTMP);
+				UE.update({_id:idUE1},{$push:{matiereUE1:matiereTMP}});
+			} // for
+			 var ue1Def = UE.findOne({_id:idUE1});
+			Semestre.update({_id:idSemestre}, {$push:{UE:ue1Def}});
+		});
+
+			var UE2TMP = {
+				nom:nomUE2,
+				matiereUE2:[]
+			}
+			UE.insert(UE2TMP, function(err, res) {
+				var idUE2 = res;
+
+				for ( var l = 0; l<tabMatUE2.length;l++) {
+					var matiereTMP;
+					matiereTMP = {
+						nom: tabMatUE2[l],
+						coeff: tabCoeffUE2[l],
+						note: []
+					};
+					Matiere.insert(matiereTMP);
+					UE.update({_id:idUE2},{$push:{matiereUE2:matiereTMP}});
+				} // for
+				var ue2Def = UE.findOne({_id:idUE2});
+				Semestre.update({_id:idSemestre}, {$push:{UE:ue2Def}});
+			});
+
+			var UE3TMP = {
+				nom:nomUE3,
+				matiereUE3:[]
+			}
+			UE.insert(UE3TMP, function(err, res) {
+				var idUE3 = res;
+
+				for ( var l = 0; l<tabMatUE3.length;l++) {
+					var matiereTMP;
+					matiereTMP = {
+						nom: tabMatUE3[l],
+						coeff: tabCoeffUE3[l],
+						note: []
+					};
+					Matiere.insert(matiereTMP);
+					UE.update({_id:idUE3},{$push:{matiereUE3:matiereTMP}});
+				} // for
+				var ue3Def = UE.findOne({_id:idUE3});
+				Semestre.update({_id:idSemestre}, {$push:{UE:ue3Def}});
+			});
+
+		});
 	   
 	}, // formulaire
 	

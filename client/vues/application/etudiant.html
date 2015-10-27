@@ -20,7 +20,6 @@
 									<th><input type="text" class="form-control" placeholder="Adresse" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Code postal" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Ville" disabled></th>
-									<th>Inscription</th>
 									<th> Actions </th> 
 								</tr>
 							</thead>
@@ -34,12 +33,6 @@
 									<td name="adresse">{{ adresse }}</td>
 									<td name="cp">{{ cp }}</td>
 									<td name="ville">{{ ville }}</td>
-									<td name="semestre">
-										<select id="semestre" name="selectSemestre" class="input-xlarge">
-											{{#each semestre}}
-											<option value="sem">{{nom}}</option>
-											{{/each}}
-										</select></td>
 									<td>  <a class="btn btn-danger delete" href="#">Suppr</a> <a class="btn btn-info" href="/etudiant/{{_id}}">carnet</a></td>
 								</tr>
 								{{/each}}

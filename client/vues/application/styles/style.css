@@ -16,6 +16,10 @@ td, th /* Mettre une bordure sur les td ET les th */
 	margin: 2px;
 }
 
+textarea {
+	resize: none;
+}
+
 .informationEtu li {
 		font-size:14px;
 		margin-bottom:10px;

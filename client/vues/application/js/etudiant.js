@@ -17,7 +17,8 @@ Template.etudiant.events({
 				groupe: groupe,
 				adresse: adresse,
 				cp: cp,
-				ville: ville
+				ville: ville,
+				notes:[]
 		}
         
         Etudiant.insert(etudiant);

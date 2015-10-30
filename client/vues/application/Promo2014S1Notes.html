@@ -1,13 +1,13 @@
-<template name='detailNotes4'>
+<template name='Promo2014S1Notes'>
 	<body>
 		<div class="container">
 			<div class="jumbotron">
 				<div class="row">
 					<div class="panel panel-primary filterable">
 						<div class="panel-heading">
-							<h3 class="panel-title">Detail des notes du Semestre 4</h3>
+							<h3 class="panel-title">Promo 2014 - Notes du Semestre 1</h3>
 							<a class="btn btn-info" onClick="colorTest();">color</a>
-							<a class="btn btn-info" href="/semestre4">Semestre 4</a>
+							<a class="btn btn-info" href="/Promo2014S1">Semestre 1</a>
 							<div class="pull-right">
 								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
 							</div>
@@ -44,63 +44,69 @@
 							/* Moyenne Promo */
 							var tds = document.getElementById('table').getElementsByTagName('td');
 							var trs = document.getElementById('table').getElementsByTagName('tr');
-							var sumMGS4 = 0;
-							var sumUE41 = 0;							
-							var sumADMSR = 0;
-							var sumPROGREP = 0;
-							var sumPWEB = 0;
-							var sumPROGMOB = 0;
-							var sumCOMPINFO = 0;
+							var sumMGS1 = 0;
+							var sumUE11 = 0;
+							var sumSE = 0;
+							var sumAP = 0;
+							var sumBD = 0;
+							var sumCDIN = 0;
 							var sumPT = 0;
-							var sumEU42 = 0;
-							var sumAT = 0;
-							var sumRO = 0;
+							var sumEU12 = 0;
+							var sumMD = 0;
+							var sumAL = 0;
+							var sumEE = 0;
+							var sumORGA = 0;
 							var sumCOM = 0;
 							var sumAI = 0;
-							
+							var sumPPP = 0;
+
 							for(var k = 2; k < tds.length; k ++) {
-								if(tds[k].className == 'mgs4') {
-									sumMGS4 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
+								if(tds[k].className == 'mgs1') {
+									sumMGS1 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
 									
 								}
-								if(tds[k].className == 'ue41') {
-									sumUE41 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
+								if(tds[k].className == 'ue11') {
+									sumUE11 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
 									
 								}
-								if(tds[k].className == 'admsr') {
-									sumADMSR += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+								if(tds[k].className == 'se') {
+									sumSE += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
 									
 								}
-								if(tds[k].className == 'progrep') {
-									sumPROGREP += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+								if(tds[k].className == 'ap') {
+									sumAP += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
 									
 								}
-								if(tds[k].className == 'pweb') {
-									sumPWEB += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+								if(tds[k].className == 'bd') {
+									sumBD += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
 									
 								}
-								if(tds[k].className == 'progmob') {
-									sumPROGMOB += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-									
-								}
-								if(tds[k].className == 'compinfo') {
-									sumCOMPINFO += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+								if(tds[k].className == 'cdin') {
+									sumCDIN += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 									
 								}
 								if(tds[k].className == 'pt') {
 									sumPT += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 									
 								}
-								if(tds[k].className == 'eu42') {
-									sumEU42 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
+								if(tds[k].className == 'eu12') {
+									sumEU12 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
 									
 								}
-								if(tds[k].className == 'at') {
-									sumAT += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+								if(tds[k].className == 'md') {
+									sumMD += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 									
 								}
-								if(tds[k].className == 'ro') {
-									sumRO += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+								if(tds[k].className == 'al') {
+									sumAL += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
+								if(tds[k].className == 'ee') {
+									sumEE += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
+								if(tds[k].className == 'orga') {
+									sumORGA += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 									
 								}
 								if(tds[k].className == 'com') {
@@ -111,80 +117,95 @@
 									sumAI += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 									
 								}
+								if(tds[k].className == 'ppp') {
+									sumPPP += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
 							}
 							
 							var longueur=trs.length-2;
-							var moyenneMGS4 = sumMGS4/longueur;
-							var moyenneUE41 = sumUE41/longueur;							
-							var moyenneADMSR = sumADMSR/longueur;
-							var moyennePROGREP = sumPROGREP/longueur;
-							var moyennePWEB = sumPWEB/longueur;
-							var moyennePROGMOB = sumPROGMOB/longueur;
-							var moyenneCOMPINFO = sumCOMPINFO/longueur;
+							var moyenneMGS1 = sumMGS1/longueur;
+							var moyenneUE11 = sumUE11/longueur;
+							var moyenneSE = sumSE/longueur;
+							var moyenneAP = sumAP/longueur;
+							var moyenneBD = sumBD/longueur;
+							var moyenneCDIN = sumCDIN/longueur;
 							var moyennePT = sumPT/longueur;
-							var moyenneEU42 = sumEU42/longueur;
-							var moyenneAT = sumAT/longueur;
-							var moyenneRO = sumRO/longueur;
+							var moyenneEU12 = sumEU12/longueur;
+							var moyenneMD = sumMD/longueur;
+							var moyenneAL = sumAL/longueur;
+							var moyenneEE = sumEE/longueur;
+							var moyenneORGA = sumORGA/longueur;
 							var moyenneCOM = sumCOM/longueur;
 							var moyenneAI = sumAI/longueur;
-							PromoMGS4.innerHTML += '<tr><td>' + moyenneMGS4 + '</td></tr>'
-							PromoUE41.innerHTML += '<tr><td>' + moyenneUE41 + '</td></tr>'					
-							PromoADMSR.innerHTML += '<tr><td>' + moyenneADMSR + '</td></tr>'
-							PromoPROGREP.innerHTML += '<tr><td>' + moyennePROGREP + '</td></tr>'
-							PromoPWEB.innerHTML += '<tr><td>' + moyennePWEB + '</td></tr>'
-							PromoPROGMOB.innerHTML += '<tr><td>' + moyennePROGMOB + '</td></tr>'
-							PromoCOMPINFO.innerHTML += '<tr><td>' + moyenneCOMPINFO + '</td></tr>'
+							var moyennePPP = sumPPP/longueur;
+							PromoMGS1.innerHTML += '<tr><td>' + moyenneMGS1 + '</td></tr>'
+							PromoUE11.innerHTML += '<tr><td>' + moyenneUE11 + '</td></tr>'
+							PromoSE.innerHTML += '<tr><td>' + moyenneSE + '</td></tr>'
+							PromoAP.innerHTML += '<tr><td>' + moyenneAP + '</td></tr>'
+							PromoBD.innerHTML += '<tr><td>' + moyenneBD + '</td></tr>'
+							PromoCDIN.innerHTML += '<tr><td>' + moyenneCDIN + '</td></tr>'
 							PromoPT.innerHTML += '<tr><td>' + moyennePT + '</td></tr>'
-							PromoEU42.innerHTML += '<tr><td>' + moyenneEU42 + '</td></tr>'							
-							PromoAT.innerHTML += '<tr><td>' + moyenneAT + '</td></tr>'
-							PromoRO.innerHTML += '<tr><td>' + moyenneRO + '</td></tr>'
+							PromoEU12.innerHTML += '<tr><td>' + moyenneEU12 + '</td></tr>'							
+							PromoMD.innerHTML += '<tr><td>' + moyenneMD + '</td></tr>'
+							PromoAL.innerHTML += '<tr><td>' + moyenneAL + '</td></tr>'
+							PromoEE.innerHTML += '<tr><td>' + moyenneEE + '</td></tr>'
+							PromoORGA.innerHTML += '<tr><td>' + moyenneORGA + '</td></tr>'
 							PromoCOM.innerHTML += '<tr><td>' + moyenneCOM + '</td></tr>'
 							PromoAI.innerHTML += '<tr><td>' + moyenneAI + '</td></tr>'
+							PromoPPP.innerHTML += '<tr><td>' + moyennePPP + '</td></tr>'
 						</script>
 						<table class="table" id="table">
 							<thead>
 								<tr class="filters">
 									<th><input type="text" class="form-control" placeholder="Nom" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Prenom" disabled></th>
-									<th><input type="text" class="form-control" placeholder="MGS4" disabled></th>
-									<th><input type="text" class="form-control" placeholder="UE41" disabled></th>
-									<th><input type="text" class="form-control" placeholder="AdmSR" disabled></th>
-									<th><input type="text" class="form-control" placeholder="ProgRep" disabled></th>
-									<th><input type="text" class="form-control" placeholder="PWeb" disabled></th>
-									<th><input type="text" class="form-control" placeholder="ProgMob" disabled></th>
-									<th><input type="text" class="form-control" placeholder="CompInfo" disabled></th>
+									<th><input type="text" class="form-control" placeholder="MGS1" disabled></th>
+									<th><input type="text" class="form-control" placeholder="UE11" disabled></th>
+									<th><input type="text" class="form-control" placeholder="SE" disabled></th>
+									<th><input type="text" class="form-control" placeholder="AP" disabled></th>
+									<th><input type="text" class="form-control" placeholder="BD" disabled></th>
+									<th><input type="text" class="form-control" placeholder="CDIN" disabled></th>
 									<th><input type="text" class="form-control" placeholder="PT" disabled></th>
-									<th><input type="text" class="form-control" placeholder="EU42" disabled></th>
-									<th><input type="text" class="form-control" placeholder="AT" disabled></th>
-									<th><input type="text" class="form-control" placeholder="RO" disabled></th>
+									<th><input type="text" class="form-control" placeholder="EU12" disabled></th>
+									<th><input type="text" class="form-control" placeholder="MD" disabled></th>
+									<th><input type="text" class="form-control" placeholder="AL" disabled></th>
+									<th><input type="text" class="form-control" placeholder="EE" disabled></th>
+									<th><input type="text" class="form-control" placeholder="ORGA" disabled></th>
 									<th><input type="text" class="form-control" placeholder="COM" disabled></th>
 									<th><input type="text" class="form-control" placeholder="AI" disabled></th>
+									<th><input type="text" class="form-control" placeholder="PPP" disabled></th>
+
 									</tr>
 							</thead>
 							<tbody>
-								{{#each semestre4}}
+								{{#each promo2014}}
 								<tr>
 									<td name="nom">{{ nom }}</td>
 									<td name="prenom">{{ prenom }}</td>	
-									<td class="mgs4">{{ mgs4 }}</td>
+									{{#each semestre1}}
+									<td class="mgs1">{{ mgs1 }}</td>	
 									{{#each ue}}
-										<td class="ue41">{{ ue41 }}</td>
+										<td class="ue11">{{ ue11 }}</td>
 									{{#each matiere}}
-										<td class="admsr">{{ admsr }}</td>
-										<td class="progrep">{{ progrep }}</td>
-										<td class="pweb">{{ pweb }}</td>
-										<td class="progmob">{{ progmob }}</td>
-										<td class="compinfo">{{ compinfo }}</td>
+										<td class="se">{{ se }}</td>
+										<td class="ap">{{ ap }}</td>
+										<td class="bd">{{ bd }}</td>
+										<td class="cdin">{{ cdin }}</td>
 										<td class="pt">{{ pt }}</td>
 									{{/each}}
 									{{/each}}
 									{{#each eu}}
-										<td class="eu42">{{ eu42 }}</td>
+										<td class="eu12">{{ eu12 }}</td>
 									{{#each matiere}}
-										<td class="at">{{ at }}</td>
-										<td class="ro">{{ ro }}</td>
+										<td class="md">{{ md }}</td>
+										<td class="al">{{ al }}</td>
+										<td class="ee">{{ ee }}</td>
+										<td class="orga">{{ orga }}</td>
 										<td class="com">{{ com }}</td>
-										<td class="ai">{{ ai }}</td>			
+										<td class="ai">{{ ai }}</td>
+										<td class="ppp">{{ ppp }}</td>				
+									{{/each}}
 									{{/each}}
 									{{/each}}
 									</tr>
@@ -193,19 +214,21 @@
 							<tfoot>
 								<tr class="filters">
 									<td colspan="2">Moyenne Promo</td>
-									<td id="PromoMGS4"></td>
-									<td id="PromoUE41"></td>
-									<td id="PromoADMSR"></td>
-									<td id="PromoPROGREP"></td>
-									<td id="PromoPWEB"></td>
-									<td id="PromoPROGMOB"></td>
-									<td id="PromoCOMPINFO"></td>
+									<td id="PromoMGS1"></td>
+									<td id="PromoUE11"></td>
+									<td id="PromoSE"></td>
+									<td id="PromoAP"></td>
+									<td id="PromoBD"></td>
+									<td id="PromoCDIN"></td>
 									<td id="PromoPT"></td>
-									<td id="PromoEU42"></td>		
-									<td id="PromoAT"></td>
-									<td id="PromoRO"></td>
+									<td id="PromoEU12"></td>									
+									<td id="PromoMD"></td>
+									<td id="PromoAL"></td>
+									<td id="PromoEE"></td>
+									<td id="PromoORGA"></td>
 									<td id="PromoCOM"></td>
 									<td id="PromoAI"></td>
+									<td id="PromoPPP"></td>
 								</tr>
 							</tfoot>
 						</table>

@@ -1,13 +1,13 @@
-<template name='detailNotes4'>
+<template name='Promo2013S4Notes'>
 	<body>
 		<div class="container">
 			<div class="jumbotron">
 				<div class="row">
 					<div class="panel panel-primary filterable">
 						<div class="panel-heading">
-							<h3 class="panel-title">Detail des notes du Semestre 4</h3>
+							<h3 class="panel-title">Promo 2013 - Notes du Semestre 4</h3>
 							<a class="btn btn-info" onClick="colorTest();">color</a>
-							<a class="btn btn-info" href="/semestre4">Semestre 4</a>
+							<a class="btn btn-info" href="/Promo2013S4">Semestre 4</a>
 							<div class="pull-right">
 								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
 							</div>
@@ -162,11 +162,12 @@
 									</tr>
 							</thead>
 							<tbody>
-								{{#each semestre4}}
+								{{#each promo2013}}
 								<tr>
 									<td name="nom">{{ nom }}</td>
 									<td name="prenom">{{ prenom }}</td>	
-									<td class="mgs4">{{ mgs4 }}</td>
+									{{#each semestre4}}
+										<td class="mgs4">{{ mgs4 }}</td>
 									{{#each ue}}
 										<td class="ue41">{{ ue41 }}</td>
 									{{#each matiere}}
@@ -185,6 +186,7 @@
 										<td class="ro">{{ ro }}</td>
 										<td class="com">{{ com }}</td>
 										<td class="ai">{{ ai }}</td>			
+									{{/each}}
 									{{/each}}
 									{{/each}}
 									</tr>

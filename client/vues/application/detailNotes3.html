@@ -5,7 +5,9 @@
 				<div class="row">
 					<div class="panel panel-primary filterable">
 						<div class="panel-heading">
-							<h3 class="panel-title">Detail des notes du Semestre 3</h3><a class="btn btn-info" onClick="colorTest();">color</a>
+							<h3 class="panel-title">Detail des notes du Semestre 3</h3>
+							<a class="btn btn-info" onClick="colorTest();">color</a>
+							<a class="btn btn-info" href="/semestre3">Semestre 3</a>
 							<div class="pull-right">
 								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
 							</div>
@@ -42,12 +44,15 @@
 							/* Moyenne Promo */
 							var tds = document.getElementById('table').getElementsByTagName('td');
 							var trs = document.getElementById('table').getElementsByTagName('tr');							
+							var sumMGS3 = 0;
+							var sumUE31 = 0;
 							var sumSE = 0;
 							var sumRX = 0;
 							var sumAPA = 0;
 							var sumPWEB = 0;
 							var sumCPA = 0;
 							var sumBDA = 0;
+							var sumEU32 = 0;							
 							var sumPROBA = 0;
 							var sumMODMATH = 0;
 							var sumDROIT = 0;
@@ -56,6 +61,14 @@
 							var sumAI = 0;
 
 							for(var k = 2; k < tds.length; k ++) {
+								if(tds[k].className == 'mgs3') {
+									sumMGS3 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
+									
+								}			
+								if(tds[k].className == 'ue31') {
+									sumUE31 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
+									
+								}					
 								if(tds[k].className == 'se') {
 									sumSE += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 									
@@ -80,6 +93,10 @@
 									sumBDA += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 									
 								}
+								if(tds[k].className == 'eu32') {
+									sumEU32 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
+									
+								}							
 								if(tds[k].className == 'proba') {
 									sumPROBA += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 									
@@ -104,29 +121,37 @@
 									sumAI += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 									
 								}
+								if(tds[k].className == 'ppp') {
+									sumPPP += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
 							}
 							
 							var longueur=trs.length-2;
-							
+							var moyenneMGS3 = sumMGS3/longueur;
+							var moyenneUE31 = sumUE31/longueur;
 							var moyenneSE = sumSE/longueur;
 							var moyenneRX = sumRX/longueur;
 							var moyenneAPA = sumAPA/longueur;
 							var moyennePWEB = sumPWEB/longueur;
 							var moyenneCPA = sumCPA/longueur;
 							var moyenneBDA = sumBDA/longueur;
+							var moyenneEU32 = sumEU32/longueur;
 							var moyennePROBA = sumPROBA/longueur;
 							var moyenneMODMATH = sumMODMATH/longueur;
 							var moyenneDROIT = sumDROIT/longueur;
 							var moyenneGSI = sumGSI/longueur;
 							var moyenneCOM = sumCOM/longueur;
 							var moyenneAI = sumAI/longueur;
-							var moyennePPP = sumPPP/longueur;
+							PromoMGS3.innerHTML += '<tr><td>' + moyenneMGS3 + '</td></tr>'
+							PromoUE31.innerHTML += '<tr><td>' + moyenneUE31 + '</td></tr>'					
 							PromoSE.innerHTML += '<tr><td>' + moyenneSE + '</td></tr>'
 							PromoRX.innerHTML += '<tr><td>' + moyenneRX + '</td></tr>'
 							PromoAPA.innerHTML += '<tr><td>' + moyenneAPA + '</td></tr>'
 							PromoPWEB.innerHTML += '<tr><td>' + moyennePWEB + '</td></tr>'
 							PromoCPA.innerHTML += '<tr><td>' + moyenneCPA + '</td></tr>'
 							PromoBDA.innerHTML += '<tr><td>' + moyenneBDA + '</td></tr>'
+							PromoEU32.innerHTML += '<tr><td>' + moyenneEU32 + '</td></tr>'							
 							PromoPROBA.innerHTML += '<tr><td>' + moyennePROBA + '</td></tr>'
 							PromoMODMATH.innerHTML += '<tr><td>' + moyenneMODMATH + '</td></tr>'
 							PromoDROIT.innerHTML += '<tr><td>' + moyenneDROIT + '</td></tr>'
@@ -139,12 +164,15 @@
 								<tr class="filters">
 									<th><input type="text" class="form-control" placeholder="Nom" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Prenom" disabled></th>
+									<th><input type="text" class="form-control" placeholder="MGS3" disabled></th>
+									<th><input type="text" class="form-control" placeholder="UE31" disabled></th>
 									<th><input type="text" class="form-control" placeholder="SE" disabled></th>
 									<th><input type="text" class="form-control" placeholder="RX" disabled></th>
 									<th><input type="text" class="form-control" placeholder="APA" disabled></th>
 									<th><input type="text" class="form-control" placeholder="PWEB" disabled></th>
 									<th><input type="text" class="form-control" placeholder="CPA" disabled></th>
 									<th><input type="text" class="form-control" placeholder="BDA" disabled></th>
+									<th><input type="text" class="form-control" placeholder="EU32" disabled></th>									
 									<th><input type="text" class="form-control" placeholder="PROBA" disabled></th>
 									<th><input type="text" class="form-control" placeholder="MODMATH" disabled></th>
 									<th><input type="text" class="form-control" placeholder="DROIT" disabled></th>
@@ -157,8 +185,10 @@
 								{{#each semestre3}}
 								<tr>
 									<td name="nom">{{ nom }}</td>
-									<td name="prenom">{{ prenom }}</td>	
+									<td name="prenom">{{ prenom }}</td>
+									<td class="mgs3">{{ mgs3 }}</td>	
 									{{#each ue}}
+										<td class="ue31">{{ ue31 }}</td>
 									{{#each matiere}}
 										<td class="se">{{ se }}</td>
 										<td class="rx">{{ rx }}</td>
@@ -167,15 +197,16 @@
 										<td class="cpa">{{ cpa }}</td>
 										<td class="bda">{{ bda }}</td>
 									{{/each}}
-									{{/each}}									
+									{{/each}}
 									{{#each eu}}
-									{{#each matiere}}									
+										<td class="eu32">{{ eu32 }}</td>
+									{{#each matiere}}
 										<td class="proba">{{ proba }}</td>
 										<td class="modmath">{{ modmath }}</td>
 										<td class="droit">{{ droit }}</td>
 										<td class="gsi">{{ gsi }}</td>
 										<td class="com">{{ com }}</td>
-										<td class="ai">{{ ai }}</td>		
+										<td class="ai">{{ ai }}</td>				
 									{{/each}}
 									{{/each}}
 									</tr>
@@ -184,18 +215,21 @@
 							<tfoot>
 								<tr class="filters">
 									<td colspan="2">Moyenne Promo</td>
+									<td id="PromoMGS3"></td>
+									<td id="PromoUE31"></td>
 									<td id="PromoSE"></td>
 									<td id="PromoRX"></td>
 									<td id="PromoAPA"></td>
 									<td id="PromoPWEB"></td>
 									<td id="PromoCPA"></td>
 									<td id="PromoBDA"></td>
+									<td id="PromoEU32"></td>																		
 									<td id="PromoPROBA"></td>
 									<td id="PromoMODMATH"></td>
 									<td id="PromoDROIT"></td>
 									<td id="PromoGSI"></td>
 									<td id="PromoCOM"></td>
-									<td id="PromoAI"></td>
+									<td id="PromoAI"></td>								
 								</tr>
 							</tfoot>
 						</table>

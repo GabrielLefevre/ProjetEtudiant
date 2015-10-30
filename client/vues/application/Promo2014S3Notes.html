@@ -1,13 +1,13 @@
-<template name='detailNotes2'>
+<template name='Promo2014S3Notes'>
 	<body>
 		<div class="container">
 			<div class="jumbotron">
 				<div class="row">
 					<div class="panel panel-primary filterable">
 						<div class="panel-heading">
-							<h3 class="panel-title">Detail des notes du Semestre 2</h3>
+							<h3 class="panel-title">Promo 2014 - Notes du Semestre 3</h3>
 							<a class="btn btn-info" onClick="colorTest();">color</a>
-							<a class="btn btn-info" href="/semestre2">Semestre 2</a>
+							<a class="btn btn-info" href="/Promo2013S3">Semestre 3</a>
 							<div class="pull-right">
 								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
 							</div>
@@ -44,30 +44,29 @@
 							/* Moyenne Promo */
 							var tds = document.getElementById('table').getElementsByTagName('td');
 							var trs = document.getElementById('table').getElementsByTagName('tr');							
-							var sumMGS2 = 0;
-							var sumUE21 = 0;
+							var sumMGS3 = 0;
+							var sumUE31 = 0;
 							var sumSE = 0;
 							var sumRX = 0;
-							var sumPOO = 0;
-							var sumCOO = 0;
-							var sumIHM = 0;
-							var sumPT = 0;
-							var sumEU22 = 0;							
-							var sumGL = 0;
-							var sumAN = 0;
-							var sumECFJS = 0;
-							var sumGPI = 0;
+							var sumAPA = 0;
+							var sumPWEB = 0;
+							var sumCPA = 0;
+							var sumBDA = 0;
+							var sumEU32 = 0;							
+							var sumPROBA = 0;
+							var sumMODMATH = 0;
+							var sumDROIT = 0;
+							var sumGSI = 0;
 							var sumCOM = 0;
 							var sumAI = 0;
-							var sumPPP = 0;
 
 							for(var k = 2; k < tds.length; k ++) {
-								if(tds[k].className == 'mgs2') {
-									sumMGS2 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
+								if(tds[k].className == 'mgs3') {
+									sumMGS3 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
 									
 								}			
-								if(tds[k].className == 'ue21') {
-									sumUE21 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
+								if(tds[k].className == 'ue31') {
+									sumUE31 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
 									
 								}					
 								if(tds[k].className == 'se') {
@@ -78,40 +77,40 @@
 									sumRX += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 									
 								}
-								if(tds[k].className == 'coo') {
-									sumCOO += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+								if(tds[k].className == 'apa') {
+									sumAPA += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 									
 								}
-								if(tds[k].className == 'poo') {
-									sumPOO += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+								if(tds[k].className == 'pweb') {
+									sumPWEB += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 									
 								}
-								if(tds[k].className == 'ihm') {
-									sumIHM += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+								if(tds[k].className == 'cpa') {
+									sumCPA += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 									
 								}
-								if(tds[k].className == 'pt') {
-									sumPT += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+								if(tds[k].className == 'bda') {
+									sumBDA += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 									
 								}
-								if(tds[k].className == 'eu22') {
-									sumEU22 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
+								if(tds[k].className == 'eu32') {
+									sumEU32 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
 									
 								}							
-								if(tds[k].className == 'gl') {
-									sumGL += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+								if(tds[k].className == 'proba') {
+									sumPROBA += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 									
 								}
-								if(tds[k].className == 'an') {
-									sumAN += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+								if(tds[k].className == 'modmath') {
+									sumMODMATH += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 									
 								}
-								if(tds[k].className == 'ecfjs') {
-									sumECFJS += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+								if(tds[k].className == 'droit') {
+									sumDROIT += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 									
 								}
-								if(tds[k].className == 'gpi') {
-									sumGPI += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+								if(tds[k].className == 'gsi') {
+									sumGSI += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 									
 								}
 								if(tds[k].className == 'com') {
@@ -129,90 +128,87 @@
 							}
 							
 							var longueur=trs.length-2;
-							var moyenneMGS2 = sumMGS2/longueur;
-							var moyenneUE21 = sumUE21/longueur;
+							var moyenneMGS3 = sumMGS3/longueur;
+							var moyenneUE31 = sumUE31/longueur;
 							var moyenneSE = sumSE/longueur;
 							var moyenneRX = sumRX/longueur;
-							var moyennePOO = sumPOO/longueur;
-							var moyenneCOO = sumCOO/longueur;
-							var moyenneIHM = sumIHM/longueur;
-							var moyennePT = sumPT/longueur;
-							var moyenneEU22 = sumEU22/longueur;
-							var moyenneGL = sumGL/longueur;
-							var moyenneAN = sumAN/longueur;
-							var moyenneECFJS = sumECFJS/longueur;
-							var moyenneGPI = sumGPI/longueur;
+							var moyenneAPA = sumAPA/longueur;
+							var moyennePWEB = sumPWEB/longueur;
+							var moyenneCPA = sumCPA/longueur;
+							var moyenneBDA = sumBDA/longueur;
+							var moyenneEU32 = sumEU32/longueur;
+							var moyennePROBA = sumPROBA/longueur;
+							var moyenneMODMATH = sumMODMATH/longueur;
+							var moyenneDROIT = sumDROIT/longueur;
+							var moyenneGSI = sumGSI/longueur;
 							var moyenneCOM = sumCOM/longueur;
 							var moyenneAI = sumAI/longueur;
-							var moyennePPP = sumPPP/longueur;
-							PromoMGS2.innerHTML += '<tr><td>' + moyenneMGS2 + '</td></tr>'
-							PromoUE21.innerHTML += '<tr><td>' + moyenneUE21 + '</td></tr>'					
+							PromoMGS3.innerHTML += '<tr><td>' + moyenneMGS3 + '</td></tr>'
+							PromoUE31.innerHTML += '<tr><td>' + moyenneUE31 + '</td></tr>'					
 							PromoSE.innerHTML += '<tr><td>' + moyenneSE + '</td></tr>'
 							PromoRX.innerHTML += '<tr><td>' + moyenneRX + '</td></tr>'
-							PromoCOO.innerHTML += '<tr><td>' + moyenneCOO + '</td></tr>'
-							PromoPOO.innerHTML += '<tr><td>' + moyennePOO + '</td></tr>'
-							PromoIHM.innerHTML += '<tr><td>' + moyenneIHM + '</td></tr>'
-							PromoPT.innerHTML += '<tr><td>' + moyennePT + '</td></tr>'
-							PromoEU22.innerHTML += '<tr><td>' + moyenneEU22 + '</td></tr>'							
-							PromoGL.innerHTML += '<tr><td>' + moyenneGL + '</td></tr>'
-							PromoAN.innerHTML += '<tr><td>' + moyenneAN + '</td></tr>'
-							PromoECFJS.innerHTML += '<tr><td>' + moyenneECFJS + '</td></tr>'
-							PromoGPI.innerHTML += '<tr><td>' + moyenneGPI + '</td></tr>'
+							PromoAPA.innerHTML += '<tr><td>' + moyenneAPA + '</td></tr>'
+							PromoPWEB.innerHTML += '<tr><td>' + moyennePWEB + '</td></tr>'
+							PromoCPA.innerHTML += '<tr><td>' + moyenneCPA + '</td></tr>'
+							PromoBDA.innerHTML += '<tr><td>' + moyenneBDA + '</td></tr>'
+							PromoEU32.innerHTML += '<tr><td>' + moyenneEU32 + '</td></tr>'							
+							PromoPROBA.innerHTML += '<tr><td>' + moyennePROBA + '</td></tr>'
+							PromoMODMATH.innerHTML += '<tr><td>' + moyenneMODMATH + '</td></tr>'
+							PromoDROIT.innerHTML += '<tr><td>' + moyenneDROIT + '</td></tr>'
+							PromoGSI.innerHTML += '<tr><td>' + moyenneGSI + '</td></tr>'
 							PromoCOM.innerHTML += '<tr><td>' + moyenneCOM + '</td></tr>'
 							PromoAI.innerHTML += '<tr><td>' + moyenneAI + '</td></tr>'
-							PromoPPP.innerHTML += '<tr><td>' + moyennePPP + '</td></tr>'
 						</script>
 						<table class="table" id="table">
 							<thead>
 								<tr class="filters">
 									<th><input type="text" class="form-control" placeholder="Nom" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Prenom" disabled></th>
-									<th><input type="text" class="form-control" placeholder="MGS2" disabled></th>
-									<th><input type="text" class="form-control" placeholder="UE21" disabled></th>
+									<th><input type="text" class="form-control" placeholder="MGS3" disabled></th>
+									<th><input type="text" class="form-control" placeholder="UE31" disabled></th>
 									<th><input type="text" class="form-control" placeholder="SE" disabled></th>
 									<th><input type="text" class="form-control" placeholder="RX" disabled></th>
-									<th><input type="text" class="form-control" placeholder="POO" disabled></th>
-									<th><input type="text" class="form-control" placeholder="COO" disabled></th>
-									<th><input type="text" class="form-control" placeholder="IHM" disabled></th>
-									<th><input type="text" class="form-control" placeholder="PT" disabled></th>
-									<th><input type="text" class="form-control" placeholder="EU22" disabled></th>									
-									<th><input type="text" class="form-control" placeholder="GL" disabled></th>
-									<th><input type="text" class="form-control" placeholder="AN" disabled></th>
-									<th><input type="text" class="form-control" placeholder="ECFJS" disabled></th>
-									<th><input type="text" class="form-control" placeholder="GPI" disabled></th>
+									<th><input type="text" class="form-control" placeholder="APA" disabled></th>
+									<th><input type="text" class="form-control" placeholder="PWEB" disabled></th>
+									<th><input type="text" class="form-control" placeholder="CPA" disabled></th>
+									<th><input type="text" class="form-control" placeholder="BDA" disabled></th>
+									<th><input type="text" class="form-control" placeholder="EU32" disabled></th>									
+									<th><input type="text" class="form-control" placeholder="PROBA" disabled></th>
+									<th><input type="text" class="form-control" placeholder="MODMATH" disabled></th>
+									<th><input type="text" class="form-control" placeholder="DROIT" disabled></th>
+									<th><input type="text" class="form-control" placeholder="GSI" disabled></th>
 									<th><input type="text" class="form-control" placeholder="COM" disabled></th>
 									<th><input type="text" class="form-control" placeholder="AI" disabled></th>
-									<th><input type="text" class="form-control" placeholder="PPP" disabled></th>
-
 									</tr>
 							</thead>
 							<tbody>
-								{{#each semestre2}}
+								{{#each promo2014}}
 								<tr>
 									<td name="nom">{{ nom }}</td>
 									<td name="prenom">{{ prenom }}</td>
-									<td class="mgs2">{{ mgs2 }}</td>	
+									{{#each semestre3}}
+									<td class="mgs3">{{ mgs3 }}</td>	
 									{{#each ue}}
-										<td class="ue21">{{ ue21 }}</td>
+										<td class="ue31">{{ ue31 }}</td>
 									{{#each matiere}}
 										<td class="se">{{ se }}</td>
 										<td class="rx">{{ rx }}</td>
-										<td class="poo">{{ poo }}</td>
-										<td class="coo">{{ coo }}</td>
-										<td class="ihm">{{ ihm }}</td>
-										<td class="pt">{{ pt }}</td>
+										<td class="apa">{{ apa }}</td>
+										<td class="pweb">{{ pweb }}</td>
+										<td class="cpa">{{ cpa }}</td>
+										<td class="bda">{{ bda }}</td>
 									{{/each}}
 									{{/each}}
 									{{#each eu}}
-										<td class="eu22">{{ eu22 }}</td>
+										<td class="eu32">{{ eu32 }}</td>
 									{{#each matiere}}
-										<td class="gl">{{ gl }}</td>
-										<td class="an">{{ an }}</td>
-										<td class="ecfjs">{{ ecfjs }}</td>
-										<td class="gpi">{{ gpi }}</td>
+										<td class="proba">{{ proba }}</td>
+										<td class="modmath">{{ modmath }}</td>
+										<td class="droit">{{ droit }}</td>
+										<td class="gsi">{{ gsi }}</td>
 										<td class="com">{{ com }}</td>
-										<td class="ai">{{ ai }}</td>
-										<td class="ppp">{{ ppp }}</td>				
+										<td class="ai">{{ ai }}</td>				
+									{{/each}}
 									{{/each}}
 									{{/each}}
 									</tr>
@@ -221,22 +217,21 @@
 							<tfoot>
 								<tr class="filters">
 									<td colspan="2">Moyenne Promo</td>
-									<td id="PromoMGS2"></td>
-									<td id="PromoUE21"></td>
+									<td id="PromoMGS3"></td>
+									<td id="PromoUE31"></td>
 									<td id="PromoSE"></td>
 									<td id="PromoRX"></td>
-									<td id="PromoPOO"></td>
-									<td id="PromoCOO"></td>
-									<td id="PromoIHM"></td>
-									<td id="PromoPT"></td>
-									<td id="PromoEU22"></td>																		
-									<td id="PromoGL"></td>
-									<td id="PromoAN"></td>
-									<td id="PromoECFJS"></td>
-									<td id="PromoGPI"></td>
+									<td id="PromoAPA"></td>
+									<td id="PromoPWEB"></td>
+									<td id="PromoCPA"></td>
+									<td id="PromoBDA"></td>
+									<td id="PromoEU32"></td>																		
+									<td id="PromoPROBA"></td>
+									<td id="PromoMODMATH"></td>
+									<td id="PromoDROIT"></td>
+									<td id="PromoGSI"></td>
 									<td id="PromoCOM"></td>
-									<td id="PromoAI"></td>
-									<td id="PromoPPP"></td>
+									<td id="PromoAI"></td>								
 								</tr>
 							</tfoot>
 						</table>

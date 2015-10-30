@@ -1,4 +1,4 @@
-<template name='semestre1'>
+<template name='Promo2013S1'>
 	<body>
 		<div class="container">
 			<div class="jumbotron">
@@ -6,8 +6,8 @@
 					<div class="panel panel-primary filterable">
 						<div class="panel-heading">
 							
-							<h3 class="panel-title">Semestre 1</h3><a class="btn btn-info" onClick="colorTest();">color</a>
-							<a class="btn btn-info" href="/detailNotes1">Detail Notes</a>
+							<h3 class="panel-title">Promo 2013 - Semestre 1</h3><a class="btn btn-info" onClick="colorTest();">color</a>
+							<a class="btn btn-info" href="/Promo2013S1Notes">Detail Notes</a>
 							<div class="pull-right">
 								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
 							</div>
@@ -56,16 +56,18 @@
 									</tr>
 								{{/each}}-->
 								
-								{{#each semestre1}}
+								{{#each promo2013}}
 								<tr>
 									<td name="nom">{{ nom }}</td>
-									<td name="prenom">{{ prenom }}</td>								
+									<td name="prenom">{{ prenom }}</td>	
+									{{#each semestre1}}
 									<td class="mgs1">{{ mgs1 }}</td>
 									{{#each ue}}
 									<td class="ue11">{{ ue11 }}</td>
 									{{/each}}
 									{{#each eu}}
 									<td class="eu12">{{ eu12 }}</td>
+									{{/each}}
 									{{/each}}
 									<td name="absences">{{ absences }} abs.</td>
 									<td name="redoublant">{{ redoublant }}</td>

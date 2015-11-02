@@ -35,20 +35,19 @@ Template.semestre.events({
 			}	
 		} // while 
 		
-		//---------------------------------------------------------
-		// A FINIR !!!
-		//---------------------------------------------------------
+
 		var semestre = {
 			nom: nomSemestre,
 			dateDebut: dd,
 			dateFin: df,
-			UE:[]
+			UE1:[],
+			UE2:[],
+			UE3:[]
 		}
+
 		Semestre.insert(semestre, function(err,res) {
 			var idSemestre = res;
-
 			var UE1TMP = {
-				nom:nomUE1,
 				matiereUE1:[]
 			}
 			UE.insert(UE1TMP, function(err, res) {
@@ -57,18 +56,16 @@ Template.semestre.events({
 				var matiereTMP;
 				matiereTMP = {
 					nom: tabMatUE1[l],
-					coeff: tabCoeffUE1[l],
-					note: []
+					coeff: tabCoeffUE1[l]
 				};
 				Matiere.insert(matiereTMP);
 				UE.update({_id:idUE1},{$push:{matiereUE1:matiereTMP}});
 			} // for
 			 var ue1Def = UE.findOne({_id:idUE1});
-			Semestre.update({_id:idSemestre}, {$push:{UE:ue1Def}});
+			Semestre.update({_id:idSemestre}, {$push:{UE1:ue1Def}});
 		});
 
 			var UE2TMP = {
-				nom:nomUE2,
 				matiereUE2:[]
 			}
 			UE.insert(UE2TMP, function(err, res) {
@@ -78,18 +75,16 @@ Template.semestre.events({
 					var matiereTMP;
 					matiereTMP = {
 						nom: tabMatUE2[l],
-						coeff: tabCoeffUE2[l],
-						note: []
+						coeff: tabCoeffUE2[l]
 					};
 					Matiere.insert(matiereTMP);
 					UE.update({_id:idUE2},{$push:{matiereUE2:matiereTMP}});
 				} // for
 				var ue2Def = UE.findOne({_id:idUE2});
-				Semestre.update({_id:idSemestre}, {$push:{UE:ue2Def}});
+				Semestre.update({_id:idSemestre}, {$push:{UE2:ue2Def}});
 			});
 
 			var UE3TMP = {
-				nom:nomUE3,
 				matiereUE3:[]
 			}
 			UE.insert(UE3TMP, function(err, res) {
@@ -99,14 +94,16 @@ Template.semestre.events({
 					var matiereTMP;
 					matiereTMP = {
 						nom: tabMatUE3[l],
-						coeff: tabCoeffUE3[l],
-						note: []
+						coeff: tabCoeffUE3[l]
 					};
 					Matiere.insert(matiereTMP);
 					UE.update({_id:idUE3},{$push:{matiereUE3:matiereTMP}});
 				} // for
 				var ue3Def = UE.findOne({_id:idUE3});
-				Semestre.update({_id:idSemestre}, {$push:{UE:ue3Def}});
+				Semestre.update({_id:idSemestre}, {$push:{UE3:ue3Def}});
+				Semestre.update({_id:idSemestre},{$rename:{UE1:nomUE1}});
+				Semestre.update({_id:idSemestre},{$rename:{UE2:nomUE2}});
+				Semestre.update({_id:idSemestre},{$rename:{UE3:nomUE3}});
 			});
 
 		});
@@ -152,6 +149,6 @@ Template.semestre.events({
 		contenu3 = contenu3 + "<label class=\"control-label\">Coeff Matiere "+ k + " <input type='int' name='UE3coeff" + k + "' /><br />";
 		document.getElementById('nouvelle_matiere3').innerHTML = contenu3;
 	}*/
-  
-  
-}); 
+
+
+});

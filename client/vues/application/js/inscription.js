@@ -23,20 +23,21 @@ Template.inscription.events({
                     } // if
                 } // else
             } // for
-
-        var nbr_colonne = 8;
-        var indent="\t"; // code ASCII = 9
-        var back="\n"; // code ASCII = 13
-        var j=0;
-        var data=textarea.split(/[\t,\n]+/);
-        var etu=[];
-        for (var i=0;i<nbr_ligne;i++) {
-            for (var k=0;k<nbr_colonne;k++) {
-                etu[k]=data[j];
-                j++;
-            }
-            var sem= Semestre.findOne({nom: etu[7]});
-            Etudiant.insert({nom:etu[0],prenom:etu[1],groupe:etu[2],mail:etu[3],adresse:etu[4],cp:etu[5],ville:etu[6],semestre:[sem]});
-        } // for i
+        if (confirm("Ajouter la promotion ?")) {
+            var nbr_colonne = 8;
+            var indent="\t"; // code ASCII = 9
+            var back="\n"; // code ASCII = 13
+            var j=0;
+            var data=textarea.split(/[\t,\n]+/);
+            var etu=[];
+            for (var i=0;i<nbr_ligne;i++) {
+                for (var k=0;k<nbr_colonne;k++) {
+                    etu[k]=data[j];
+                    j++;
+                }
+                var sem= Semestre.findOne({nom: etu[7]});
+                Etudiant.insert({nom:etu[0],prenom:etu[1],groupe:etu[2],mail:etu[3],adresse:etu[4],cp:etu[5],ville:etu[6],semestre:[sem]});
+            } // for i
+        }
     }
 });

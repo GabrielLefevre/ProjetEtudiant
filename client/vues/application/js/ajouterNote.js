@@ -59,7 +59,7 @@ Template.note.events({
 				}
 				var etuTmp = Etudiant.findOne({nom: etu[0], prenom: etu[1]});
 				idTmp = etuTmp._id;
-				Etudiant.update(_id=idTmp,{$push:{notes:note}});
+				Etudiant.update(_id=idTmp,{$push:{note:note}});
 			} // for i
 		} // if confirm
 

@@ -20,6 +20,7 @@ Template.etudiant.events({
 				adresse: adresse,
 				cp: cp,
 				ville: ville,
+				note:[],
 				semestre:[semestretmp]
 		}
         

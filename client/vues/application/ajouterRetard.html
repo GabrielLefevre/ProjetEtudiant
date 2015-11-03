@@ -1,0 +1,55 @@
+<template name='ajouterRetard'>
+	<body>
+	<div class="container">
+			<div class="jumbotron">
+				<div class="row">
+					<form class="form-horizontal">
+					<fieldset>
+					<h2>Ajouter un retard pour <i name="etudiant">{{prenom}} </i></h2>
+					
+					<div class="row">
+					<div class="panel panel-primary filterable">
+						<div class="panel-heading">
+							<h3 class="panel-title">Retard</h3>
+							<div class="pull-right">
+							</div>
+						</div>
+						<table class="table">
+							<thead>
+								<tr class="filters">
+									<th><input type="text" class="form-control" placeholder="Nom" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Prenom" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Groupe" disabled></th>
+									<th> Date Retard </th>
+									<th> Minutes </th>
+									<th> Raison </th>
+									<th> Justifier </th>									
+								</tr>
+							</thead>
+							<tbody>
+								{{#each etudiant}}
+								<tr>
+									<td name="nom">{{ nom }}</td>
+									<td name="prenom">{{ prenom }}</td>
+									<td name="groupe">{{ groupe }}</td>
+									<td name="date_retard"> <input id="date_retard" name="date_retard" type="date" placeholder="date_retard"> </td>
+									<td name="minutes"> <input id="minutes" name="minutes" type="text" placeholder="minutes"> </td>
+									<td name="raison"> <input id="raison" name="raison" type="text" placeholder="raison"> </td>
+									<td name="justifier"> <input id="justifier" name="justifier" type="text" placeholder="justifier"> </td>
+									
+									<td> <input class="add" type="submit" value="Valider"  /> </td>
+								</tr>
+								{{/each}}
+							</tbody>
+						</table>
+					</div>
+				</div>
+					
+					
+					</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</template>

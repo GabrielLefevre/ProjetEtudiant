@@ -32,8 +32,8 @@
 									<td name="mail">{{ mail }}</td>
 									<td name="adresse">{{ adresse }}</td>
 									<td name="cp">{{ cp }}</td>
-									<td name="ville">{{ ville }}</td>
-									<td>  <a class="btn btn-danger delete" href="#">Suppr</a> <a class="btn btn-info" href="/etudiant/{{_id}}">carnet</a></td>
+									<td name="ville">{{ ville }}</td> 							
+									<td><a class="btn btn-danger delete" href="#">Suppr</a> <a class="btn btn-info" href="/etudiant/{{_id}}">carnet</a></td>
 								</tr>
 								{{/each}}
 							</tbody>
@@ -132,14 +132,13 @@
 						</div>
 					</div>
 					
-					
 					<input class="add" type="submit" value="Valider"  />
 					</fieldset>
 					</form>
 				</div>
 			</div>
 		</div>
-		
+
 		<script>
 			$(document).ready(function(){
 				$('.filterable .btn-filter').click(function(){

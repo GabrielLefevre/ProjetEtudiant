@@ -1,0 +1,1 @@
+Semestre2 = new Mongo.Collection("semestre2");

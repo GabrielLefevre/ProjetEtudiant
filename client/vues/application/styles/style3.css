@@ -62,4 +62,21 @@ input, select { padding:5px; border:1px solid #999; border-radius:4px; -moz-bord
 .btn-glyphicon { padding:8px; background:#ffffff; margin-right:4px; }
 .icon-btn { padding: 1px 15px 3px 2px; border-radius:50px;}
 
-
+/* tables */
+table.table thead tr .header {
+	background-image: url(bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+	height: 30px;
+}
+table.table thead tr .headerSortUp {
+	background-image: url(asc.gif);
+}
+table.table thead tr .headerSortDown {
+	background-image: url(desc.gif);
+	
+}
+table.table thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+background-color: #8dbdd8;
+}

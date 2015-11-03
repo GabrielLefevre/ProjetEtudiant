@@ -1,0 +1,45 @@
+db.UE.insert({code: "M1101",nom: "Introduction aux systèmes informatiques ",coeff: "3.5"});
+db.UE.insert({code: "M1102",nom: "Introduction à l'algorithmique et à la programmation",coeff: "3.5"});
+db.UE.insert({code: "M1103",nom: "Structures de données et algorithmes fondamentaux",coeff: "2.5"});
+db.UE.insert({code: "M1104",nom: "Introduction aux bases de données",coeff: "3.5"});
+db.UE.insert({code: "M1105",nom: "Conception de documents et d’interfaces numériques",coeff: "2.5"});
+db.UE.insert({code: "M1106",nom: "Projet tutoré – Découverte",coeff: "1.5"});
+db.UE.insert({code: "M1201",nom: "Mathématiques discrètes",coeff: "2.5"});
+db.UE.insert({code: "M1202",nom: "Algèbre linéaire",coeff: "2.0"});
+db.UE.insert({code: "M1203",nom: "Environnement économique",coeff: "1.5"});
+db.UE.insert({code: "M1204",nom: "Fonctionnement des organisations",coeff: "2.5"});
+db.UE.insert({code: "M1205",nom: "Expression-Communication – Fondamentaux de la communication",coeff: "2.0"});
+db.UE.insert({code: "M1206",nom: "Anglais et Informatique",coeff: "1.5"});
+db.UE.insert({code: "M1207",nom: "PPP - Connaître le monde professionnel ",coeff: "1"});
+
+db.UE.insert({code2: "M2101",nom2: "Architecture et programmation des mécanismes de base d'un système informatique",coeff: "1.5"});
+db.UE.insert({code: "M2102",nom: "Architecture des réseaux",coeff: "1.5"});
+db.UE.insert({code: "M2103",nom: "Bases de la programmation orientée objet",coeff: "3.5"});
+db.UE.insert({code: "M2104",nom: "Bases de la conception orientée objet",coeff: "2.5"});
+db.UE.insert({code: "M2105",nom: "Introduction aux interfaces homme-machine (IHM)",coeff: "2.5"});
+db.UE.insert({code: "M2106",nom: "Programmation et administration des bases de données",coeff: "2.5"});
+db.UE.insert({code: "M2107",nom: "Projet tutoré – Description et planification de projet",coeff: "2"});
+db.UE.insert({code: "M2201",nom: "Graphes et langages",coeff: "2.5"});
+db.UE.insert({code: "M2202",nom: "Analyse et méthodes numériques",coeff: "2.0"});
+db.UE.insert({code: "M2203",nom: "Environnement comptable, financier, juridique et social",coeff: "3.0"});
+db.UE.insert({code: "M2204",nom: "Gestion de projet informatique",coeff: "1.5"});
+db.UE.insert({code: "M2205",nom: "Expression-Communication – Communication,information et argumentation ",coeff: "1.5"});
+db.UE.insert({code: "M2206",nom: "Communiquer en anglais",coeff: "2.5"});
+db.UE.insert({code: "M2207",nom: "PPP – Identifier ses compétences",coeff: "1"});
+
+
+db.UE.insert({code: "M1301",nom: "Principes des systèmes d'exploitation",coeff: "2.5"});
+db.UE.insert({code: "M1302",nom: "Services reseaux",coeff: "1.5"});
+db.UE.insert({code: "M1303",nom: "Algorithmique Avancée",coeff: "1.5"});
+db.UE.insert({code: "M1304",nom: "Programmation Web côté serveur",coeff: "2.5"});
+db.UE.insert({code: "M1305",nom: "Conception et programmation objet avancées",coeff: "2.5"});
+db.UE.insert({code: "M1306",nom: "Bases de données avancées",coeff: "1.5"});
+db.UE.insert({code: "M3201",nom: "Probabilités et statistiques",coeff: "1.5"});
+db.UE.insert({code: "M3202",nom: "Modélisations mathématiques",coeff: "1.5"});
+db.UE.insert({code: "M3203",nom: "Droit des technologies de l’information et de la communication(TIC)",coeff: "1.5"});
+db.UE.insert({code: "M3204",nom: "Gestion des systèmes d'information",coeff: "2.5"});
+db.UE.insert({code: "M3205",nom: "Expression-Communication – Communication professionnelle",coeff: "1.5"});
+db.UE.insert({code: "M3206",nom: "Collaborer en anglais",coeff: "2.5"});
+db.UE.insert({code: "M3301",nom: "Méthodologie de la production d’applications",coeff: "3"});
+db.infosS3.insert({code: "M3302",nom: "Projet tutoré – Mise en situation professionnelle",coeff: "2"});
+db.infosS3.insert({code: "M3303",nom: "PPP – Préciser son projet",coeff: "1"});

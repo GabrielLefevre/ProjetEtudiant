@@ -1,1 +1,1 @@
-MAtiere = new Mongo.Collection("matiere");
+Matiere = new Mongo.Collection("matiere");

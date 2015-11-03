@@ -9,7 +9,7 @@ Template.etudiant.events({
 		var adresse = $("input[name='adresse']").val();
 		var cp = $("input[name='cp']").val();
 		var ville = $("input[name='ville']").val();
-		
+
 		var etudiant = {
 				nom: nom,
 				prenom: prenom,

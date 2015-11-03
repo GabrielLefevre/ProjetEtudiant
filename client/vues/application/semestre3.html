@@ -12,7 +12,8 @@
 							</div>
 						</div>
 						<script type="text/javascript" src="/js/jquery-latest.js"></script> 
-						<script type="text/javascript" src="/js/jquery.tablesorter.js"></script> 
+						<script type="text/javascript" src="/js/jquery.dataTables.min.js"></script>
+						<link rel="stylesheet" type="text/css" href="/styles/jquery.dataTables.min.css">
 						<table class="table" id="table">
 							<thead>
 								<tr class="filters">
@@ -78,7 +79,7 @@
 		<script>
 		$(document).ready(function() 
 			{ 
-				$("#table").tablesorter(); 
+				$("#table").DataTable(); 
 			} 
 		); 
 							

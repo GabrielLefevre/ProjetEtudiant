@@ -11,8 +11,16 @@
 								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
 							</div>
 						</div>
-						<script type="text/javascript" src="/js/jquery-latest.js"></script> 
-						<script type="text/javascript" src="/js/jquery.tablesorter.js"></script> 
+						<script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
+						<script type="text/javascript" src="/js/jquery.metadata.js"></script> 
+						<script type="text/javascript" src="/js/jquery.tablesorter.min.js"></script>
+						<script>
+						$(document).ready(function() 
+							{ 
+								$("#table").tablesorter(); 
+							} 
+						); 
+						</script>
 						<table class="table" id="table">
 							<thead>
 								<tr class="filters">
@@ -73,7 +81,7 @@
 		<script>
 		$(document).ready(function() 
 			{ 
-				$("#table").tablesorter(); 
+				$("#table").DataTable(); 
 			} 
 		);
 		

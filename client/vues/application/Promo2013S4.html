@@ -147,13 +147,13 @@
 		var moyenneEU32 = sumEU32/longueur;
 		var moyenneUE41 = sumUE41/longueur;
 		var moyenneEU42 = sumEU42/longueur;
-		PromoINFO2.innerHTML += '<tr><td>' + moyenneINFO2 + '</td></tr>'
-		PromoMGS3.innerHTML += '<tr><td>' + moyenneMGS3 + '</td></tr>'
-		PromoMGS4.innerHTML += '<tr><td>' + moyenneMGS4 + '</td></tr>'							
-		PromoUE31.innerHTML += '<tr><td>' + moyenneUE31 + '</td></tr>'
-		PromoEU32.innerHTML += '<tr><td>' + moyenneEU32 + '</td></tr>'
-		PromoUE41.innerHTML += '<tr><td>' + moyenneUE41 + '</td></tr>'
-		PromoEU42.innerHTML += '<tr><td>' + moyenneEU42 + '</td></tr>'
+		PromoINFO2.innerHTML += '<tr><td>' + moyenneINFO2.toFixed(2); + '</td></tr>'
+		PromoMGS3.innerHTML += '<tr><td>' + moyenneMGS3.toFixed(2); + '</td></tr>'
+		PromoMGS4.innerHTML += '<tr><td>' + moyenneMGS4.toFixed(2); + '</td></tr>'							
+		PromoUE31.innerHTML += '<tr><td>' + moyenneUE31.toFixed(2); + '</td></tr>'
+		PromoEU32.innerHTML += '<tr><td>' + moyenneEU32.toFixed(2); + '</td></tr>'
+		PromoUE41.innerHTML += '<tr><td>' + moyenneUE41.toFixed(2); + '</td></tr>'
+		PromoEU42.innerHTML += '<tr><td>' + moyenneEU42.toFixed(2); + '</td></tr>'
 		</script>
 		<script>
 			$(document).ready(function(){

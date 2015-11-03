@@ -1,7 +1,7 @@
 Template.etudiant.events({
     'submit form': function(e){
 		e.preventDefault();
-		
+		// Recuperation des valeurs mise dans le formulaire d'ajour d'étudiant
 		var nom = $("input[name='nom']").val();
 		var prenom = $("input[name='prenom']").val();
 		var groupe = $("select[name='groupe']").val();
@@ -11,7 +11,7 @@ Template.etudiant.events({
 		var ville = $("input[name='ville']").val();
 		var sem = $("select[name='semestre']").val();
 		var semestretmp = Semestre.findOne({nom: sem});
-		
+		// Création d'un objet avec les valeurs ci-dessus
 		var etudiant = {
 				nom: nom,
 				prenom: prenom,
@@ -23,13 +23,13 @@ Template.etudiant.events({
 				note:[],
 				semestre:[semestretmp]
 		}
-        
+        // Ajout de l'étudiant a sa Collection
         Etudiant.insert(etudiant);
 	},
 	
 	  'click .delete': function(e) {
     e.preventDefault();
-
+	// Récupération de l'id de l'étudiant courant et suppression dans la BDD
     if (confirm("supprimer l'étudiant ?")) {
       var etudiantCourant = this._id;
       Etudiant.remove(etudiantCourant);

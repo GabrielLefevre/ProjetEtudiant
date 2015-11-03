@@ -1,6 +1,8 @@
 Template.semestre.events({
     'submit form': function(e){
 		e.preventDefault();
+
+		//On récupère toute les données du formulaire
 		var nomSemestre = $("input[name='nomSemestre']").val();
 		var dd = $("input[name='dateD']").val();
 		var df = $("input[name='dateF']").val();
@@ -16,7 +18,7 @@ Template.semestre.events({
 		var  tabCoeffUE2= new Array();
 		var  tabMatUE3 = new Array();
 		var  tabCoeffUE3 = new Array();
-
+		// On enregistre les matieres dans différents tableaux selon les UE
 		while(document.getElementById("UE1matiere" +i) || document.getElementById("UE2matiere" +j) || document.getElementById("UE3matiere" +k)) {
 			if(document.getElementById("UE1matiere" +i)) {
 				tabMatUE1[i]=$("input[name='UE1matiere" + i + "']").val();
@@ -35,7 +37,7 @@ Template.semestre.events({
 			}	
 		} // while 
 		
-
+		// On crée l'objet qui servira de patron
 		var semestre = {
 			nom: nomSemestre,
 			dateDebut: dd,
@@ -44,7 +46,7 @@ Template.semestre.events({
 			UE2:[],
 			UE3:[]
 		}
-
+		// On ajoute le modèle a la base auquel on va ajouter les UE et les matieres en parcourant chaque tableaux de matiere et ce pour chaque UE
 		Semestre.insert(semestre, function(err,res) {
 			var idSemestre = res;
 			var UE1TMP = {

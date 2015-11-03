@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d90de5b-293b-43c1-bdf4-155de1a55f2e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/vues/application/js/Semestre.js" afterPath="$PROJECT_DIR$/client/vues/application/js/Semestre.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/vues/application/js/ajouterNote.js" afterPath="$PROJECT_DIR$/client/vues/application/js/ajouterNote.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/vues/application/js/etudiant.js" afterPath="$PROJECT_DIR$/client/vues/application/js/etudiant.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/vues/application/js/inscription.js" afterPath="$PROJECT_DIR$/client/vues/application/js/inscription.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ProjetEtudiant.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,21 +28,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="note.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/vues/note.html">
+      <file leaf-file-name="etudiant.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/vues/application/js/etudiant.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.807693">
-              <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.2300406">
+              <caret line="31" column="76" selection-start-line="31" selection-start-column="76" selection-end-line="31" selection-end-column="76" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ajouterNote.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ajouterNote.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/vues/application/js/ajouterNote.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.40189445">
-              <caret line="46" column="23" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="76" />
               <folding />
             </state>
           </provider>
@@ -49,37 +52,7 @@
         <entry file="file://$PROJECT_DIR$/client/vues/application/js/inscription.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ajouterNote.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/vues/application/ajouterNote.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.384615">
-              <caret line="22" column="71" selection-start-line="22" selection-start-column="71" selection-end-line="22" selection-end-column="71" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="inscription.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/vues/application/inscription.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.5">
-              <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="etudiant.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/vues/application/js/etudiant.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="24" selection-start-line="21" selection-start-column="29" selection-end-line="22" selection-end-column="24" />
+              <caret line="39" column="127" selection-start-line="39" selection-start-column="127" selection-end-line="39" selection-end-column="127" />
               <folding />
             </state>
           </provider>
@@ -89,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/client/vues/application/js/Semestre.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="60" column="43" selection-start-line="60" selection-start-column="43" selection-end-line="60" selection-end-column="43" />
+              <caret line="48" column="146" selection-start-line="48" selection-start-column="146" selection-end-line="48" selection-end-column="146" />
               <folding />
             </state>
           </provider>
@@ -117,13 +90,13 @@
         <option value="$PROJECT_DIR$/client/vues/application/inscription.html" />
         <option value="$PROJECT_DIR$/client/vues/application/js/HelperGlobal.js" />
         <option value="$PROJECT_DIR$/lib/bootstrap.min.js" />
-        <option value="$PROJECT_DIR$/client/vues/application/js/inscription.js" />
         <option value="$PROJECT_DIR$/lib/Router.js" />
         <option value="$PROJECT_DIR$/client/vues/layout.html" />
-        <option value="$PROJECT_DIR$/client/vues/application/js/Semestre.js" />
         <option value="$PROJECT_DIR$/client/vues/note.html" />
         <option value="$PROJECT_DIR$/client/vues/application/js/etudiant.js" />
         <option value="$PROJECT_DIR$/client/vues/application/js/ajouterNote.js" />
+        <option value="$PROJECT_DIR$/client/vues/application/js/inscription.js" />
+        <option value="$PROJECT_DIR$/client/vues/application/js/Semestre.js" />
       </list>
     </option>
   </component>
@@ -189,8 +162,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -291,6 +262,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -710,9 +683,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/vues/note.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/vues/application/ajouterNote.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.384615">
+        <state vertical-scroll-proportion="0.21318373">
           <caret line="22" column="71" selection-start-line="22" selection-start-column="71" selection-end-line="22" selection-end-column="71" />
           <folding />
         </state>
@@ -720,24 +701,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/vues/application/inscription.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.5">
+        <state vertical-scroll-proportion="0.30995792">
           <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/vues/note.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.807693">
-          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/vues/application/js/inscription.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -745,23 +710,31 @@
     <entry file="file://$PROJECT_DIR$/client/vues/application/js/Semestre.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="60" column="43" selection-start-line="60" selection-start-column="43" selection-end-line="60" selection-end-column="43" />
+          <caret line="48" column="146" selection-start-line="48" selection-start-column="146" selection-end-line="48" selection-end-column="146" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/vues/application/js/etudiant.js">
+    <entry file="file://$PROJECT_DIR$/client/vues/application/js/inscription.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="24" selection-start-line="21" selection-start-column="29" selection-end-line="22" selection-end-column="24" />
+          <caret line="39" column="127" selection-start-line="39" selection-start-column="127" selection-end-line="39" selection-end-column="127" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/vues/application/js/ajouterNote.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40189445">
-          <caret line="46" column="23" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/vues/application/js/etudiant.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2300406">
+          <caret line="31" column="76" selection-start-line="31" selection-start-column="76" selection-end-line="31" selection-end-column="76" />
           <folding />
         </state>
       </provider>

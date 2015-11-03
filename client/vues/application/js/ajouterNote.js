@@ -11,8 +11,6 @@ Template.ajouterNote.events({
 		}
 		
 		Note.insert(evaluation);
-
-		
 	}
 });
 
@@ -38,6 +36,8 @@ Template.note.events({
 				} // if
 			} // else
 		} // for
+
+		// On rentre les chaque ligne du textarea dans un tableau temporaire
 		if (confirm("Ajouter les notes  ?")) {
 			var nbr_colonne = 8;
 			var indent="\t"; // code ASCII = 9
@@ -50,6 +50,7 @@ Template.note.events({
 					etu[k]=data[j];
 					j++;
 				}
+				// On crée un objet JS avec les données mise dans le tableau etu[]
 				var note = {
 					semestre:etu[3],
 					UE:etu[4],
@@ -57,6 +58,7 @@ Template.note.events({
 					note:etu[6],
 					coeff:etu[7]
 				}
+				// On cherche l'étudiant a qui on doit attribuer une note et on modifie son document
 				var etuTmp = Etudiant.findOne({nom: etu[0], prenom: etu[1]});
 				idTmp = etuTmp._id;
 				Etudiant.update(_id=idTmp,{$push:{note:note}});

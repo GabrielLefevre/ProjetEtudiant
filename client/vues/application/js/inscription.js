@@ -23,6 +23,8 @@ Template.inscription.events({
                     } // if
                 } // else
             } // for
+
+        // On rentre les chaque ligne du textarea dans un tableau temporaire
         if (confirm("Ajouter la promotion ?")) {
             var nbr_colonne = 8;
             var indent="\t"; // code ASCII = 9
@@ -35,6 +37,7 @@ Template.inscription.events({
                     etu[k]=data[j];
                     j++;
                 }
+                // On recherche le semestre renseigné dans la BDD et on ajoute cet étudiant a la BDD avec son semestre en cours
                 var sem= Semestre.findOne({nom: etu[7]});
                 Etudiant.insert({nom:etu[0],prenom:etu[1],groupe:etu[2],mail:etu[3],adresse:etu[4],cp:etu[5],ville:etu[6],semestre:[sem]});
             } // for i

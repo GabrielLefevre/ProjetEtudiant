@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d90de5b-293b-43c1-bdf4-155de1a55f2e" name="Default" comment="" />
+    <list default="true" id="0d90de5b-293b-43c1-bdf4-155de1a55f2e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/vues/application/js/Semestre.js" afterPath="$PROJECT_DIR$/client/vues/application/js/Semestre.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/vues/application/js/ajouterNote.js" afterPath="$PROJECT_DIR$/client/vues/application/js/ajouterNote.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/vues/application/js/etudiant.js" afterPath="$PROJECT_DIR$/client/vues/application/js/etudiant.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/vues/application/js/inscription.js" afterPath="$PROJECT_DIR$/client/vues/application/js/inscription.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="ProjetEtudiant.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />

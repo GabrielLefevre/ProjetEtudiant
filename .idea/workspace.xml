@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d90de5b-293b-43c1-bdf4-155de1a55f2e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/vues/application/js/inscription.js" afterPath="$PROJECT_DIR$/client/vues/application/js/inscription.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/vues/application/js/Semestre.js" afterPath="$PROJECT_DIR$/client/vues/application/js/Semestre.js" />
     </list>
     <ignored path="ProjetEtudiant.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,21 +34,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="inscription.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="inscription.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/vues/application/js/inscription.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6549391">
-              <caret line="42" column="65" selection-start-line="42" selection-start-column="65" selection-end-line="42" selection-end-column="65" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="35" column="49" selection-start-line="35" selection-start-column="49" selection-end-line="35" selection-end-column="49" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Semestre.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Semestre.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/vues/application/js/Semestre.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.9201624">
+              <caret line="73" column="33" selection-start-line="73" selection-start-column="33" selection-end-line="73" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -100,7 +100,7 @@
       <file leaf-file-name="carnetPromo.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/vues/application/carnetPromo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-26.115385">
+            <state vertical-scroll-proportion="-84.96154">
               <caret line="280" column="13" selection-start-line="280" selection-start-column="13" selection-end-line="280" selection-end-column="13" />
               <folding />
             </state>
@@ -139,7 +139,6 @@
         <option value="$PROJECT_DIR$/lib/bootstrap.min.js" />
         <option value="$PROJECT_DIR$/client/vues/note.html" />
         <option value="$PROJECT_DIR$/client/vues/application/js/ajouterNote.js" />
-        <option value="$PROJECT_DIR$/client/vues/application/js/Semestre.js" />
         <option value="$PROJECT_DIR$/client/vues/application/inscription.html" />
         <option value="$PROJECT_DIR$/client/vues/layout.html" />
         <option value="$PROJECT_DIR$/collections/Promotion.js" />
@@ -152,6 +151,7 @@
         <option value="$PROJECT_DIR$/client/vues/application/carnetEtu.html" />
         <option value="$PROJECT_DIR$/client/vues/application/js/etudiant.js" />
         <option value="$PROJECT_DIR$/client/vues/application/js/inscription.js" />
+        <option value="$PROJECT_DIR$/client/vues/application/js/Semestre.js" />
       </list>
     </option>
   </component>
@@ -746,14 +746,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/vues/application/carnetPromo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-26.115385">
-          <caret line="280" column="13" selection-start-line="280" selection-start-column="13" selection-end-line="280" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/vues/application/carnetEtu.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.5">
@@ -789,18 +781,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/vues/application/js/Semestre.js">
+    <entry file="file://$PROJECT_DIR$/client/vues/application/js/inscription.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
+          <caret line="35" column="49" selection-start-line="35" selection-start-column="49" selection-end-line="35" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/vues/application/js/inscription.js">
+    <entry file="file://$PROJECT_DIR$/client/vues/application/carnetPromo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6549391">
-          <caret line="42" column="65" selection-start-line="42" selection-start-column="65" selection-end-line="42" selection-end-column="65" />
+        <state vertical-scroll-proportion="-84.96154">
+          <caret line="280" column="13" selection-start-line="280" selection-start-column="13" selection-end-line="280" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/vues/application/js/Semestre.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9201624">
+          <caret line="73" column="33" selection-start-line="73" selection-start-column="33" selection-end-line="73" selection-end-column="33" />
           <folding />
         </state>
       </provider>

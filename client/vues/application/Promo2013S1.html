@@ -12,15 +12,13 @@
 								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
 							</div>
 						</div>
-						<script type="text/javascript" src="/js/jquery-latest.js"></script> 
-						<script type="text/javascript" src="/js/jquery.tablesorter.js"></script> 
-						<script>
-							/* Trier chaque colonne du tableau */
-							$(document).ready(function() 
-								{ 
-									$("#table").tablesorter(); 
-								} 
-							); 
+						<script type="text/javascript" src="/jquery-latest.js"></script> 
+						<script type="text/javascript" src="/jquery.tablesorter.js"></script> 
+
+						<script type="text/javascript">
+							$(function() {
+								$("table").tablesorter({debug: true});
+							});
 						</script>
 						<table class="table" id="table">
 							<thead>
@@ -32,7 +30,6 @@
 									<th><input type="text" class="form-control" placeholder="EU12" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Absences" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Redoublant" disabled></th>
-									<th>Actions</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -71,7 +68,6 @@
 									{{/each}}
 									<td name="absences">{{ absences }} abs.</td>
 									<td name="redoublant">{{ redoublant }}</td>
-									<td><a class="btn btn-danger delete" href="#">Suppr</a> <a class="btn btn-info" href="/etudiant/{{_id}}">carnet</a></td>
 								</tr>
 								{{/each}}
 							</tbody>

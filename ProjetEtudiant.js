@@ -18,6 +18,11 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
+	Meteor.publish("allUEHeaders", function(){
+		return UE.find({}, {
+			fields: {content: 0}
+		});
+	});
 	Meteor.publish("allPromo2013S1Headers", function(){
 		return Promo2013.find({}, {
 			fields: {content: 0}

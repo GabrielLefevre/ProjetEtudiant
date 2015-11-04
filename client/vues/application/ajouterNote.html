@@ -5,42 +5,74 @@
 				<div class="row">
 					<form class="form-horizontal">
 					<fieldset>
-					<h2>Ajouter des notes pour <i id="devoir">{{nom}}</i></h2>
+					<h2>Ajouter une note pour <i id="etudiant">{{nom}} {{prenom}}</i></h2>
 					<div id="id_div_1" style="display:none;" >
 						<input id="id" name="nom" type="text" placeholder="id" class="input-xlarge" value="{{nom}}">
 					</div>
+					<script>/*
+					function insererCellules(){
+						var cell, ligne;
+					 
+						// on récupère l'identifiant (id) de la table qui sera modifiée
+						var tableau = document.getElementById("table");
+						// nombre de lignes dans la table (avant ajout de la ligne)
+						var nbLignes = tableau.rows.length;
+					 
+						ligne = tableau.insertRow(-1); // création d'une ligne pour ajout en fin de table
+													   // le paramètre est dans ce cas (-1)
+					 
+						// création et insertion des cellules dans la nouvelle ligne créée
+						cell = ligne.insertCell(0); // création et insertion de la cellule 0
+						cell.innerHTML = document.getElementById("nom").innerHTML; // ajout du texte dans la cellule 0
+					 
+						cell = ligne.insertCell(1); // création insertion de la cellule 1
+						cell.innerHTML = document.getElementById("prenom").innerHTML; // ajout du texte dans la cellule 1
+					 
+						cell = ligne.insertCell(2); // création insertion de la cellule 2
+						cell.innerHTML = document.getElementById("note").innerHTML; // ajout du texte dans la cellule 2
+					 
+						cell = ligne.insertCell(3); // création insertion de la cellule 3
+						cell.innerHTML = document.getElementById("matiere").innerHTML; // ajout du texte dans la cellule 3
+					
+						cell = ligne.insertCell(4); // création insertion de la cellule 3
+						cell.innerHTML = document.getElementById("valider").innerHTML; // ajout du texte dans la cellule 3
+						
+						cell = ligne.insertCell(5); // création insertion de la cellule 3
+						cell.innerHTML = document.getElementById("ajouter").innerHTML; // ajout du texte dans la cellule 3
+					
+					}*/
+					</script>
 					<div class="row">
 					<div class="panel panel-primary filterable">
 						<div class="panel-heading">
-							<h3 class="panel-title">Etudiants</h3>
+							<h3 class="panel-title">Etudiant</h3>
 							<div class="pull-right">
 							</div>
 						</div>
-						<table class="table">
+						<table class="table" id="table">
 							<thead>
 								<tr class="filters">
 									<th><input type="text" class="form-control" placeholder="Nom" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Prenom" disabled></th>
-									<th><input type="text" class="form-control" placeholder="Groupe" disabled></th>
 									<th> Entrez la note ( /20) </th>
+									<th> Matiere </th>
+									<th> UE </th>
+									<th> Valider </th>
 								</tr>
 							</thead>
 							<tbody>
-								{{#each etudiant}}
 								<tr>
-									<td name="nom">{{ nom }}</td>
-									<td name="prenom">{{ prenom }}</td>
-									<td name="groupe">{{ groupe }}</td>
-									<td name="note"> <input id="note" name="note" min=0 max=20 type="number" placeholder="note"> </td>
-									<td> <input class="add" type="submit" value="Valider"  /> </td>
+									<td id="nom">{{ nom }}</td>
+									<td id="prenom">{{ prenom }}</td>
+									<td id="note"> <input id="note" name="note" min=0 max=20 type="number" placeholder="note"> </td>
+									<td id="matiere"> <input id="matiere" name="matiere" placeholder="matiere"> </td>
+									<td id="ue"> <input id="ue" name="ue" placeholder="ue"> </td>
+									<td id="valider"><input class="add" type="submit" value="Valider"  /></td>
 								</tr>
-								{{/each}}
 							</tbody>
 						</table>
 					</div>
 				</div>
-					
-					
 					</fieldset>
 					</form>
 				</div>

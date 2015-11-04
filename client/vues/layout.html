@@ -18,17 +18,34 @@
 				<ul class="nav navbar-nav">
 					<li><a href="{{pathFor route='etudiant'}}">Liste des Etudiants</a></li>
 					<li><a href="{{pathFor route='devoir'}}">Liste des Devoirs</a></li>
-					<li><a>Promo 2013 ></a></li>
-					<li><a href="{{pathFor route='Promo2013S1'}}">S1</a></li>
-					<li><a href="{{pathFor route='Promo2013S2'}}">S2</a></li>
-					<li><a href="{{pathFor route='Promo2013S3'}}">S3</a></li>
-					<li><a href="{{pathFor route='Promo2013S4'}}">S4</a></li>
-					<li><a>Promo 2014 ></a></li>
-					<li><a href="{{pathFor route='Promo2014S1'}}">S1</a></li>
-					<li><a href="{{pathFor route='Promo2014S2'}}">S2</a></li>
-					<li><a href="{{pathFor route='Promo2014S3'}}">S3</a></li>
-					<li><a>Promo 2015 ></a></li>
-					<li><a href="{{pathFor route='Promo2015S1'}}">S1</a></li>
+					<li><div class="dropdown">
+					  <button type="button" data-toggle="dropdown">Promo 2013
+					  <span class="caret"></span></button>
+					  <ul class="dropdown-menu">
+						<li><a href="{{pathFor route='Promo2013S1'}}">S1</a></li>
+						<li><a href="{{pathFor route='Promo2013S2'}}">S2</a></li>
+						<li><a href="{{pathFor route='Promo2013S3'}}">S3</a></li>
+						<li><a href="{{pathFor route='Promo2013S4'}}">S4</a></li>
+					  </ul>
+					</div></li>
+					<li>
+					<div class="dropdown">
+					  <button type="button" data-toggle="dropdown">Promo 2014
+					  <span class="caret"></span></button>
+					  <ul class="dropdown-menu">
+						<li><a href="{{pathFor route='Promo2013S1'}}">S1</a></li>
+						<li><a href="{{pathFor route='Promo2013S2'}}">S2</a></li>
+						<li><a href="{{pathFor route='Promo2013S3'}}">S3</a></li>
+					  </ul>
+					</div></li>
+					<li>
+					<div class="dropdown">
+					  <button type="button" data-toggle="dropdown">Promo 2015
+					  <span class="caret"></span></button>
+					  <ul class="dropdown-menu">
+						<li><a href="{{pathFor route='Promo2013S1'}}">S1</a></li>
+					  </ul>
+					</div></li>
 				</ul>	
 				<!--	
 					</li>

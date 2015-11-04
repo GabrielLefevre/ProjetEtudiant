@@ -40,13 +40,17 @@ Template.inscription.events({
                 // On recherche le semestre renseigné dans la BDD et on ajoute cet étudiant a la BDD avec son semestre en cours
                 var sem= Semestre.findOne({nom: etu[8]});
                 // On verifie l'existence de la promotion dans la BDD sinon on la crée
-                if ( Promotion.find({promotion:{$exists:false, $e:etu[3]}})) {
+                if ( Promotion.find({promotion:etu[3]}).count()>0) {
+                    Etudiant.insert({nom:etu[0],prenom:etu[1],groupe:etu[2],promotion:etu[3],mail:etu[4],adresse:etu[5],cp:etu[6],ville:etu[7],semestre:[sem]});
+                } // if
+                else {
                     var promo = {
                         promotion:etu[3]
                     }
                     Promotion.insert(promo);
-                }
-                Etudiant.insert({nom:etu[0],prenom:etu[1],groupe:etu[2],promotion:etu[3],mail:etu[4],adresse:etu[5],cp:etu[6],ville:etu[7],semestre:[sem]});
+                    Etudiant.insert({nom:etu[0],prenom:etu[1],groupe:etu[2],promotion:etu[3],mail:etu[4],adresse:etu[5],cp:etu[6],ville:etu[7],semestre:[sem]});
+                } // else
+
             } // for i
             // On crée la promotion dans sa collection
 

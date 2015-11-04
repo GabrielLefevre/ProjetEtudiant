@@ -5,6 +5,7 @@ Template.etudiant.events({
 		var nom = $("input[name='nom']").val();
 		var prenom = $("input[name='prenom']").val();
 		var groupe = $("select[name='groupe']").val();
+		var pro = $("select[name='promotion']").val();
 		var mail = $("input[name='mail']").val();
 		var adresse = $("input[name='adresse']").val();
 		var cp = $("input[name='cp']").val();
@@ -17,11 +18,16 @@ Template.etudiant.events({
 				prenom: prenom,
 				mail: mail,
 				groupe: groupe,
+				promotion: promo,
 				adresse: adresse,
 				cp: cp,
 				ville: ville,
 				note:[],
 				semestre:[semestretmp]
+		}
+
+		var promo = {
+			promotion:pro
 		}
         // Ajout de l'étudiant a sa Collection
         Etudiant.insert(etudiant);
@@ -38,40 +44,13 @@ Template.etudiant.events({
   }
 });
 
-//--------------------------------------------------
-//---------------------TEST-------------------------
-//--------------------------------------------------
+
 
 Template.carnetEtu.events({
     'submit form': function(e){
 		e.preventDefault();
 		
-		var nomSemestre = $("input[name='nomSemestre']").val();
-		var nomUE = $("input[name='nomUE']").val();
-		var nomMatiere = $("select[name='nomMatiere']").val();
-		var note1 = $("input[name='note1']").val();
-		var note2 = $("input[name='note2']").val();
-		
-		var matiere = {
-			nom: nomMAtiere,
-			note:[note1,note2]
-		}
-		alert("Test");
-		/*var ue = {
-			nom: nomUE,
-			matieres:[matiere]
-		}
-		
-		var semestre = {
-			nom: nomSemestre,
-			UE:[ue]
-		}*/
-		
-		Matiere.insert(matiere);
-		//UE.insert(ue);
-		//Semestre.insert(semestre);
-		//var etudiantCourant = this._id;
-		//Etudiant.update(etudiantCourant,{$push:{semestre:semestre}});
+
 		
 	}
 });

@@ -20,69 +20,94 @@
 				</div>
 			</div>	
 		<h1>WIP</h1>
-		</div>	
-
+		</div>
 		<div class="container">
 			<div class="jumbotron">
 				<div class="row">
-					<form class="form-horizontal">
-					<fieldset>
-					<h6> Formulaire de test </h6>
-					<h2>completer un étudiant</h2>
-         
-					<!-- nom semestre -->
-					<div class="control-group">
-						<label class="control-label">Nom semestre</label>
-						<div class="controls">
-							<input id="nomSemestre" name="nomSemestre" type="text" placeholder="nomSemestre"
-							class="input-xlarge">
-							<p class="help-block"></p>
+					<div class="panel panel-primary filterable">
+						<div class="panel-heading">
+							<h3 class="panel-title">Etudiant</h3>
+							<p></p>
+							<a class="btn btn-info" onClick="colorTest();">Color</a>
+							<a class="btn btn-info" onClick="avisEtudes();">Avis etudes</a>
+							<div class="pull-right">
+								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
+							</div>
 						</div>
-					</div>
-					
-					<!-- nomUE -->
-					<div class="control-group">
-						<label class="control-label">Nom UE</label>
-						<div class="controls">
-							<input id="nomUE" name="nomUE" type="text" placeholder="nomUE"
-							class="input-xlarge">
-							<p class="help-block"></p>
-						</div>
-					</div>
-					
-					<!-- nomMatiere -->
-					<div class="control-group">
-						<label class="control-label">nom Matiere</label>
-						<div class="controls">
-							<input id="nomMatiere" name="nomMatiere" type="text" placeholder="nomMatiere"
-							class="input-xlarge">
-							<p class="help-block"></p>
-						</div>
-					</div>
-					
-					<!-- note1 -->
-					<div class="control-group">
-						<label class="control-label">note1</label>
-						<div class="controls">
-							<input id="note1" name="note1" type="int" placeholder="note1"
-							class="input-xlarge">
-							<p class="help-block"></p>
-						</div>
-					</div>
-					
-					<!-- note2 -->
-					<div class="control-group">
-						<label class="control-label">note2</label>
-						<div class="controls">
-							<input id="note2" name="note1" type="int" placeholder="note2"
-							class="input-xlarge">
-							<p class="help-block"></p>
-						</div>
-					</div>					
 
-					<input class="add" type="submit" value="Valider"  />
-					</fieldset>
-					</form>
+						<!-- Utilité ? -->
+						<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+						<script>
+							$(document).ready(function(){
+								$("button").click(function(){
+									$("test").toggle();
+								});
+							});
+						</script>
+						<!-- A mettre dans le template !!!-->
+						<script>
+							function colorTest(){
+								var tds = document.getElementById('table').getElementsByTagName('td');
+								for(var k = 0; k < tds.length; k ++) {
+									if(tds[k].innerHTML>9)
+									{
+										tds[k].style.backgroundColor='#9bdb10';
+									}
+									else if(tds[k].innerHTML<10 && tds[k].innerHTML>7)
+									{
+										tds[k].style.backgroundColor='#ff953d';
+									}
+									else if(tds[k].innerHTML<8 && tds[k].innerHTML>0)
+									{
+										tds[k].style.backgroundColor='#ff1b1b';
+									}
+								}
+							}
+						</script>
+
+
+						<table class="table" id="table">
+							<tbody>
+							{{#each semestre}}
+							<td>
+							<td colspan="3">
+								<p></p>
+								<center><tr><b>{{ titre }}</b></tr></center>
+								<p></p>
+							</td>
+							<tr>
+								<td> Moy.Gen </td>
+								<td> {{ moyenne }} </td>
+								<td> {{ valider }} </td>
+							</tr>
+							{{#each ue}}
+							<tr>
+								<td> {{ eu }} </td>
+								<td class="note"> {{ moyenne }} </td>
+								<td> {{ valider }} </td>
+							</tr>
+							{{/each}}
+							<tr>
+								<td>Decision du jury</td>
+								<td colspan="2">{{ decision }}</td>
+							</tr>
+							{{#each ue}}
+							<tr>
+								<td colspan="3"><i> {{ eu }} </i></td>
+							</tr>
+							{{#each matiere}}
+							<tr>
+								<td> {{ nom	}} </td>
+								<td colspan="2"> {{ moyenne }} </td>
+							</tr>
+							{{/each}}
+
+							{{/each}}
+							</td>
+							{{/each}}
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>

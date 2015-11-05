@@ -42,44 +42,42 @@ Template.semestre.events({
 			nom: nomSemestre,
 			dateDebut: dd,
 			dateFin: df,
-			UE1:[],
-			UE2:[],
-			UE3:[]
+			UE:[]
 		}
 		// On ajoute le modèle a la base auquel on va ajouter les UE et les matieres en parcourant chaque tableaux de matiere et ce pour chaque UE
 		Semestre.insert(semestre, function(err,res) {
 			var idSemestre = res;
 			var UE1TMP = {
 				nom:nomUE1,
+				semestre:nomSemestre,
 				matiere:tabMatUE1
 			}
 			UE.insert(UE1TMP, function(err, res) {
 				var idUE1 = res;
 			 var ue1Def = UE.findOne({_id:idUE1});
-			Semestre.update({_id:idSemestre}, {$push:{UE1:ue1Def}});
+			Semestre.update({_id:idSemestre}, {$push:{UE:nomUE1}});
 		});
 
 			var UE2TMP = {
 				nom:nomUE2,
+				semestre:nomSemestre,
 				matiere:tabMatUE2
 			}
 			UE.insert(UE2TMP, function(err, res) {
 				var idUE2 = res;
 				var ue2Def = UE.findOne({_id:idUE2});
-				Semestre.update({_id:idSemestre}, {$push:{UE2:ue2Def}});
+				Semestre.update({_id:idSemestre}, {$push:{UE:nomUE2}});
 			});
 
 			var UE3TMP = {
 				nom:nomUE3,
+				semestre:nomSemestre,
 				matiere:tabMatUE3
 			}
 			UE.insert(UE3TMP, function(err, res) {
 				var idUE3 = res;
 				var ue3Def = UE.findOne({_id:idUE3});
-				Semestre.update({_id:idSemestre}, {$push:{UE3:ue3Def}});
-				Semestre.update({_id:idSemestre},{$rename:{UE1:nomUE1}});
-				Semestre.update({_id:idSemestre},{$rename:{UE2:nomUE2}});
-				Semestre.update({_id:idSemestre},{$rename:{UE3:nomUE3}});
+				Semestre.update({_id:idSemestre}, {$push:{UE:nomUE3}});
 			});
 
 		});

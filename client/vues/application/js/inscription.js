@@ -24,7 +24,7 @@ Template.inscription.events({
                 } // else
             } // for
 
-        // On rentre les chaque ligne du textarea dans un tableau temporaire
+        // On rentre les lignes du textarea dans un tableau temporaire
         if (confirm("Ajouter la promotion ?")) {
             var nbr_colonne = 9;
             var indent="\t"; // code ASCII = 9
@@ -41,14 +41,14 @@ Template.inscription.events({
                 var sem= Semestre.findOne({nom: etu[8]});
                 // On verifie l'existence de la promotion dans la BDD sinon on la crée
                 if ( Promotion.find({promotion:etu[3]}).count()>0) {
-                    Etudiant.insert({nom:etu[0],prenom:etu[1],groupe:etu[2],promotion:etu[3],mail:etu[4],adresse:etu[5],cp:etu[6],ville:etu[7],semestre:[sem]});
+                    Etudiant.insert({nom:etu[0],prenom:etu[1],groupe:etu[2],promotion:etu[3],mail:etu[4],adresse:etu[5],cp:etu[6],ville:etu[7],semestre:etu[8]});
                 } // if
                 else {
                     var promo = {
                         promotion:etu[3]
                     }
                     Promotion.insert(promo);
-                    Etudiant.insert({nom:etu[0],prenom:etu[1],groupe:etu[2],promotion:etu[3],mail:etu[4],adresse:etu[5],cp:etu[6],ville:etu[7],semestre:[sem]});
+                    Etudiant.insert({nom:etu[0],prenom:etu[1],groupe:etu[2],promotion:etu[3],mail:etu[4],adresse:etu[5],cp:etu[6],ville:etu[7],semestre:etu[8]});
                 } // else
 
             } // for i

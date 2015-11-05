@@ -18,12 +18,11 @@ Template.etudiant.events({
 				prenom: prenom,
 				mail: mail,
 				groupe: groupe,
-				promotion: promo,
+				promotion: pro,
 				adresse: adresse,
 				cp: cp,
 				ville: ville,
-				note:[],
-				semestre:[semestretmp]
+				semestre:[sem]
 		}
 
 		var promo = {

@@ -10,7 +10,15 @@
 								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
 							</div>
 						</div>
-						<table class="table">
+						<script type="text/javascript" src="/jquery-latest.js"></script> 
+						<script type="text/javascript" src="/jquery.tablesorter.js"></script> 
+
+						<script type="text/javascript">
+							$(function() {
+								$("table").tablesorter({debug: true});
+							});
+						</script>
+						<table class="table" id="table">
 							<thead>
 								<tr class="filters">
 									<th><input type="text" class="form-control" placeholder="Nom" disabled></th>
@@ -33,7 +41,7 @@
 									<td name="adresse">{{ adresse }}</td>
 									<td name="cp">{{ cp }}</td>
 									<td name="ville">{{ ville }}</td> 							
-									<td><a class="btn btn-danger delete" href="#">Suppr</a> <a class="btn btn-info" href="/etudiant/{{_id}}">carnet</a><a class="btn btn-info" href="/etudiant/ajouterNote/{{_id}}">ajouterNote</a></td>
+									<td><a class="btn btn-danger delete" href="#">Suppr</a> <a class="btn btn-info" href="/etudiant/{{_id}}">carnet</a></td>
 								</tr>
 								{{/each}}
 							</tbody>

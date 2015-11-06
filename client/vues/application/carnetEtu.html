@@ -12,7 +12,8 @@
 						<li><label>Groupe :</label>&nbsp;<span> {{groupe}}</span></li>
 						<li><label>Adresse :</label>&nbsp;<span>{{adresse}}</span></li>
                         <li><label>Code Postal :</label>&nbsp;<span>{{cp}}</span></li>
-                        <li><label>Ville :</label>&nbsp;<span>{{ville}}</span></li>		
+                        <li><label>Ville :</label>&nbsp;<span>{{ville}}</span></li>	
+
 				   </ul>	
 						</div>
 						<div class="media-right">
@@ -63,7 +64,81 @@
 							}
 						</script>
 							<table class="table" id="table">
-							<tbody>
+							<tbody><!--
+								<tr>
+									<td colspan="2">Semestre 1</td>
+								</tr>	
+								<tr>
+									<td colspan="2">UE11</td>
+								</tr>	
+								<tr>											
+									<td> Nom </td>
+									<td> Note </td>
+								</tr>
+
+									{{#each ue11}}
+										<tr>											
+											<td> {{ nom	}} </td>
+											<td> {{ note }} </td>
+										</tr>
+									{{/each}}
+				
+								<tr>
+									<td colspan="2">EU12</td>
+								</tr>	
+								<tr>											
+									<td> Nom </td>
+									<td> Note </td>
+								</tr>			
+							
+									{{#each eu12}}
+										<tr>											
+											<td> {{ nom	}} </td>
+											<td> {{ note }} </td>
+										</tr>
+									{{/each}}	
+
+									{{#each ue21}}
+										<tr>											
+											<td> {{ nom	}} </td>
+											<td> {{ note }} </td>
+										</tr>
+									{{/each}}
+									
+									{{#each eu22}}
+										<tr>											
+											<td> {{ nom	}} </td>
+											<td> {{ note }} </td>
+										</tr>
+									{{/each}}
+									
+									{{#each ue31}}
+										<tr>											
+											<td> {{ nom	}} </td>
+											<td> {{ note }} </td>
+										</tr>
+									{{/each}}
+									
+									{{#each eu32}}
+										<tr>											
+											<td> {{ nom	}} </td>
+											<td> {{ note }} </td>
+										</tr>
+									{{/each}}	
+									
+									{{#each ue41}}
+										<tr>											
+											<td> {{ nom	}} </td>
+											<td> {{ note }} </td>
+										</tr>
+									{{/each}}
+									
+									{{#each eu42}}
+										<tr>											
+											<td> {{ nom	}} </td>
+											<td> {{ note }} </td>
+										</tr>
+									{{/each}}		-->								
 								{{#each semestre}}
 								<td>
 									<td colspan="3">
@@ -104,7 +179,7 @@
 											
 										{{/each}}
 									</td>	
-								{{/each}}		
+								{{/each}}
 							</tbody>
 						</table>
 					</div>	

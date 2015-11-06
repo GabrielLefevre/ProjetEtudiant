@@ -23,48 +23,9 @@ if (Meteor.isServer) {
 			fields: {content: 0}
 		});
 	});
-	Meteor.publish("allPromo2013S1Headers", function(){
-		return Promo2013.find({}, {
-			fields: {content: 0}
-		});
-	});
-	Meteor.publish("allPromo2013S2Headers", function(){
-		return Promo2013.find({}, {
-			fields: {content: 0}
-		});
-	});
-	Meteor.publish("allPromo2013S3Headers", function(){
-		return Promo2013.find({}, {
-			fields: {content: 0}
-		});
-	});
-	Meteor.publish("allPromo2013S4Headers", function(){
-		return Promo2013.find({}, {
-			fields: {content: 0}
-		});
-	});
-	Meteor.publish("allPromo2014S1Headers", function(){
-		return Promo2014.find({}, {
-			fields: {content: 0}
-		});
-	});
-	Meteor.publish("allPromo2014S2Headers", function(){
-		return Promo2014.find({}, {
-			fields: {content: 0}
-		});
-	});
-	Meteor.publish("allPromo2014S3Headers", function(){
-		return Promo2014.find({}, {
-			fields: {content: 0}
-		});
-	});
-	Meteor.publish("allPromo2014S4Headers", function(){
-		return Promo2014.find({}, {
-			fields: {content: 0}
-		});
-	});
-	Meteor.publish("allPromo2015S1Headers", function(){
-		return Promo2015.find({}, {
+	
+	Meteor.publish("allPromotionHeaders", function(){
+		return Promotion.find({}, {
 			fields: {content: 0}
 		});
 	});

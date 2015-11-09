@@ -7,6 +7,7 @@
 						<div class="panel-heading">
 							<h3 class="panel-title">Semestre 3</h3><a class="btn btn-info" onClick="colorTest();">color</a>
 							<a class="btn btn-info" href="/detailNotes3">Detail Notes</a>
+							<a class="btn btn-info" onClick="classement();">Classement</a>
 							<div class="pull-right">
 								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
 							</div>
@@ -24,7 +25,7 @@
 									<th><input type="text" class="form-control" placeholder="EU32" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Absences" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Redoublant" disabled></th>
-					<!--			<th><input type="text" class="form-control" placeholder="Classement" disabled></th> -->
+									<th><input type="text" class="form-control" placeholder="Classement" disabled></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -57,9 +58,9 @@
 									{{#each eu}}
 									<td class="eu32">{{ eu32 }}</td>
 									{{/each}}
-									<td name="absences">{{ absences }} abs.</td>
+									<td class="absences">{{ absences }}</td>
 									<td name="redoublant">{{ redoublant }}</td>
-					<!--			<td name="classement">{{ classement }}</td>  -->
+									<td class="classement"></td>
 								</tr>
 								{{/each}}
 							</tbody>
@@ -76,27 +77,24 @@
 				</div>
 			</div>	
 		</div>
-		<script>
-		$(document).ready(function() 
-			{ 
-				$("#table").DataTable(); 
-			} 
-		); 
-							
+		<script>		
+		/* Couleurs en fonction de la moyenne */			
 		function colorTest(){
 			var tds = document.getElementById('table').getElementsByTagName('td');
 			for(var k = 0; k < tds.length; k ++) {
-				if(tds[k].innerHTML>9)
-				{ 
-					tds[k].style.backgroundColor='#9bdb10';
-				}
-				else if(tds[k].innerHTML<10 && tds[k].innerHTML>7)
-				{
-					tds[k].style.backgroundColor='#ff953d';
-				}
-				else if(tds[k].innerHTML<8 && tds[k].innerHTML>0)
-				{
-					tds[k].style.backgroundColor='#ff1b1b';
+				if(tds[k].className != 'absences' && tds[k].className != 'classement'){
+					if(tds[k].innerHTML>9)
+					{ 
+						tds[k].style.backgroundColor='#9bdb10';
+					}
+					else if(tds[k].innerHTML<10 && tds[k].innerHTML>7)
+					{
+						tds[k].style.backgroundColor='#ff953d';
+					}
+					else if(tds[k].innerHTML<8 && tds[k].innerHTML>0)
+					{
+						tds[k].style.backgroundColor='#ff1b1b';
+					}
 				}
 			}
 		}
@@ -131,6 +129,16 @@
 		PromoGen.innerHTML += '<tr><td>' + moyenneGen + '</td></tr>'
 		PromoUE.innerHTML += '<tr><td>' + moyenneUE + '</td></tr>'
 		PromoEU.innerHTML += '<tr><td>' + moyenneEU + '</td></tr>'
+		
+		/* Classement */		
+		function classement(){
+			var etudiantCourant = this._id;
+			var items = document.getElementsByClassName("classement"),i, len;
+
+			for (i = 0, len = items.length; i < len; i++) {
+				items[i].innerHTML = i+1;
+			}
+		}
 		</script>
 
 		<script>

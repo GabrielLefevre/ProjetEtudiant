@@ -7,6 +7,7 @@
 						<div class="panel-heading">
 							<h3 class="panel-title">Semestre 2</h3><a class="btn btn-info" onClick="colorTest();">color</a>
 							<a class="btn btn-info" href="/detailNotes2">Detail Notes</a>
+							<a class="btn btn-info" onClick="classement();">Classement</a>
 							<div class="pull-right">
 								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
 							</div>
@@ -15,11 +16,14 @@
 						<script type="text/javascript" src="/js/jquery.metadata.js"></script> 
 						<script type="text/javascript" src="/js/jquery.tablesorter.min.js"></script>
 						<script>
-						$(document).ready(function() 
-							{ 
-								$("#table").tablesorter(); 
-							} 
-						); 
+								$("table").tablesorter({
+									sortInitialOrder: 'desc',
+								});
+								
+								/* Selectionner ligne du tableau */
+								$("tr").click(function(){
+									$(this).addClass("selected").siblings().removeClass("selected");
+								});
 						</script>
 						<table class="table" id="table">
 							<thead>
@@ -35,7 +39,7 @@
 									<th><input type="text" class="form-control" placeholder="EU22" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Absences" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Redoublant" disabled></th>
-					<!--			<th><input type="text" class="form-control" placeholder="Classement" disabled></th> -->
+								<th><input type="text" class="form-control" placeholder="Classement" disabled></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -54,9 +58,9 @@
 									<td class="eu12">{{ eu12 }}</td>
 									<td class="eu22">{{ eu22 }}</td>
 									{{/each}}
-									<td name="absences">{{ absences }} abs.</td>
+									<td class="absences">{{ absences }}</td>
 									<td name="redoublant">{{ redoublant }}</td>
-					<!--			<td name="classement">{{ classement }}</td>  -->
+									<td class="classement"></td>  
 								</tr>
 								{{/each}}
 							</tbody>
@@ -79,26 +83,23 @@
 		</div>
 
 		<script>
-		$(document).ready(function() 
-			{ 
-				$("#table").DataTable(); 
-			} 
-		);
-		
+		/* Couleurs en fonction de la moyenne */
 		function colorTest(){
 			var tds = document.getElementById('table').getElementsByTagName('td');
 			for(var k = 0; k < tds.length; k ++) {
-				if(tds[k].innerHTML>9)
-				{ 
-					tds[k].style.backgroundColor='#9bdb10';
-				}
-				else if(tds[k].innerHTML<10 && tds[k].innerHTML>7)
-				{
-					tds[k].style.backgroundColor='#ff953d';
-				}
-				else if(tds[k].innerHTML<8 && tds[k].innerHTML>0)
-				{
-					tds[k].style.backgroundColor='#ff1b1b';
+				if(tds[k].className != 'absences' && tds[k].className != 'classement'){
+					if(tds[k].innerHTML>9)
+					{ 
+						tds[k].style.backgroundColor='#9bdb10';
+					}
+					else if(tds[k].innerHTML<10 && tds[k].innerHTML>7)
+					{
+						tds[k].style.backgroundColor='#ff953d';
+					}
+					else if(tds[k].innerHTML<8 && tds[k].innerHTML>0)
+					{
+						tds[k].style.backgroundColor='#ff1b1b';
+					}
 				}
 			}
 		}
@@ -155,13 +156,22 @@
 		var moyenneEU12 = sumEU12/longueur;
 		var moyenneUE21 = sumUE21/longueur;
 		var moyenneEU22 = sumEU22/longueur;
-		PromoINFO1.innerHTML += '<tr><td>' + moyenneINFO1 + '</td></tr>'
-		PromoMGS1.innerHTML += '<tr><td>' + moyenneMGS1 + '</td></tr>'
-		PromoMGS2.innerHTML += '<tr><td>' + moyenneMGS2 + '</td></tr>'							
-		PromoUE11.innerHTML += '<tr><td>' + moyenneUE11 + '</td></tr>'
-		PromoUE21.innerHTML += '<tr><td>' + moyenneUE21 + '</td></tr>'
-		PromoEU12.innerHTML += '<tr><td>' + moyenneEU12 + '</td></tr>'							
-		PromoEU22.innerHTML += '<tr><td>' + moyenneEU22 + '</td></tr>'
+		PromoINFO1.innerHTML += '<tr><td>' + moyenneINFO1.toFixed(2); + '</td></tr>'
+		PromoMGS1.innerHTML += '<tr><td>' + moyenneMGS1.toFixed(2); + '</td></tr>'
+		PromoMGS2.innerHTML += '<tr><td>' + moyenneMGS2.toFixed(2); + '</td></tr>'							
+		PromoUE11.innerHTML += '<tr><td>' + moyenneUE11.toFixed(2); + '</td></tr>'
+		PromoUE21.innerHTML += '<tr><td>' + moyenneUE21.toFixed(2); + '</td></tr>'
+		PromoEU12.innerHTML += '<tr><td>' + moyenneEU12.toFixed(2); + '</td></tr>'							
+		PromoEU22.innerHTML += '<tr><td>' + moyenneEU22.toFixed(2); + '</td></tr>'
+		
+		/* Classement */		
+		function classement(){
+			var items = document.getElementsByClassName("classement"),i, len;
+
+			for (i = 0, len = items.length; i < len; i++) {
+				items[i].innerHTML = i+1;
+			}
+		}
 		</script>
 		<script>
 			$(document).ready(function(){

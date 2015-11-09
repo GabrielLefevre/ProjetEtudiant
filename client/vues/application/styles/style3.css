@@ -12,6 +12,17 @@ td, th /* Mettre une bordure sur les td ET les th */
     border: 1px solid black;
 	text-align:center;
 }
+
+/* Selectionner ligne du tableau */
+tbody tr:hover, tbody tr.selected{
+  background-color: #8DBDD8;
+}
+
+/*
+tr:nth-child(even) {
+    background-color: #8DBDD8;
+}
+*/
 .btn-danger{
 	margin: 2px;
 }
@@ -77,6 +88,6 @@ table.table thead tr .headerSortDown {
 	background-image: url(desc.gif);
 	
 }
-table.table thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+table.table thead tr .headerSortUp, table.tablesorter thead tr .headerSortUp {
 background-color: #8dbdd8;
 }

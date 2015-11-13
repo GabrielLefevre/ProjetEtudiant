@@ -1,76 +1,34 @@
 <template name='carnetPromo'>
     <body>
-   <div class="container">
+		<div class="container">
 			<div class="jumbotron">
 				<div class="row">
 					<div class="panel panel-primary filterable">
 						<div class="panel-heading">
-							
-							<h3 class="panel-title">Semestre 1</h3><a class="btn btn-info" onClick="colorTest();">color</a>
+							<h3 class="panel-title">Semestre 1</h3>		
+							<a class="btn btn-info" onClick="colorTest();">color</a>
 							<a class="btn btn-info" href="/detailNotes1">Detail Notes</a>
+							<a class="btn btn-info" onClick="classement();">Classement</a>
 							<div class="pull-right">
 								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
 							</div>
+							&nbsp;			
 						</div>
 						<script type="text/javascript" src="/jquery-latest.js"></script> 
 						<script type="text/javascript" src="/jquery.tablesorter.js"></script> 
 
 						<script type="text/javascript">
 							$(function() {
-								$("table").tablesorter({debug: true});
-							});
-							
-							/* Couleurs en fonction de la moyenne */
-							function colorTest(){
-								var tds = document.getElementById('table').getElementsByTagName('td');
-								for(var k = 0; k < tds.length; k ++) {
-									if(tds[k].innerHTML>9)
-									{ 
-										tds[k].style.backgroundColor='#9bdb10';
-									}
-									else if(tds[k].innerHTML<10 && tds[k].innerHTML>7)
-									{
-										tds[k].style.backgroundColor='#ff953d';
-									}
-									else if(tds[k].innerHTML<8 && tds[k].innerHTML>0)
-									{
-										tds[k].style.backgroundColor='#ff1b1b';
-									}
-								}
-							}
-
-
-							/* Moyenne Promo */
-							var tds = document.getElementById('table').getElementsByTagName('td');
-							var trs = document.getElementById('table').getElementsByTagName('tr');							
-							var sumGen = 0;
-							var sumUE = 0;
-							var sumEU = 0;
-
-							for(var k = 2; k < tds.length; k ++) {
-								if(tds[k].className == 'mgs1') {
-									sumGen += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-									
-								}
-								if(tds[k].className == 'ue11') {
-									sumUE += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-									
-								}
-								if(tds[k].className == 'eu12') {
-									sumEU += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-									
-								}
-							}
-
-
-							var longueur=trs.length-2;
-
-							var moyenneGen = sumGen/longueur;
-							var moyenneUE = sumUE/longueur;
-							var moyenneEU = sumEU/longueur;
-							PromoGen.innerHTML += '<tr><td>' + moyenneGen + '</td></tr>'
-							PromoUE.innerHTML += '<tr><td>' + moyenneUE + '</td></tr>'
-							PromoEU.innerHTML += '<tr><td>' + moyenneEU + '</td></tr>'
+								/* Trier le tableau */
+								$("table").tablesorter({
+									sortInitialOrder: 'desc',
+								});
+							});	
+								/* Selectionner ligne du tableau */
+								$("tr").click(function(){
+									$(this).addClass("selected").siblings().removeClass("selected");
+								});
+								
 						</script>
 	
 					<table id="table" class="table"> 
@@ -83,7 +41,8 @@
 									<th><input type="text" class="form-control" placeholder="EU12" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Absences" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Redoublant" disabled></th>
-									<th>Actions</th>
+									<th><input type="text" class="form-control" placeholder="Classement" disabled></th>
+							<!-- 	<th>Actions</th> -->
 								</tr>
 							</thead>
 							<tbody>
@@ -98,18 +57,19 @@
 									{{#each eu}}
 									<td class="eu12">{{ eu12 }}</td>
 									{{/each}}
-									<td name="absences">{{ absences }} abs.</td>
+									<td class="absences">{{ absences }}</td>
 									<td name="redoublant">{{ redoublant }}</td>
-									<td><a class="btn btn-info" href="/etudiant/{{_id}}">carnet</a></td>
+									<td class="classement"></td>
 								</tr>
 								{{/each}}
 							</tbody>
 							<tfoot>
 								<tr class="filters">
 									<td colspan="2">Moyenne Promo</td>
-									<td id="PromoGen"></td>
-									<td id="PromoUE"></td>
-									<td id="PromoEU"></td>
+									<td id="PromoGen_1"></td>
+									<td id="PromoUE_1"></td>
+									<td id="PromoEU_1"></td>
+									<td id="PromoAbs_1"></td>
 								</tr>
 							</tfoot>
 						</table>
@@ -117,13 +77,83 @@
 				</div>
 			</div>	
 		</div>
+		<script>
+			/* Couleurs en fonction de la moyenne */
+			function colorTest(){
+				var tds = document.getElementById('table').getElementsByTagName('td');
+				for(var k = 0; k < tds.length; k ++) {
+				if(tds[k].className != 'absences' && tds[k].className != 'classement'){
+						if(tds[k].innerHTML>9)
+						{ 
+							tds[k].style.backgroundColor='#9bdb10';
+						}
+						else if(tds[k].innerHTML<10 && tds[k].innerHTML>7)
+						{
+							tds[k].style.backgroundColor='#ff953d';
+						}
+						else if(tds[k].innerHTML<8 && tds[k].innerHTML>0)
+						{
+							tds[k].style.backgroundColor='#ff1b1b';
+						}
+					}
+				}
+			}
+
+
+			/* Moyenne Promo */
+			var tds = document.getElementById('table').getElementsByTagName('td');
+			var trs = document.getElementById('table').getElementsByTagName('tr');							
+			var sumGen = 0;
+			var sumUE = 0;
+			var sumEU = 0;
+			var sumAbs = 0;
+			
+			for(var k = 2; k < tds.length; k ++) {
+				if(tds[k].className == 'mgs1') {
+					sumGen += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+					
+				}
+				if(tds[k].className == 'ue11') {
+					sumUE += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+					
+				}
+				if(tds[k].className == 'eu12') {
+					sumEU += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+				}
+				if(tds[k].className == 'absences') {
+					sumAbs += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+				}
+			}
+
+
+			var longueur=trs.length-2;
+
+			var moyenneGen = sumGen/longueur;
+			var moyenneUE = sumUE/longueur;
+			var moyenneEU = sumEU/longueur;
+			PromoGen_1.innerHTML += '<tr><td>' + moyenneGen + '</td></tr>'
+			PromoUE_1.innerHTML += '<tr><td>' + moyenneUE + '</td></tr>'
+			PromoEU_1.innerHTML += '<tr><td>' + moyenneEU + '</td></tr>'
+			PromoAbs_1.innerHTML += '<tr><td>' + sumAbs + ' abs </td></tr>'
+			
+			/* Classement */	
+			function classement(){
+				var items = document.getElementsByClassName("classement"),i, len;
+				for (i = 0, len = items.length; i < len; i++) {
+					items[i].innerHTML = i+1;
+				}
+			}
+
+		</script>
+
 		<div class="container">
 			<div class="jumbotron">
 				<div class="row">
 					<div class="panel panel-primary filterable">
 						<div class="panel-heading">
-							<h3 class="panel-title">Semestre 2</h3><a class="btn btn-info" onClick="colorTest();">color</a>
+							<h3 class="panel-title">Semestre 2</h3><a class="btn btn-info" onClick="colorTestS2();">color</a>
 							<a class="btn btn-info" href="/detailNotes2">Detail Notes</a>
+							<a class="btn btn-info" onClick="classementS2();">Classement</a>
 							<div class="pull-right">
 								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
 							</div>
@@ -132,72 +162,16 @@
 						<script type="text/javascript" src="/js/jquery.metadata.js"></script> 
 						<script type="text/javascript" src="/js/jquery.tablesorter.min.js"></script>
 						<script>
-						$(document).ready(function() 
-							{ 
-								$("#table").tablesorter(); 
-							} 
-						); 
-						
-						var tds = document.getElementById('table').getElementsByTagName('td');
-						var trs = document.getElementById('table').getElementsByTagName('tr');
-						var sumINFO1=0;
-						var sumMGS1=0;
-						var sumMGS2=0;
-						var sumUE11=0;
-						var sumEU12=0;
-						var sumUE21=0;
-						var sumEU22=0;
-
-						for(var k = 2; k < tds.length; k ++) {
-							if(tds[k].className == 'info1') {
-								sumINFO1 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-							
-							}
-							
-							if(tds[k].className == 'mgs1') {
-								sumMGS1 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+								$("table").tablesorter({
+									sortInitialOrder: 'desc',
+								});
 								
-							}
-							if(tds[k].className == 'mgs2') {
-								sumMGS2 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-								
-							}
-							if(tds[k].className == 'ue11') {
-								sumUE11 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-								
-							}
-							if(tds[k].className == 'eu12') {
-								sumEU12 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-								
-							}
-							if(tds[k].className == 'ue21') {
-								sumUE21 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-								
-							}
-							if(tds[k].className == 'eu22') {
-								sumEU22 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-								
-							}
-						}
-						
-						var longueur=trs.length-2;
-						
-						var moyenneINFO1 = sumINFO1/longueur;
-						var moyenneMGS1 = sumMGS1/longueur;
-						var moyenneMGS2 = sumMGS2/longueur;
-						var moyenneUE11 = sumUE11/longueur;
-						var moyenneEU12 = sumEU12/longueur;
-						var moyenneUE21 = sumUE21/longueur;
-						var moyenneEU22 = sumEU22/longueur;
-						PromoINFO1.innerHTML += '<tr><td>' + moyenneINFO1 + '</td></tr>'
-						PromoMGS1.innerHTML += '<tr><td>' + moyenneMGS1 + '</td></tr>'
-						PromoMGS2.innerHTML += '<tr><td>' + moyenneMGS2 + '</td></tr>'							
-						PromoUE11.innerHTML += '<tr><td>' + moyenneUE11 + '</td></tr>'
-						PromoUE21.innerHTML += '<tr><td>' + moyenneUE21 + '</td></tr>'
-						PromoEU12.innerHTML += '<tr><td>' + moyenneEU12 + '</td></tr>'							
-						PromoEU22.innerHTML += '<tr><td>' + moyenneEU22 + '</td></tr>'
+								/* Selectionner ligne du tableau */
+								$("tr").click(function(){
+									$(this).addClass("selected").siblings().removeClass("selected");
+								});
 						</script>
-						<table class="table" id="table">
+						<table class="table" id="table2">
 							<thead>
 								<tr class="filters">
 									<th><input type="text" class="form-control" placeholder="Nom" disabled></th>
@@ -211,7 +185,7 @@
 									<th><input type="text" class="form-control" placeholder="EU22" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Absences" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Redoublant" disabled></th>
-					<!--			<th><input type="text" class="form-control" placeholder="Classement" disabled></th> -->
+								<th><input type="text" class="form-control" placeholder="Classement" disabled></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -230,22 +204,23 @@
 									<td class="eu12">{{ eu12 }}</td>
 									<td class="eu22">{{ eu22 }}</td>
 									{{/each}}
-									<td name="absences">{{ absences }} abs.</td>
+									<td class="absences">{{ absences }}</td>
 									<td name="redoublant">{{ redoublant }}</td>
-					<!--			<td name="classement">{{ classement }}</td>  -->
+									<td class="classementS2"></td>  
 								</tr>
 								{{/each}}
 							</tbody>
 							<tfoot>
 								<tr class="filters">
 									<td colspan="2">Moyenne Promo</td>
-									<td id="PromoINFO1"></td>
-									<td id="PromoMGS1"></td>
-									<td id="PromoMGS2"></td>
-									<td id="PromoUE11"></td>
-									<td id="PromoUE21"></td>
-									<td id="PromoEU12"></td>
-									<td id="PromoEU22"></td>
+									<td id="PromoINFO1_2"></td>
+									<td id="PromoMGS1_2"></td>
+									<td id="PromoMGS2_2"></td>
+									<td id="PromoUE11_2"></td>
+									<td id="PromoUE21_2"></td>
+									<td id="PromoEU12_2"></td>
+									<td id="PromoEU22_2"></td>
+									<td id="PromoAbs_2"></td>
 								</tr>	
 							</tfoot>
 						</table>
@@ -253,54 +228,117 @@
 				</div>
 			</div>	
 		</div>
+
+		<script>
+		/* Couleurs en fonction de la moyenne */
+		function colorTestS2(){
+			var tds = document.getElementById('table2').getElementsByTagName('td');
+			for(var k = 0; k < tds.length; k ++) {
+				if(tds[k].className != 'absences' && tds[k].className != 'classementS2'){
+					if(tds[k].innerHTML>9)
+					{ 
+						tds[k].style.backgroundColor='#9bdb10';
+					}
+					else if(tds[k].innerHTML<10 && tds[k].innerHTML>7)
+					{
+						tds[k].style.backgroundColor='#ff953d';
+					}
+					else if(tds[k].innerHTML<8 && tds[k].innerHTML>0)
+					{
+						tds[k].style.backgroundColor='#ff1b1b';
+					}
+				}
+			}
+		}
+				
+		/* Moyenne Promo */
+		var tds = document.getElementById('table2').getElementsByTagName('td');
+		var trs = document.getElementById('table2').getElementsByTagName('tr');
+		var sumINFO1=0;
+		var sumMGS1=0;
+		var sumMGS2=0;
+		var sumUE11=0;
+		var sumEU12=0;
+		var sumUE21=0;
+		var sumEU22=0;
+		var sumAbs=0;
 		
+		for(var k = 2; k < tds.length; k ++) {
+			if(tds[k].className == 'info1') {
+				sumINFO1 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+			}	
+			if(tds[k].className == 'mgs1') {
+				sumMGS1 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+				
+			}
+			if(tds[k].className == 'mgs2') {
+				sumMGS2 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+				
+			}
+			if(tds[k].className == 'ue11') {
+				sumUE11 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+				
+			}
+			if(tds[k].className == 'eu12') {
+				sumEU12 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+				
+			}
+			if(tds[k].className == 'ue21') {
+				sumUE21 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+				
+			}
+			if(tds[k].className == 'eu22') {
+				sumEU22 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+			}
+			
+			if(tds[k].className == 'absences') {
+				sumAbs += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+			}
+		}
+		
+		var longueur=trs.length-2;
+		
+		var moyenneINFO1 = sumINFO1/longueur;
+		var moyenneMGS1 = sumMGS1/longueur;
+		var moyenneMGS2 = sumMGS2/longueur;
+		var moyenneUE11 = sumUE11/longueur;
+		var moyenneEU12 = sumEU12/longueur;
+		var moyenneUE21 = sumUE21/longueur;
+		var moyenneEU22 = sumEU22/longueur;
+		PromoINFO1_2.innerHTML += '<tr><td>' + moyenneINFO1.toFixed(2); + '</td></tr>'
+		PromoMGS1_2.innerHTML += '<tr><td>' + moyenneMGS1.toFixed(2); + '</td></tr>'
+		PromoMGS2_2.innerHTML += '<tr><td>' + moyenneMGS2.toFixed(2); + '</td></tr>'							
+		PromoUE11_2.innerHTML += '<tr><td>' + moyenneUE11.toFixed(2); + '</td></tr>'
+		PromoUE21_2.innerHTML += '<tr><td>' + moyenneUE21.toFixed(2); + '</td></tr>'
+		PromoEU12_2.innerHTML += '<tr><td>' + moyenneEU12.toFixed(2); + '</td></tr>'							
+		PromoEU22_2.innerHTML += '<tr><td>' + moyenneEU22.toFixed(2); + '</td></tr>'
+		PromoAbs_2.innerHTML += '<tr><td>' + sumAbs + ' abs </td></tr>'
+
+		/* Classement */		
+		function classementS2(){
+			var items = document.getElementsByClassName("classementS2"),i, len;
+
+			for (i = 0, len = items.length; i < len; i++) {
+				items[i].innerHTML = i+1;
+			}
+		}
+		</script>
 		<div class="container">
 			<div class="jumbotron">
 				<div class="row">
 					<div class="panel panel-primary filterable">
 						<div class="panel-heading">
-							<h3 class="panel-title">Semestre 3</h3><a class="btn btn-info" onClick="colorTest();">color</a>
+							<h3 class="panel-title">Semestre 3</h3><a class="btn btn-info" onClick="colorTestS3();">color</a>
 							<a class="btn btn-info" href="/detailNotes3">Detail Notes</a>
+							<a class="btn btn-info" onClick="classementS3();">Classement</a>
 							<div class="pull-right">
 								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
 							</div>
 						</div>
 						<script type="text/javascript" src="/js/jquery-latest.js"></script> 
 						<script type="text/javascript" src="/js/jquery.dataTables.min.js"></script>
-						<script>
-						/* Moyenne Promo */
-						var tds = document.getElementById('table').getElementsByTagName('td');
-						var trs = document.getElementById('table').getElementsByTagName('tr');							
-						var sumGen = 0;
-						var sumUE = 0;
-						var sumEU = 0;
-						var moyenne = 0;
-						for(var k = 2; k < tds.length; k ++) {
-							if(tds[k].className == 'mgs3') {
-								sumGen += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-								
-							}
-							if(tds[k].className == 'ue31') {
-								sumUE += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-								
-							}
-							if(tds[k].className == 'eu32') {
-								sumEU += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-								
-							}
-						}
-						
-						var longueur=trs.length-2;
-						
-						moyenneGen = sumGen/longueur;
-						moyenneUE = sumUE/longueur;
-						moyenneEU = sumEU/longueur;
-						PromoGen.innerHTML += '<tr><td>' + moyenneGen + '</td></tr>'
-						PromoUE.innerHTML += '<tr><td>' + moyenneUE + '</td></tr>'
-						PromoEU.innerHTML += '<tr><td>' + moyenneEU + '</td></tr>'
-						</script>
 						<link rel="stylesheet" type="text/css" href="/styles/jquery.dataTables.min.css">
-						<table class="table" id="table">
+						<table class="table" id="table3">
 							<thead>
 								<tr class="filters">
 									<th><input type="text" class="form-control" placeholder="Nom" disabled></th>
@@ -310,28 +348,10 @@
 									<th><input type="text" class="form-control" placeholder="EU32" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Absences" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Redoublant" disabled></th>
-					<!--			<th><input type="text" class="form-control" placeholder="Classement" disabled></th> -->
+									<th><input type="text" class="form-control" placeholder="Classement" disabled></th>
 								</tr>
 							</thead>
 							<tbody>
-								<!--
-								{{#each etudiant}}
-									<tr>
-										<td name="nom">{{ nom }}</td>
-										<td name="prenom">{{ prenom }}</td>
-										{{#each bulletin}}										
-										<td name="mgs1">{{ mgs3 }}</td>
-										<td name="ue11">{{ ue31 }}</td>
-										<td name="eu12">{{ eu32 }}</td>
-										<td name="ue21">{{ ue31 }}</td>
-										<td name="eu22">{{ eu32 }}</td>
-										{{/each}}
-										<td name="absent">{{ absent }}</td>
-										<td name="redoublant">{{ redoublant }}</td> 
-										<td name="classement">{{ classement }}</td> 
-										<td><a class="btn btn-danger delete" href="#">Suppr</a> <a class="btn btn-info" href="/etudiant/{{_id}}">carnet</a></td>
-									</tr>
-								{{/each}}-->
 								{{#each semestre3}}
 								<tr>
 									<td name="nom">{{ nom }}</td>
@@ -343,18 +363,19 @@
 									{{#each eu}}
 									<td class="eu32">{{ eu32 }}</td>
 									{{/each}}
-									<td name="absences">{{ absences }} abs.</td>
+									<td class="absences">{{ absences }}</td>
 									<td name="redoublant">{{ redoublant }}</td>
-					<!--			<td name="classement">{{ classement }}</td>  -->
+									<td class="classementS3"></td>
 								</tr>
 								{{/each}}
 							</tbody>
 							<tfoot>
 								<tr class="filters">
 									<td colspan="2">Moyenne Promo</td>
-									<td id="PromoGen"></td>
-									<td id="PromoUE"></td>
-									<td id="PromoEU"></td>
+									<td id="PromoGen_3"></td>
+									<td id="PromoUE_3"></td>
+									<td id="PromoEU_3"></td>
+									<td id="PromoAbs_3"></td>
 								</tr>
 							</tfoot>
 						</table>
@@ -362,82 +383,87 @@
 				</div>
 			</div>	
 		</div>
+		<script>		
+		/* Couleurs en fonction de la moyenne */			
+		function colorTestS3(){
+			var tds = document.getElementById('table3').getElementsByTagName('td');
+			for(var k = 0; k < tds.length; k ++) {
+				if(tds[k].className != 'absences' && tds[k].className != 'classementS3'){
+					if(tds[k].innerHTML>9)
+					{ 
+						tds[k].style.backgroundColor='#9bdb10';
+					}
+					else if(tds[k].innerHTML<10 && tds[k].innerHTML>7)
+					{
+						tds[k].style.backgroundColor='#ff953d';
+					}
+					else if(tds[k].innerHTML<8 && tds[k].innerHTML>0)
+					{
+						tds[k].style.backgroundColor='#ff1b1b';
+					}
+				}
+			}
+		}
+		
+		/* Moyenne Promo */
+		var tds = document.getElementById('table3').getElementsByTagName('td');
+		var trs = document.getElementById('table3').getElementsByTagName('tr');							
+		var sumGen = 0;
+		var sumUE = 0;
+		var sumEU = 0;
+		var sumAbs = 0;
+		for(var k = 2; k < tds.length; k ++) {
+			if(tds[k].className == 'mgs3') {
+				sumGen += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+			}
+			if(tds[k].className == 'ue31') {
+				sumUE += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+			}
+			if(tds[k].className == 'eu32') {
+				sumEU += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+			}
+			if(tds[k].className == 'absences') {
+				sumAbs += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+			}
+		}
+		
+		var longueur=trs.length-2;
+		
+		moyenneGen = sumGen/longueur;
+		moyenneUE = sumUE/longueur;
+		moyenneEU = sumEU/longueur;
+		PromoGen_3.innerHTML += '<tr><td>' + moyenneGen + '</td></tr>'
+		PromoUE_3.innerHTML += '<tr><td>' + moyenneUE + '</td></tr>'
+		PromoEU_3.innerHTML += '<tr><td>' + moyenneEU + '</td></tr>'
+		PromoAbs_3.innerHTML += '<tr><td>' + sumAbs + ' abs </td></tr>'
+	
+		/* Classement */		
+		function classementS3(){
+			var etudiantCourant = this._id;
+			var items = document.getElementsByClassName("classementS3"),i, len;
+
+			for (i = 0, len = items.length; i < len; i++) {
+				items[i].innerHTML = i+1;
+			}
+		}
+		</script>
 		
 		<div class="container">
 			<div class="jumbotron">
 				<div class="row">
 					<div class="panel panel-primary filterable">
 						<div class="panel-heading">
-							<h3 class="panel-title">Semestre 4</h3><a class="btn btn-info" onClick="colorTest();">color</a>
+							<h3 class="panel-title">Semestre 4</h3><a class="btn btn-info" onClick="colorTestS4();">color</a>
 							<a class="btn btn-info" href="/detailNotes4">Detail Notes</a>
+							<a class="btn btn-info" onClick="classementS4();">Classement</a>					
 							<div class="pull-right">
 								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
 							</div>
 						</div>
 						<script type="text/javascript" src="/js/jquery-latest.js"></script> 
 						<script type="text/javascript" src="/js/jquery.dataTables.min.js"></script>
-						<script>
-						/* Moyenne Promo */
-						var tds = document.getElementById('table').getElementsByTagName('td');
-						var trs = document.getElementById('table').getElementsByTagName('tr');
-						var sumINFO2=0;
-						var sumMGS3=0;
-						var sumMGS4=0;
-						var sumUE31=0;
-						var sumEU32=0;
-						var sumUE41=0;
-						var sumEU42=0;
-
-						for(var k = 2; k < tds.length; k ++) {
-							if(tds[k].className == 'info2') {
-								sumINFO2 += isNaN(tds[k].innerHTML) ? 0.0 : parseFloat(tds[k].innerHTML);
-							}
-							
-							if(tds[k].className == 'mgs3') {
-								sumMGS3 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-								
-							}
-							if(tds[k].className == 'mgs4') {
-								sumMGS4 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-								
-							}
-							if(tds[k].className == 'ue31') {
-								sumUE31 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-								
-							}
-							if(tds[k].className == 'eu32') {
-								sumEU32 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-								
-							}
-							if(tds[k].className == 'ue41') {
-								sumUE41 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-								
-							}
-							if(tds[k].className == 'eu42') {
-								sumEU42 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-								
-							}
-						}
-						
-						var longueur=trs.length-2;
-						
-						var moyenneINFO2 = sumINFO2/longueur;
-						var moyenneMGS3 = sumMGS3/longueur;
-						var moyenneMGS4 = sumMGS4/longueur;
-						var moyenneUE31 = sumUE31/longueur;
-						var moyenneEU32 = sumEU32/longueur;
-						var moyenneUE41 = sumUE41/longueur;
-						var moyenneEU42 = sumEU42/longueur;
-						PromoINFO2.innerHTML += '<tr><td>' + moyenneINFO2 + '</td></tr>'
-						PromoMGS3.innerHTML += '<tr><td>' + moyenneMGS3 + '</td></tr>'
-						PromoMGS4.innerHTML += '<tr><td>' + moyenneMGS4 + '</td></tr>'							
-						PromoUE31.innerHTML += '<tr><td>' + moyenneUE31 + '</td></tr>'
-						PromoEU32.innerHTML += '<tr><td>' + moyenneEU32 + '</td></tr>'
-						PromoUE41.innerHTML += '<tr><td>' + moyenneUE41 + '</td></tr>'
-						PromoEU42.innerHTML += '<tr><td>' + moyenneEU42 + '</td></tr>'
-						</script>
 						<link rel="stylesheet" type="text/css" href="/styles/jquery.dataTables.min.css"/>
-						<table class="table" id="table">
+						<table class="table" id="table4">
 							<thead>
 								<tr class="filters">
 									<th><input type="text" class="form-control" placeholder="Nom" disabled></th>
@@ -451,7 +477,7 @@
 									<th><input type="text" class="form-control" placeholder="EU42" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Absences" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Redoublant" disabled></th>
-					<!--			<th><input type="text" class="form-control" placeholder="Classement" disabled></th> -->
+									<th><input type="text" class="form-control" placeholder="Classement" disabled></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -470,22 +496,23 @@
 									<td class="eu32">{{ eu32 }}</td>
 									<td class="eu42">{{ eu42 }}</td>
 									{{/each}}
-									<td name="absences">{{ absences }} abs.</td>
+									<td class="absences">{{ absences }}</td>
 									<td name="redoublant">{{ redoublant }}</td>
-					<!--			<td name="classement">{{ classement }}</td>  -->
+									<td class="classementS4"></td>
 								</tr>
 								{{/each}}
 							</tbody>
 							<tfoot>
 								<tr class="filters">
 									<td colspan="2">Moyenne Promo</td>
-									<td id="PromoINFO2"></td>
-									<td id="PromoMGS3"></td>
-									<td id="PromoMGS4"></td>
-									<td id="PromoUE31"></td>
-									<td id="PromoUE41"></td>
-									<td id="PromoEU32"></td>
-									<td id="PromoEU42"></td>
+									<td id="PromoINFO2_4"></td>
+									<td id="PromoMGS3_4"></td>
+									<td id="PromoMGS4_4"></td>
+									<td id="PromoUE31_4"></td>
+									<td id="PromoUE41_4"></td>
+									<td id="PromoEU32_4"></td>
+									<td id="PromoEU42_4"></td>
+									<td id="PromoAbs_4"></td>
 								</tr>	
 							</tfoot>
 						</table>
@@ -493,6 +520,113 @@
 				</div>
 			</div>	
 		</div>
+		<script>
+		$("table").tablesorter({
+			sortInitialOrder: 'desc',
+		});
+		
+		/* Selectionner ligne du tableau */
+		$("tr").click(function(){
+			$(this).addClass("selected").siblings().removeClass("selected");
+		});
+		
+		/* Couleurs en fonction de la moyenne */
+		function colorTestS4(){
+			var tds = document.getElementById('table4').getElementsByTagName('td');
+			for(var k = 0; k < tds.length; k ++) {
+				if(tds[k].className != 'absences' && tds[k].className != 'classementS4'){
+					if(tds[k].innerHTML>9)
+					{ 
+						tds[k].style.backgroundColor='#9bdb10';
+					}
+					else if(tds[k].innerHTML<10 && tds[k].innerHTML>7)
+					{
+						tds[k].style.backgroundColor='#ff953d';
+					}
+					else if(tds[k].innerHTML<8 && tds[k].innerHTML>0)
+					{
+						tds[k].style.backgroundColor='#ff1b1b';
+					}
+				}
+			}
+		}
+		
+		/* Moyenne Promo */
+		var tds = document.getElementById('table4').getElementsByTagName('td');
+		var trs = document.getElementById('table4').getElementsByTagName('tr');
+		var sumINFO2=0;
+		var sumMGS3=0;
+		var sumMGS4=0;
+		var sumUE31=0;
+		var sumEU32=0;
+		var sumUE41=0;
+		var sumEU42=0;
+		var sumAbs=0;
+		
+		for(var k = 2; k < tds.length; k ++) {
+			if(tds[k].className == 'info2') {
+				sumINFO2 += isNaN(tds[k].innerHTML) ? 0.0 : parseFloat(tds[k].innerHTML);
+			}
+			
+			if(tds[k].className == 'mgs3') {
+				sumMGS3 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+				
+			}
+			if(tds[k].className == 'mgs4') {
+				sumMGS4 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+				
+			}
+			if(tds[k].className == 'ue31') {
+				sumUE31 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+				
+			}
+			if(tds[k].className == 'eu32') {
+				sumEU32 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+				
+			}
+			if(tds[k].className == 'ue41') {
+				sumUE41 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+				
+			}
+			if(tds[k].className == 'eu42') {
+				sumEU42 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+				
+			}
+			if(tds[k].className == 'absences') {
+				sumAbs += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+				
+			}
+		}
+		
+		var longueur=trs.length-2;
+		
+		var moyenneINFO2 = sumINFO2/longueur;
+		var moyenneMGS3 = sumMGS3/longueur;
+		var moyenneMGS4 = sumMGS4/longueur;
+		var moyenneUE31 = sumUE31/longueur;
+		var moyenneEU32 = sumEU32/longueur;
+		var moyenneUE41 = sumUE41/longueur;
+		var moyenneEU42 = sumEU42/longueur;
+		PromoINFO2_4.innerHTML += '<tr><td>' + moyenneINFO2 + '</td></tr>'
+		PromoMGS3_4.innerHTML += '<tr><td>' + moyenneMGS3 + '</td></tr>'
+		PromoMGS4_4.innerHTML += '<tr><td>' + moyenneMGS4 + '</td></tr>'							
+		PromoUE31_4.innerHTML += '<tr><td>' + moyenneUE31 + '</td></tr>'
+		PromoEU32_4.innerHTML += '<tr><td>' + moyenneEU32 + '</td></tr>'
+		PromoUE41_4.innerHTML += '<tr><td>' + moyenneUE41 + '</td></tr>'
+		PromoEU42_4.innerHTML += '<tr><td>' + moyenneEU42 + '</td></tr>'
+		PromoAbs_4.innerHTML += '<tr><td>' + sumAbs + ' abs </td></tr>'
+
+		/* Classement */		
+		function classementS4(){
+			var etudiantCourant = this._id;
+			var items = document.getElementsByClassName("classementS4"),i, len;
+
+			for (i = 0, len = items.length; i < len; i++) {
+				items[i].innerHTML = i+1;
+			}
+		}
+		</script>
+
     <script>
         $(document).ready(function(){
             $('.filterable .btn-filter').click(function(){

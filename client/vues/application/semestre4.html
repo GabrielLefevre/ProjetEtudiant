@@ -64,6 +64,7 @@
 									<td id="PromoUE41"></td>
 									<td id="PromoEU32"></td>
 									<td id="PromoEU42"></td>
+									<td id="PromoAbs"></td>
 								</tr>	
 							</tfoot>
 						</table>
@@ -112,7 +113,8 @@
 		var sumEU32=0;
 		var sumUE41=0;
 		var sumEU42=0;
-
+		var sumAbs=0;
+		
 		for(var k = 2; k < tds.length; k ++) {
 			if(tds[k].className == 'info2') {
 				sumINFO2 += isNaN(tds[k].innerHTML) ? 0.0 : parseFloat(tds[k].innerHTML);
@@ -142,6 +144,10 @@
 				sumEU42 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 				
 			}
+			if(tds[k].className == 'absences') {
+				sumAbs += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+				
+			}
 		}
 		
 		var longueur=trs.length-2;
@@ -160,7 +166,8 @@
 		PromoEU32.innerHTML += '<tr><td>' + moyenneEU32 + '</td></tr>'
 		PromoUE41.innerHTML += '<tr><td>' + moyenneUE41 + '</td></tr>'
 		PromoEU42.innerHTML += '<tr><td>' + moyenneEU42 + '</td></tr>'
-		
+		PromoAbs.innerHTML += '<tr><td>' + sumAbs + ' abs </td></tr>'
+
 		/* Classement */		
 		function classement(){
 			var etudiantCourant = this._id;

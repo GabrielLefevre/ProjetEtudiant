@@ -74,6 +74,7 @@
 									<td id="PromoUE21"></td>
 									<td id="PromoEU12"></td>
 									<td id="PromoEU22"></td>
+									<td id="PromoAbs"></td>
 								</tr>	
 							</tfoot>
 						</table>
@@ -114,13 +115,12 @@
 		var sumEU12=0;
 		var sumUE21=0;
 		var sumEU22=0;
-
+		var sumAbs=0;
+		
 		for(var k = 2; k < tds.length; k ++) {
 			if(tds[k].className == 'info1') {
 				sumINFO1 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-			
-			}
-			
+			}	
 			if(tds[k].className == 'mgs1') {
 				sumMGS1 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 				
@@ -143,7 +143,10 @@
 			}
 			if(tds[k].className == 'eu22') {
 				sumEU22 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-				
+			}
+			
+			if(tds[k].className == 'absences') {
+				sumAbs += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 			}
 		}
 		
@@ -163,7 +166,8 @@
 		PromoUE21.innerHTML += '<tr><td>' + moyenneUE21.toFixed(2); + '</td></tr>'
 		PromoEU12.innerHTML += '<tr><td>' + moyenneEU12.toFixed(2); + '</td></tr>'							
 		PromoEU22.innerHTML += '<tr><td>' + moyenneEU22.toFixed(2); + '</td></tr>'
-		
+		PromoAbs.innerHTML += '<tr><td>' + sumAbs + ' abs </td></tr>'
+
 		/* Classement */		
 		function classement(){
 			var items = document.getElementsByClassName("classement"),i, len;

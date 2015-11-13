@@ -39,9 +39,22 @@
 						<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 						<script>
 						$(document).ready(function(){
-							$("button").click(function(){
-								$("test").toggle();
+							$("tr").click(function(){
+								$(this).addClass("selected").siblings().removeClass("selected");
 							});
+						});	
+						
+						$(document).ready(function(){
+							$("button").click(function(){
+								$("td").toggle();
+							});
+						});
+						
+						$(document).ready(function()
+						 {
+							 $(".rowToClick").click(function() { $(this).nextUntil(".rowToClick").toggle(); });
+							 $(".rowToClick2").click(function() { $(this).nextUntil(".rowToClick2").toggle(); });
+						
 						});
 						</script>
 						<script>
@@ -64,82 +77,8 @@
 							}
 						</script>
 							<table class="table" id="table">
-							<tbody><!--
-								<tr>
-									<td colspan="2">Semestre 1</td>
-								</tr>	
-								<tr>
-									<td colspan="2">UE11</td>
-								</tr>	
-								<tr>											
-									<td> Nom </td>
-									<td> Note </td>
-								</tr>
-
-									{{#each ue11}}
-										<tr>											
-											<td> {{ nom	}} </td>
-											<td> {{ note }} </td>
-										</tr>
-									{{/each}}
-				
-								<tr>
-									<td colspan="2">EU12</td>
-								</tr>	
-								<tr>											
-									<td> Nom </td>
-									<td> Note </td>
-								</tr>			
-							
-									{{#each eu12}}
-										<tr>											
-											<td> {{ nom	}} </td>
-											<td> {{ note }} </td>
-										</tr>
-									{{/each}}	
-
-									{{#each ue21}}
-										<tr>											
-											<td> {{ nom	}} </td>
-											<td> {{ note }} </td>
-										</tr>
-									{{/each}}
-									
-									{{#each eu22}}
-										<tr>											
-											<td> {{ nom	}} </td>
-											<td> {{ note }} </td>
-										</tr>
-									{{/each}}
-									
-									{{#each ue31}}
-										<tr>											
-											<td> {{ nom	}} </td>
-											<td> {{ note }} </td>
-										</tr>
-									{{/each}}
-									
-									{{#each eu32}}
-										<tr>											
-											<td> {{ nom	}} </td>
-											<td> {{ note }} </td>
-										</tr>
-									{{/each}}	
-									
-									{{#each ue41}}
-										<tr>											
-											<td> {{ nom	}} </td>
-											<td> {{ note }} </td>
-										</tr>
-									{{/each}}
-									
-									{{#each eu42}}
-										<tr>											
-											<td> {{ nom	}} </td>
-											<td> {{ note }} </td>
-										</tr>
-									{{/each}}		-->								
-								{{#each semestre}}
+							<!--
+							{{#each semestre}}
 								<td>
 									<td colspan="3">
 										<p></p>
@@ -179,8 +118,50 @@
 											
 										{{/each}}
 									</td>	
+								{{/each}}-->
+								<tbody>
+								{{#each semestre}}
+									<td class='rowToClick' colspan="3">
+										<p></p>
+										<center><tr><b>{{ titre }}</b></tr></center>
+										<p></p>
+									</td>
+										<tr class='rowToClick2'>
+											<td colspan="3"><i> General </i></td>
+										</tr>
+										<tr>		
+											<td> Moy.Gen </td>
+											<td> {{ moyenne }} </td>
+										</tr>	
+										{{#each ue}}
+										<tr>		
+											<td> {{ eu }} </td>
+											<td class="note"> {{ moyenne }} </td>
+										</tr>										
+										{{/each}}
+										<tr>
+											<td>Decision du jury</td>
+											<td colspan="2">{{ decision }}</td>
+										</tr>
+										<tr>
+											<td>Nombre d'absences</td>
+											<td colspan="2">{{ nbAbsences }} abs.</td>
+										</tr>
+										{{#each ue}}
+										<tr class='rowToClick2'>
+											<td colspan="3"><i> {{ eu }} </i></td>
+										</tr>
+											{{#each matiere}}
+											<tr>											
+												<td> {{ nom	}} </td>
+												<td colspan="2"> {{ moyenne }} </td>
+											</tr>
+											{{/each}}
+											
+										{{/each}}
+										<tr class='rowToClick2'></tr>
 								{{/each}}
-							</tbody>
+								</tbody>
 						</table>
 					</div>	
 					<div class="panel panel-primary filterable">
@@ -210,8 +191,8 @@
 									}
 								}
 							</script>
-							<tbody>
-								<td colspan="3">
+							<tfoot>
+								<td class='rowToClick' colspan="3">
 									<p></p>
 									<center><tr><b>Avis poursuite d'études</b></tr></center>
 									<p></p>
@@ -237,7 +218,7 @@
 									<td id="faving"></td>
 									<td id="deving"></td>
 								</tr>
-							</tbody>	
+							</tfoot>	
 						</table>		
 					</div>
 				</div>

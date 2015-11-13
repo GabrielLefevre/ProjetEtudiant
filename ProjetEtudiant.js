@@ -29,6 +29,16 @@ if (Meteor.isServer) {
 			fields: {content: 0}
 		});
 	});
+	
+	Meteor.publish("allPromoHeaders", function(){
+		return [
+			Semestre1.find({}, {fields: {content: 0}}),
+			Semestre2.find({}, {fields: {content: 0}}),
+			Semestre3.find({}, {fields: {content: 0}}),
+			Semestre4.find({}, {fields: {content: 0}})
+		];
+	});
+	
 	Meteor.publish("allSemestreHeaders", function(){
 		return Semestre.find({}, {
 			fields: {content: 0}

@@ -5,13 +5,14 @@
 				<div class="row">
 					<div class="panel panel-primary filterable">
 						<div class="panel-heading">
-							
-							<h3 class="panel-title">Semestre 1</h3><a class="btn btn-info" onClick="colorTest();">color</a>
+							<h3 class="panel-title">Semestre 1</h3>		
+							<a class="btn btn-info" onClick="colorTest();">color</a>
 							<a class="btn btn-info" href="/detailNotes1">Detail Notes</a>
 							<a class="btn btn-info" onClick="classement();">Classement</a>
 							<div class="pull-right">
 								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
 							</div>
+							&nbsp;			
 						</div>
 						<script type="text/javascript" src="/jquery-latest.js"></script> 
 						<script type="text/javascript" src="/jquery.tablesorter.js"></script> 
@@ -22,12 +23,12 @@
 								$("table").tablesorter({
 									sortInitialOrder: 'desc',
 								});
-								
+							});	
 								/* Selectionner ligne du tableau */
 								$("tr").click(function(){
 									$(this).addClass("selected").siblings().removeClass("selected");
 								});
-							});
+								
 						</script>
 	
 					<table id="table" class="table"> 
@@ -89,6 +90,7 @@
 									<td id="PromoGen"></td>
 									<td id="PromoUE"></td>
 									<td id="PromoEU"></td>
+									<td id="PromoAbs"></td>
 								</tr>
 							</tfoot>
 						</table>
@@ -125,7 +127,8 @@
 			var sumGen = 0;
 			var sumUE = 0;
 			var sumEU = 0;
-
+			var sumAbs = 0;
+			
 			for(var k = 2; k < tds.length; k ++) {
 				if(tds[k].className == 'mgs1') {
 					sumGen += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
@@ -137,7 +140,9 @@
 				}
 				if(tds[k].className == 'eu12') {
 					sumEU += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-					
+				}
+				if(tds[k].className == 'absences') {
+					sumAbs += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 				}
 			}
 
@@ -150,14 +155,16 @@
 			PromoGen.innerHTML += '<tr><td>' + moyenneGen + '</td></tr>'
 			PromoUE.innerHTML += '<tr><td>' + moyenneUE + '</td></tr>'
 			PromoEU.innerHTML += '<tr><td>' + moyenneEU + '</td></tr>'
+			PromoAbs.innerHTML += '<tr><td>' + sumAbs + ' abs </td></tr>'
 			
 			/* Classement */	
-				function classement(){
-					var items = document.getElementsByClassName("classement"),i, len;
-					for (i = 0, len = items.length; i < len; i++) {
-						items[i].innerHTML = i+1;
-					}
+			function classement(){
+				var items = document.getElementsByClassName("classement"),i, len;
+				for (i = 0, len = items.length; i < len; i++) {
+					items[i].innerHTML = i+1;
 				}
+			}
+
 		</script>
 
 		<script>

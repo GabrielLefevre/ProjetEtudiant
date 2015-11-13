@@ -70,6 +70,7 @@
 									<td id="PromoGen"></td>
 									<td id="PromoUE"></td>
 									<td id="PromoEU"></td>
+									<td id="PromoAbs"></td>
 								</tr>
 							</tfoot>
 						</table>
@@ -105,19 +106,19 @@
 		var sumGen = 0;
 		var sumUE = 0;
 		var sumEU = 0;
-		var moyenne = 0;
+		var sumAbs = 0;
 		for(var k = 2; k < tds.length; k ++) {
 			if(tds[k].className == 'mgs3') {
 				sumGen += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-				
 			}
 			if(tds[k].className == 'ue31') {
 				sumUE += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-				
 			}
 			if(tds[k].className == 'eu32') {
 				sumEU += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-				
+			}
+			if(tds[k].className == 'absences') {
+				sumAbs += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 			}
 		}
 		
@@ -129,7 +130,8 @@
 		PromoGen.innerHTML += '<tr><td>' + moyenneGen + '</td></tr>'
 		PromoUE.innerHTML += '<tr><td>' + moyenneUE + '</td></tr>'
 		PromoEU.innerHTML += '<tr><td>' + moyenneEU + '</td></tr>'
-		
+		PromoAbs.innerHTML += '<tr><td>' + sumAbs + ' abs </td></tr>'
+	
 		/* Classement */		
 		function classement(){
 			var etudiantCourant = this._id;

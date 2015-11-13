@@ -2,6 +2,7 @@
 padding-top:100px;
 }
 
+
 table
 {
     border-collapse: collapse;
@@ -18,11 +19,14 @@ tbody tr:hover, tbody tr.selected{
   background-color: #8DBDD8;
 }
 
-/*
+
+
+
+/* Colorier une ligne sur deux */
 tr:nth-child(even) {
-    background-color: #8DBDD8;
+    background-color: #EBF2FA;
 }
-*/
+
 .btn-danger{
 	margin: 2px;
 }

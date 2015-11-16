@@ -7,8 +7,10 @@
 						<div class="panel-heading">
 							<h3 class="panel-title">Semestre 1</h3>		
 							<a class="btn btn-info" onClick="colorTest();">color</a>
-							<a class="btn btn-info" href="/detailNotes1">Detail Notes</a>
+							<a class="btn btn-info" href="/promotion/2014/detailNotes">Detail Notes</a>
 							<a class="btn btn-info" onClick="classement();">Classement</a>
+							<a class="btn btn-info" onClick="moyenne();">Moyenne</a>
+
 							<div class="pull-right">
 								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
 							</div>
@@ -36,12 +38,12 @@
 								<tr class="filters">
 									<th><input type="text" class="form-control" placeholder="Nom" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Prenom" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Classement" disabled></th>
 									<th><input type="text" class="form-control" placeholder="MGS1" disabled></th>
 									<th><input type="text" class="form-control" placeholder="UE11" disabled></th>
 									<th><input type="text" class="form-control" placeholder="EU12" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Absences" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Redoublant" disabled></th>
-									<th><input type="text" class="form-control" placeholder="Classement" disabled></th>
 							<!-- 	<th>Actions</th> -->
 								</tr>
 							</thead>
@@ -49,23 +51,24 @@
 								{{#each semestre1}}
 								<tr>
 									<td name="nom">{{ nom }}</td>
-									<td name="prenom">{{ prenom }}</td>								
-									<td class="mgs1">{{ mgs1 }}</td>
+									<td name="prenom">{{ prenom }}</td>	
+									<td class="classement"></td>
+									<td id="mgs1">{{ mgs1 }}</td>
 									{{#each ue}}
-									<td class="ue11">{{ ue11 }}</td>
+									<td id="ue11">{{ ue11 }}</td>
 									{{/each}}
 									{{#each eu}}
-									<td class="eu12">{{ eu12 }}</td>
+									<td id="eu12">{{ eu12 }}</td>
 									{{/each}}
-									<td class="absences">{{ absences }}</td>
-									<td name="redoublant">{{ redoublant }}</td>
-									<td class="classement"></td>
+									<td id="absences">{{ absences }}</td>
+									<td name="redoublant">{{ redoublant }}</td>							
 								</tr>
 								{{/each}}
 							</tbody>
 							<tfoot>
 								<tr class="filters">
 									<td colspan="2">Moyenne Promo</td>
+									<td></td>
 									<td id="PromoGen_1"></td>
 									<td id="PromoUE_1"></td>
 									<td id="PromoEU_1"></td>
@@ -82,7 +85,7 @@
 			function colorTest(){
 				var tds = document.getElementById('table').getElementsByTagName('td');
 				for(var k = 0; k < tds.length; k ++) {
-				if(tds[k].className != 'absences' && tds[k].className != 'classement'){
+				if(tds[k].id != 'absences' && tds[k].className != 'classement'){
 						if(tds[k].innerHTML>9)
 						{ 
 							tds[k].style.backgroundColor='#9bdb10';
@@ -99,51 +102,41 @@
 				}
 			}
 
-
-			/* Moyenne Promo */
+/*
 			var tds = document.getElementById('table').getElementsByTagName('td');
 			var trs = document.getElementById('table').getElementsByTagName('tr');							
-			var sumGen = 0;
-			var sumUE = 0;
-			var sumEU = 0;
-			var sumAbs = 0;
+			var sumGen = 0, sumUE = 0, sumEU = 0, sumAbs = 0;
 			
 			for(var k = 2; k < tds.length; k ++) {
-				if(tds[k].className == 'mgs1') {
+				if(tds[k].id == 'mgs1') {
 					sumGen += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-					
 				}
-				if(tds[k].className == 'ue11') {
+				if(tds[k].id == 'ue11') {
 					sumUE += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
-					
 				}
-				if(tds[k].className == 'eu12') {
+				if(tds[k].id == 'eu12') {
 					sumEU += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 				}
-				if(tds[k].className == 'absences') {
+				if(tds[k].id == 'absences') {
 					sumAbs += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 				}
 			}
 
-
+*/
 			var longueur=trs.length-2;
-
-			var moyenneGen = sumGen/longueur;
-			var moyenneUE = sumUE/longueur;
-			var moyenneEU = sumEU/longueur;
-			PromoGen_1.innerHTML += '<tr><td>' + moyenneGen + '</td></tr>'
-			PromoUE_1.innerHTML += '<tr><td>' + moyenneUE + '</td></tr>'
-			PromoEU_1.innerHTML += '<tr><td>' + moyenneEU + '</td></tr>'
+			PromoGen_1.innerHTML += '<tr><td>' + sumGen/longueur + '</td></tr>'
+			PromoUE_1.innerHTML += '<tr><td>' + sumUE/longueur + '</td></tr>'
+			PromoEU_1.innerHTML += '<tr><td>' + sumEU/longueur + '</td></tr>'
 			PromoAbs_1.innerHTML += '<tr><td>' + sumAbs + ' abs </td></tr>'
 			
-			/* Classement */	
+			
+			/* Classement */ 
 			function classement(){
 				var items = document.getElementsByClassName("classement"),i, len;
 				for (i = 0, len = items.length; i < len; i++) {
 					items[i].innerHTML = i+1;
 				}
 			}
-
 		</script>
 
 		<div class="container">
@@ -176,6 +169,7 @@
 								<tr class="filters">
 									<th><input type="text" class="form-control" placeholder="Nom" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Prenom" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Classement" disabled></th>
 									<th><input type="text" class="form-control" placeholder="INFO1" disabled></th>
 									<th><input type="text" class="form-control" placeholder="MGS1" disabled></th>
 									<th><input type="text" class="form-control" placeholder="MGS2" disabled></th>
@@ -185,7 +179,6 @@
 									<th><input type="text" class="form-control" placeholder="EU22" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Absences" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Redoublant" disabled></th>
-								<th><input type="text" class="form-control" placeholder="Classement" disabled></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -193,26 +186,27 @@
 								<tr>
 									<td name="nom">{{ nom }}</td>
 									<td name="prenom">{{ prenom }}</td>
-									<td class="info1">{{ info1 }}</td>
-									<td class="mgs1">{{ mgs1 }}</td>									
-									<td class="mgs2">{{ mgs2 }}</td>
+									<td class="classementS2"></td>  
+									<td id="info1">{{ info1 }}</td>
+									<td id="mgs1">{{ mgs1 }}</td>									
+									<td id="mgs2">{{ mgs2 }}</td>
 									{{#each ue}}
-									<td class="ue11">{{ ue11 }}</td>	
-									<td class="ue21">{{ ue21 }}</td>										
+									<td id="ue11">{{ ue11 }}</td>	
+									<td id="ue21">{{ ue21 }}</td>										
 									{{/each}}
 									{{#each eu}}
-									<td class="eu12">{{ eu12 }}</td>
-									<td class="eu22">{{ eu22 }}</td>
+									<td id="eu12">{{ eu12 }}</td>
+									<td id="eu22">{{ eu22 }}</td>
 									{{/each}}
-									<td class="absences">{{ absences }}</td>
+									<td id="absences">{{ absences }}</td>
 									<td name="redoublant">{{ redoublant }}</td>
-									<td class="classementS2"></td>  
 								</tr>
 								{{/each}}
 							</tbody>
 							<tfoot>
 								<tr class="filters">
 									<td colspan="2">Moyenne Promo</td>
+									<td></td>
 									<td id="PromoINFO1_2"></td>
 									<td id="PromoMGS1_2"></td>
 									<td id="PromoMGS2_2"></td>
@@ -234,7 +228,7 @@
 		function colorTestS2(){
 			var tds = document.getElementById('table2').getElementsByTagName('td');
 			for(var k = 0; k < tds.length; k ++) {
-				if(tds[k].className != 'absences' && tds[k].className != 'classementS2'){
+				if(tds[k].id != 'absences' && tds[k].className != 'classementS2'){
 					if(tds[k].innerHTML>9)
 					{ 
 						tds[k].style.backgroundColor='#9bdb10';
@@ -254,64 +248,49 @@
 		/* Moyenne Promo */
 		var tds = document.getElementById('table2').getElementsByTagName('td');
 		var trs = document.getElementById('table2').getElementsByTagName('tr');
-		var sumINFO1=0;
-		var sumMGS1=0;
-		var sumMGS2=0;
-		var sumUE11=0;
-		var sumEU12=0;
-		var sumUE21=0;
-		var sumEU22=0;
-		var sumAbs=0;
+		var sumINFO1=0, sumMGS1=0, sumMGS2=0, sumUE11=0, sumEU12=0, sumUE21=0, sumEU22=0, sumAbs=0;
 		
 		for(var k = 2; k < tds.length; k ++) {
-			if(tds[k].className == 'info1') {
+			if(tds[k].id == 'info1') {
 				sumINFO1 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 			}	
-			if(tds[k].className == 'mgs1') {
+			if(tds[k].id == 'mgs1') {
 				sumMGS1 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 				
 			}
-			if(tds[k].className == 'mgs2') {
+			if(tds[k].id == 'mgs2') {
 				sumMGS2 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 				
 			}
-			if(tds[k].className == 'ue11') {
+			if(tds[k].id == 'ue11') {
 				sumUE11 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 				
 			}
-			if(tds[k].className == 'eu12') {
+			if(tds[k].id == 'eu12') {
 				sumEU12 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 				
 			}
-			if(tds[k].className == 'ue21') {
+			if(tds[k].id == 'ue21') {
 				sumUE21 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 				
 			}
-			if(tds[k].className == 'eu22') {
+			if(tds[k].id == 'eu22') {
 				sumEU22 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 			}
 			
-			if(tds[k].className == 'absences') {
+			if(tds[k].id == 'absences') {
 				sumAbs += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 			}
 		}
 		
-		var longueur=trs.length-2;
-		
-		var moyenneINFO1 = sumINFO1/longueur;
-		var moyenneMGS1 = sumMGS1/longueur;
-		var moyenneMGS2 = sumMGS2/longueur;
-		var moyenneUE11 = sumUE11/longueur;
-		var moyenneEU12 = sumEU12/longueur;
-		var moyenneUE21 = sumUE21/longueur;
-		var moyenneEU22 = sumEU22/longueur;
-		PromoINFO1_2.innerHTML += '<tr><td>' + moyenneINFO1.toFixed(2); + '</td></tr>'
-		PromoMGS1_2.innerHTML += '<tr><td>' + moyenneMGS1.toFixed(2); + '</td></tr>'
-		PromoMGS2_2.innerHTML += '<tr><td>' + moyenneMGS2.toFixed(2); + '</td></tr>'							
-		PromoUE11_2.innerHTML += '<tr><td>' + moyenneUE11.toFixed(2); + '</td></tr>'
-		PromoUE21_2.innerHTML += '<tr><td>' + moyenneUE21.toFixed(2); + '</td></tr>'
-		PromoEU12_2.innerHTML += '<tr><td>' + moyenneEU12.toFixed(2); + '</td></tr>'							
-		PromoEU22_2.innerHTML += '<tr><td>' + moyenneEU22.toFixed(2); + '</td></tr>'
+		var longueur=trs.length-2;	
+		PromoINFO1_2.innerHTML += '<tr><td>' + sumINFO1/longueur + '</td></tr>'		
+		PromoMGS1_2.innerHTML += '<tr><td>' + sumMGS1/longueur + '</td></tr>'
+		PromoMGS2_2.innerHTML += '<tr><td>' + sumMGS2/longueur + '</td></tr>'							
+		PromoUE11_2.innerHTML += '<tr><td>' + sumUE11/longueur + '</td></tr>'
+		PromoUE21_2.innerHTML += '<tr><td>' + sumEU12/longueur + '</td></tr>'
+		PromoEU12_2.innerHTML += '<tr><td>' + sumUE21/longueur + '</td></tr>'							
+		PromoEU22_2.innerHTML += '<tr><td>' + sumEU22/longueur + '</td></tr>'
 		PromoAbs_2.innerHTML += '<tr><td>' + sumAbs + ' abs </td></tr>'
 
 		/* Classement */		
@@ -343,35 +322,36 @@
 								<tr class="filters">
 									<th><input type="text" class="form-control" placeholder="Nom" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Prenom" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Classement" disabled></th>
 									<th><input type="text" class="form-control" placeholder="MGS3" disabled></th>
 									<th><input type="text" class="form-control" placeholder="UE31" disabled></th>
 									<th><input type="text" class="form-control" placeholder="EU32" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Absences" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Redoublant" disabled></th>
-									<th><input type="text" class="form-control" placeholder="Classement" disabled></th>
 								</tr>
 							</thead>
 							<tbody>
 								{{#each semestre3}}
 								<tr>
 									<td name="nom">{{ nom }}</td>
-									<td name="prenom">{{ prenom }}</td>								
-									<td class="mgs3">{{ mgs3 }}</td>
+									<td name="prenom">{{ prenom }}</td>		
+									<td class="classementS3"></td>									
+									<td id="mgs3">{{ mgs3 }}</td>
 									{{#each ue}}
-									<td class="ue31">{{ ue31 }}</td>
+									<td id="ue31">{{ ue31 }}</td>
 									{{/each}}
 									{{#each eu}}
-									<td class="eu32">{{ eu32 }}</td>
+									<td id="eu32">{{ eu32 }}</td>
 									{{/each}}
-									<td class="absences">{{ absences }}</td>
+									<td id="absences">{{ absences }}</td>
 									<td name="redoublant">{{ redoublant }}</td>
-									<td class="classementS3"></td>
 								</tr>
 								{{/each}}
 							</tbody>
 							<tfoot>
 								<tr class="filters">
 									<td colspan="2">Moyenne Promo</td>
+									<td></td>
 									<td id="PromoGen_3"></td>
 									<td id="PromoUE_3"></td>
 									<td id="PromoEU_3"></td>
@@ -388,7 +368,7 @@
 		function colorTestS3(){
 			var tds = document.getElementById('table3').getElementsByTagName('td');
 			for(var k = 0; k < tds.length; k ++) {
-				if(tds[k].className != 'absences' && tds[k].className != 'classementS3'){
+				if(tds[k].id != 'absences' && tds[k].className != 'classementS3'){
 					if(tds[k].innerHTML>9)
 					{ 
 						tds[k].style.backgroundColor='#9bdb10';
@@ -413,28 +393,25 @@
 		var sumEU = 0;
 		var sumAbs = 0;
 		for(var k = 2; k < tds.length; k ++) {
-			if(tds[k].className == 'mgs3') {
+			if(tds[k].id == 'mgs3') {
 				sumGen += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 			}
-			if(tds[k].className == 'ue31') {
+			if(tds[k].id == 'ue31') {
 				sumUE += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 			}
-			if(tds[k].className == 'eu32') {
+			if(tds[k].id == 'eu32') {
 				sumEU += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 			}
-			if(tds[k].className == 'absences') {
+			if(tds[k].id == 'absences') {
 				sumAbs += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 			}
 		}
 		
 		var longueur=trs.length-2;
 		
-		moyenneGen = sumGen/longueur;
-		moyenneUE = sumUE/longueur;
-		moyenneEU = sumEU/longueur;
-		PromoGen_3.innerHTML += '<tr><td>' + moyenneGen + '</td></tr>'
-		PromoUE_3.innerHTML += '<tr><td>' + moyenneUE + '</td></tr>'
-		PromoEU_3.innerHTML += '<tr><td>' + moyenneEU + '</td></tr>'
+		PromoGen_3.innerHTML += '<tr><td>' + sumGen/longueur + '</td></tr>'
+		PromoUE_3.innerHTML += '<tr><td>' + sumUE/longueur + '</td></tr>'
+		PromoEU_3.innerHTML += '<tr><td>' + sumEU/longueur + '</td></tr>'
 		PromoAbs_3.innerHTML += '<tr><td>' + sumAbs + ' abs </td></tr>'
 	
 		/* Classement */		
@@ -468,6 +445,7 @@
 								<tr class="filters">
 									<th><input type="text" class="form-control" placeholder="Nom" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Prenom" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Classement" disabled></th>
 									<th><input type="text" class="form-control" placeholder="INFO2" disabled></th>
 									<th><input type="text" class="form-control" placeholder="MGS3" disabled></th>
 									<th><input type="text" class="form-control" placeholder="MGS4" disabled></th>
@@ -477,7 +455,6 @@
 									<th><input type="text" class="form-control" placeholder="EU42" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Absences" disabled></th>
 									<th><input type="text" class="form-control" placeholder="Redoublant" disabled></th>
-									<th><input type="text" class="form-control" placeholder="Classement" disabled></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -485,26 +462,27 @@
 								<tr>
 									<td name="nom">{{ nom }}</td>
 									<td name="prenom">{{ prenom }}</td>
-									<td class="info2">{{ info2 }}</td>
-									<td class="mgs3">{{ mgs3 }}</td>									
-									<td class="mgs4">{{ mgs4 }}</td>
+									<td class="classementS4"></td>
+									<td id="info2">{{ info2 }}</td>
+									<td id="mgs3">{{ mgs3 }}</td>									
+									<td id="mgs4">{{ mgs4 }}</td>
 									{{#each ue}}
-									<td class="ue31">{{ ue31 }}</td>	
-									<td class="ue41">{{ ue41 }}</td>										
+									<td id="ue31">{{ ue31 }}</td>	
+									<td id="ue41">{{ ue41 }}</td>										
 									{{/each}}
 									{{#each eu}}
-									<td class="eu32">{{ eu32 }}</td>
-									<td class="eu42">{{ eu42 }}</td>
+									<td id="eu32">{{ eu32 }}</td>
+									<td id="eu42">{{ eu42 }}</td>
 									{{/each}}
-									<td class="absences">{{ absences }}</td>
-									<td name="redoublant">{{ redoublant }}</td>
-									<td class="classementS4"></td>
+									<td id="absences">{{ absences }}</td>
+									<td name="redoublant">{{ redoublant }}</td>						
 								</tr>
 								{{/each}}
 							</tbody>
 							<tfoot>
 								<tr class="filters">
 									<td colspan="2">Moyenne Promo</td>
+									<td></td>
 									<td id="PromoINFO2_4"></td>
 									<td id="PromoMGS3_4"></td>
 									<td id="PromoMGS4_4"></td>
@@ -534,7 +512,7 @@
 		function colorTestS4(){
 			var tds = document.getElementById('table4').getElementsByTagName('td');
 			for(var k = 0; k < tds.length; k ++) {
-				if(tds[k].className != 'absences' && tds[k].className != 'classementS4'){
+				if(tds[k].id != 'absences' && tds[k].className != 'classementS4'){
 					if(tds[k].innerHTML>9)
 					{ 
 						tds[k].style.backgroundColor='#9bdb10';
@@ -564,35 +542,35 @@
 		var sumAbs=0;
 		
 		for(var k = 2; k < tds.length; k ++) {
-			if(tds[k].className == 'info2') {
+			if(tds[k].id == 'info2') {
 				sumINFO2 += isNaN(tds[k].innerHTML) ? 0.0 : parseFloat(tds[k].innerHTML);
 			}
 			
-			if(tds[k].className == 'mgs3') {
+			if(tds[k].id == 'mgs3') {
 				sumMGS3 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 				
 			}
-			if(tds[k].className == 'mgs4') {
+			if(tds[k].id == 'mgs4') {
 				sumMGS4 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 				
 			}
-			if(tds[k].className == 'ue31') {
+			if(tds[k].id == 'ue31') {
 				sumUE31 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 				
 			}
-			if(tds[k].className == 'eu32') {
+			if(tds[k].id == 'eu32') {
 				sumEU32 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 				
 			}
-			if(tds[k].className == 'ue41') {
+			if(tds[k].id == 'ue41') {
 				sumUE41 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 				
 			}
-			if(tds[k].className == 'eu42') {
+			if(tds[k].id == 'eu42') {
 				sumEU42 += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 				
 			}
-			if(tds[k].className == 'absences') {
+			if(tds[k].id == 'absences') {
 				sumAbs += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 				
 			}
@@ -600,20 +578,13 @@
 		
 		var longueur=trs.length-2;
 		
-		var moyenneINFO2 = sumINFO2/longueur;
-		var moyenneMGS3 = sumMGS3/longueur;
-		var moyenneMGS4 = sumMGS4/longueur;
-		var moyenneUE31 = sumUE31/longueur;
-		var moyenneEU32 = sumEU32/longueur;
-		var moyenneUE41 = sumUE41/longueur;
-		var moyenneEU42 = sumEU42/longueur;
-		PromoINFO2_4.innerHTML += '<tr><td>' + moyenneINFO2 + '</td></tr>'
-		PromoMGS3_4.innerHTML += '<tr><td>' + moyenneMGS3 + '</td></tr>'
-		PromoMGS4_4.innerHTML += '<tr><td>' + moyenneMGS4 + '</td></tr>'							
-		PromoUE31_4.innerHTML += '<tr><td>' + moyenneUE31 + '</td></tr>'
-		PromoEU32_4.innerHTML += '<tr><td>' + moyenneEU32 + '</td></tr>'
-		PromoUE41_4.innerHTML += '<tr><td>' + moyenneUE41 + '</td></tr>'
-		PromoEU42_4.innerHTML += '<tr><td>' + moyenneEU42 + '</td></tr>'
+		PromoINFO2_4.innerHTML += '<tr><td>' + sumINFO2/longueur + '</td></tr>'
+		PromoMGS3_4.innerHTML += '<tr><td>' + sumMGS3/longueur + '</td></tr>'
+		PromoMGS4_4.innerHTML += '<tr><td>' + sumMGS4/longueur + '</td></tr>'							
+		PromoUE31_4.innerHTML += '<tr><td>' + sumUE31/longueur + '</td></tr>'
+		PromoEU32_4.innerHTML += '<tr><td>' + sumEU32/longueur + '</td></tr>'
+		PromoUE41_4.innerHTML += '<tr><td>' + sumUE41/longueur + '</td></tr>'
+		PromoEU42_4.innerHTML += '<tr><td>' + sumEU42/longueur + '</td></tr>'
 		PromoAbs_4.innerHTML += '<tr><td>' + sumAbs + ' abs </td></tr>'
 
 		/* Classement */		

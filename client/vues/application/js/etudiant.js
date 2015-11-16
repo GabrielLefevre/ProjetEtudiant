@@ -1,5 +1,5 @@
 Template.etudiant.events({
-    'submit form': function(e){
+    'moyenne': function(e){
 		e.preventDefault();
 		// Recuperation des valeurs mise dans le formulaire d'ajour d'étudiant
 		var nom = $("input[name='nom']").val();

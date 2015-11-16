@@ -35,7 +35,7 @@ if (Meteor.isServer) {
 			Semestre1.find({}, {fields: {content: 0}}),
 			Semestre2.find({}, {fields: {content: 0}}),
 			Semestre3.find({}, {fields: {content: 0}}),
-			Semestre4.find({}, {fields: {content: 0}})
+			Semestre4.find({}, {fields: {content: 0}}),
 		];
 	});
 	

@@ -31,114 +31,33 @@
 							<h3 class="panel-title">Etudiant</h3>
 							<p></p>
 							<a class="btn btn-info" onClick="colorTest();">Color</a>										
-							<a class="btn btn-info" onClick="avisEtudes();">Avis etudes</a>										
+							<a class="btn btn-info" onClick="avisEtudes();">Avis etudes</a>	
+							<a class="btn btn-info" href="/etudiant">Retour Liste</a>										
+							
 							<div class="pull-right">
 								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
 							</div>
 						</div>
-						<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-						<script>
-						$(document).ready(function(){
-							$("tr").click(function(){
-								$(this).addClass("selected").siblings().removeClass("selected");
-							});
-						});	
-						
-						$(document).ready(function(){
-							$("button").click(function(){
-								$("td").toggle();
-							});
-						});
-						
-						$(document).ready(function()
-						 {
-							 $(".rowToClick").click(function() { $(this).nextUntil(".rowToClick").toggle(); });
-							 $(".rowToClick2").click(function() { $(this).nextUntil(".rowToClick2").toggle(); });
-						
-						});
-						</script>
-						<script>
-							function colorTest(){
-								var tds = document.getElementById('table').getElementsByTagName('td');
-								for(var k = 0; k < tds.length; k ++) {
-									if(tds[k].innerHTML>9)
-									{ 
-										tds[k].style.backgroundColor='#9bdb10';
-									}
-									else if(tds[k].innerHTML<10 && tds[k].innerHTML>7)
-									{
-										tds[k].style.backgroundColor='#ff953d';
-									}
-									else if(tds[k].innerHTML<8 && tds[k].innerHTML>0)
-									{
-										tds[k].style.backgroundColor='#ff1b1b';
-									}
-								}
-							}
-						</script>
 							<table class="table" id="table">
-							<!--
-							{{#each semestre}}
-								<td>
-									<td colspan="3">
+
+								<!--<thead>
+									<td class='rowToClick' colspan="3">
 										<p></p>
-										<center><tr><b>{{ titre }}</b></tr></center>
+										<tr><b>{{ titre }}</b></tr>
 										<p></p>
 									</td>
-										<tr>		
-											<td> Moy.Gen </td>
-											<td> {{ moyenne }} </td>
-											<td> {{ valider }} </td>
-										</tr>	
-										{{#each ue}}
-										<tr>		
-											<td> {{ eu }} </td>
-											<td class="note"> {{ moyenne }} </td>
-											<td> {{ valider }} </td>
-										</tr>										
-										{{/each}}
-										<tr>
-											<td>Decision du jury</td>
-											<td colspan="2">{{ decision }}</td>
-										</tr>
-										<tr>
-											<td>Nombre d'absences</td>
-											<td colspan="2">{{ nbAbsences }} abs.</td>
-										</tr>
-										{{#each ue}}
-										<tr>
-											<td colspan="3"><i> {{ eu }} </i></td>
-										</tr>
-											{{#each matiere}}
-											<tr>											
-												<td> {{ nom	}} </td>
-												<td colspan="2"> {{ moyenne }} </td>
-											</tr>
-											{{/each}}
-											
-										{{/each}}
-									</td>	
-								{{/each}}-->
-								<tbody>
+								</thead>-->
 								{{#each semestre}}
+								<tbody>
 									<td class='rowToClick' colspan="3">
 										<p></p>
 										<center><tr><b>{{ titre }}</b></tr></center>
 										<p></p>
 									</td>
-										<tr class='rowToClick2'>
-											<td colspan="3"><i> General </i></td>
-										</tr>
-										<tr>		
-											<td> Moy.Gen </td>
-											<td> {{ moyenne }} </td>
-										</tr>	
-										{{#each ue}}
-										<tr>		
-											<td> {{ eu }} </td>
-											<td class="note"> {{ moyenne }} </td>
-										</tr>										
-										{{/each}}
+										<tr>
+											<td colspan="3"><i>Moy. General > {{ moyenne }}</i></td>
+										</tr>			
+										<!--
 										<tr>
 											<td>Decision du jury</td>
 											<td colspan="2">{{ decision }}</td>
@@ -147,50 +66,25 @@
 											<td>Nombre d'absences</td>
 											<td colspan="2">{{ nbAbsences }} abs.</td>
 										</tr>
+										-->
 										{{#each ue}}
 										<tr class='rowToClick2'>
-											<td colspan="3"><i> {{ eu }} </i></td>
+											<td colspan="2"><i> {{ eu }} > {{ moyenne }} </i></td>
 										</tr>
 											{{#each matiere}}
-											<tr>											
+											<tr>
 												<td> {{ nom	}} </td>
 												<td colspan="2"> {{ moyenne }} </td>
 											</tr>
 											{{/each}}
-											
 										{{/each}}
-										<tr class='rowToClick2'></tr>
-								{{/each}}
+									<tr class='rowToClick2'></tr>
 								</tbody>
+								{{/each}}
 						</table>
 					</div>	
 					<div class="panel panel-primary filterable">
 						<table class="table" id="table">
-							<script>
-								function avisEtudes(){
-									var tds = document.getElementById('table').getElementsByTagName('td');
-									for(var k = 0; k < tds.length; k ++) {
-										if(tds[k].className=='note'){
-											if(tds[k].innerHTML<10 && tds[k].innerHTML>7){
-												document.getElementById("favl").innerHTML = "X";
-												document.getElementById("favlp").innerHTML = "X";
-												document.getElementById("deving").innerHTML = "X";
-
-											}
-											else if(tds[k].innerHTML>9){
-												document.getElementById("favl").innerHTML = "X";
-												document.getElementById("favlp").innerHTML = "X";
-												document.getElementById("faving").innerHTML = "X";
-											}
-											else if(tds[k].innerHTML<8 && tds[k].innerHTML>0){
-												document.getElementById("devl").innerHTML = "X";
-												document.getElementById("devlp").innerHTML = "X";
-												document.getElementById("deving").innerHTML = "X";
-											}
-										}	
-									}
-								}
-							</script>
 							<tfoot>
 								<td class='rowToClick' colspan="3">
 									<p></p>
@@ -225,4 +119,107 @@
 			</div>
 		</div>
 	</body>
+	<script type="text/javascript" src="/jquery-latest.js"></script> 
+	<script>
+/*
+	$(document).ready(function(){
+		$("button").click(function(){
+			$("td").toggle();
+		});
+	});
+*/
+	$(document).ready(function()
+	 {
+		 $(".rowToClick").click(function() {
+			 $(this).nextUntil(".rowToClick").toggle();
+		 });
+		 $(".rowToClick2").click(function() {
+			 $(this).nextUntil(".rowToClick2").toggle();
+		 });
+	 });
+	</script>
+	<script>
+		function colorTest(){
+			var tds = document.getElementById('table').getElementsByTagName('td');
+			for(var k = 0; k < tds.length; k ++) {
+				if(tds[k].innerHTML>9)
+				{ 
+					tds[k].style.backgroundColor='#9bdb10';
+				}
+				else if(tds[k].innerHTML<10 && tds[k].innerHTML>7)
+				{
+					tds[k].style.backgroundColor='#ff953d';
+				}
+				else if(tds[k].innerHTML<8 && tds[k].innerHTML>0)
+				{
+					tds[k].style.backgroundColor='#ff1b1b';
+				}
+			}
+		}
+		function avisEtudes(){
+			var tds = document.getElementById('table').getElementsByTagName('td');
+			for(var k = 0; k < tds.length; k ++) {
+				if(tds[k].className=='note'){
+					if(tds[k].innerHTML<10 && tds[k].innerHTML>7){
+						document.getElementById("favl").innerHTML = "X";
+						document.getElementById("favlp").innerHTML = "X";
+						document.getElementById("deving").innerHTML = "X";
+
+					}
+					else if(tds[k].innerHTML>9){
+						document.getElementById("favl").innerHTML = "X";
+						document.getElementById("favlp").innerHTML = "X";
+						document.getElementById("faving").innerHTML = "X";
+					}
+					else if(tds[k].innerHTML<8 && tds[k].innerHTML>0){
+						document.getElementById("devl").innerHTML = "X";
+						document.getElementById("devlp").innerHTML = "X";
+						document.getElementById("deving").innerHTML = "X";
+					}
+				}	
+			}
+		}
+	</script>
+	<!--
+{{#each semestre}}
+	<td>
+		<td colspan="3">
+			<p></p>
+			<center><tr><b>{{ titre }}</b></tr></center>
+			<p></p>
+		</td>
+			<tr>		
+				<td> Moy.Gen </td>
+				<td> {{ moyenne }} </td>
+				<td> {{ valider }} </td>
+			</tr>	
+			{{#each ue}}
+			<tr>		
+				<td> {{ eu }} </td>
+				<td class="note"> {{ moyenne }} </td>
+				<td> {{ valider }} </td>
+			</tr>										
+			{{/each}}
+			<tr>
+				<td>Decision du jury</td>
+				<td colspan="2">{{ decision }}</td>
+			</tr>
+			<tr>
+				<td>Nombre d'absences</td>
+				<td colspan="2">{{ nbAbsences }} abs.</td>
+			</tr>
+			{{#each ue}}
+			<tr>
+				<td colspan="3"><i> {{ eu }} </i></td>
+			</tr>
+				{{#each matiere}}
+				<tr>											
+					<td> {{ nom	}} </td>
+					<td colspan="2"> {{ moyenne }} </td>
+				</tr>
+				{{/each}}
+				
+			{{/each}}
+		</td>	
+	{{/each}}-->
 </template>

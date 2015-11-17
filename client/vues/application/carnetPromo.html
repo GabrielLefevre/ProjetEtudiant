@@ -69,7 +69,7 @@
 								<tr class="filters">
 									<td colspan="2">Moyenne Promo</td>
 									<td></td>
-									<td id="PromoGen_1"></td>
+									<td id="PromoMGS1"></td>
 									<td id="PromoUE_1"></td>
 									<td id="PromoEU_1"></td>
 									<td id="PromoAbs_1"></td>
@@ -121,15 +121,24 @@
 					sumAbs += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 				}
 			}
-
-*/
 			var longueur=trs.length-2;
-			PromoGen_1.innerHTML += '<tr><td>' + sumGen/longueur + '</td></tr>'
+			PromoMGS.innerHTML += '<tr><td>' + sumGen/longueur + '</td></tr>'
 			PromoUE_1.innerHTML += '<tr><td>' + sumUE/longueur + '</td></tr>'
 			PromoEU_1.innerHTML += '<tr><td>' + sumEU/longueur + '</td></tr>'
 			PromoAbs_1.innerHTML += '<tr><td>' + sumAbs + ' abs </td></tr>'
-			
-			
+	*/		
+			var trs = document.getElementById('table').getElementsByTagName('tr');
+			var total=0,totalUE=0,totalEU=0;
+			Semestre1.find({},{"nom": 1}).map(function(doc) {
+			  total += doc.mgs1;
+			  totalUE += doc.ue.ue11;
+			  totalEU += doc.eu.eu12;
+			});	
+			var longueur=trs.length-2;
+			PromoMGS1.innerHTML += '<tr><td>' + total/longueur + '</td></tr>';
+			PromoUE_1.innerHTML += '<tr><td>' + totalUE/longueur + '</td></tr>';
+			PromoEU_1.innerHTML += '<tr><td>' + totalEU/longueur + '</td></tr>';
+
 			/* Classement */ 
 			function classement(){
 				var items = document.getElementsByClassName("classement"),i, len;
@@ -244,8 +253,7 @@
 				}
 			}
 		}
-				
-		/* Moyenne Promo */
+		/*
 		var tds = document.getElementById('table2').getElementsByTagName('td');
 		var trs = document.getElementById('table2').getElementsByTagName('tr');
 		var sumINFO1=0, sumMGS1=0, sumMGS2=0, sumUE11=0, sumEU12=0, sumUE21=0, sumEU22=0, sumAbs=0;
@@ -281,17 +289,16 @@
 			if(tds[k].id == 'absences') {
 				sumAbs += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
 			}
-		}
-		
-		var longueur=trs.length-2;	
-		PromoINFO1_2.innerHTML += '<tr><td>' + sumINFO1/longueur + '</td></tr>'		
-		PromoMGS1_2.innerHTML += '<tr><td>' + sumMGS1/longueur + '</td></tr>'
-		PromoMGS2_2.innerHTML += '<tr><td>' + sumMGS2/longueur + '</td></tr>'							
-		PromoUE11_2.innerHTML += '<tr><td>' + sumUE11/longueur + '</td></tr>'
-		PromoUE21_2.innerHTML += '<tr><td>' + sumEU12/longueur + '</td></tr>'
-		PromoEU12_2.innerHTML += '<tr><td>' + sumUE21/longueur + '</td></tr>'							
-		PromoEU22_2.innerHTML += '<tr><td>' + sumEU22/longueur + '</td></tr>'
-		PromoAbs_2.innerHTML += '<tr><td>' + sumAbs + ' abs </td></tr>'
+					
+			PromoINFO1_2.innerHTML += '<tr><td>' + sumINFO1/longueur + '</td></tr>'		
+			PromoMGS1_2.innerHTML += '<tr><td>' + sumMGS1/longueur + '</td></tr>'
+			PromoMGS2_2.innerHTML += '<tr><td>' + sumMGS2/longueur + '</td></tr>'							
+			PromoUE11_2.innerHTML += '<tr><td>' + sumUE11/longueur + '</td></tr>'
+			PromoUE21_2.innerHTML += '<tr><td>' + sumEU12/longueur + '</td></tr>'
+			PromoEU12_2.innerHTML += '<tr><td>' + sumUE21/longueur + '</td></tr>'							
+			PromoEU22_2.innerHTML += '<tr><td>' + sumEU22/longueur + '</td></tr>'
+			PromoAbs_2.innerHTML += '<tr><td>' + sumAbs + ' abs </td></tr>'
+		}*/
 
 		/* Classement */		
 		function classementS2(){

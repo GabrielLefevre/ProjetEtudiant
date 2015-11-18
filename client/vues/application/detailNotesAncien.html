@@ -52,45 +52,76 @@
 							}
 							
 							/* Moyenne Promo */
+							var tds = document.getElementById('table').getElementsByTagName('td');
 							var trs = document.getElementById('table').getElementsByTagName('tr');
-							var totalMGS1 = 0, totalUE11 = 0, totalSE = 0, totalAP = 0, totalBD = 0, totalCDIN = 0, totalPT = 0, totalEU12 = 0;, totalMD = 0
-							var totalAL = 0, totalEE = 0, totalORGA = 0, totalCOM = 0, totalAI = 0, totalPPP = 0;
-							Semestre1.find({},{"nom": 1}).map(function(doc) {
-								totalMGS1 += doc.mgs1;
-						/*		totalUE11 += doc.ue11;
-								totalSE += doc.se;
-								totalAP += doc.ap;
-								totalBD += doc.bd;
-								totalCDIN += doc.cdin;
-								totalPT += doc.pt;
-								totalEU12 += doc.eu12;
-								totalMD += doc.md;
-								totalAL += doc.al;
-								totalEE += doc.ee;
-								totalORGA += doc.orga;
-								totalCOM += doc.com;
-								totalAI += doc.ai;
-								totalPPP += doc.ppp;
+							var sumMGS1 = 0, sumUE11 = 0, sumSE = 0, sumAP = 0, sumBD = 0, sumCDIN = 0, sumPT = 0, sumEU12 = 0;, sumMD = 0
+							var sumAL = 0, sumEE = 0, sumORGA = 0, sumCOM = 0, sumAI = 0, sumPPP = 0;
 
-								*/
-							});	
+							for(var k = 2; k < tds.length; k ++) {
+									if(tds[k].id == 'mgs1') {
+										sumMGS1 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
+									}
+									if(tds[k].id == 'ue11') {
+										sumUE11 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
+									}
+									if(tds[k].id == 'se') {
+										sumSE += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);	
+									}
+									if(tds[k].id == 'ap') {
+										sumAP += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
+									}
+									if(tds[k].id == 'bd') {
+										sumBD += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
+									}
+									if(tds[k].id == 'cdin') {
+										sumCDIN += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									}
+									if(tds[k].id == 'pt') {
+										sumPT += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									}
+									if(tds[k].id == 'eu12') {
+										sumEU12 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
+									}
+									if(tds[k].id == 'md') {
+										sumMD += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									}
+									if(tds[k].id == 'al') {
+										sumAL += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									}
+									if(tds[k].id == 'ee') {
+										sumEE += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									}
+									if(tds[k].id == 'orga') {
+										sumORGA += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									}
+									if(tds[k].id == 'com') {
+										sumCOM += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+
+									}
+									if(tds[k].id == 'ai') {
+										sumAI += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									}
+									if(tds[k].id == 'ppp') {
+										sumPPP += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									}
+							}
 							
 							var longueur=trs.length-2;
-							PromoMGS1_1.innerHTML += '<tr><td>' + totalMGS1/longueur + '</td></tr>'
-							PromoUE11_1.innerHTML += '<tr><td>' + totalUE11/longueur + '</td></tr>'
-							PromoSE_1.innerHTML += '<tr><td>' + totalSE/longueur + '</td></tr>'
-							PromoAP_1.innerHTML += '<tr><td>' + totalAP/longueur + '</td></tr>'
-							PromoBD_1.innerHTML += '<tr><td>' + totalBD/longueur + '</td></tr>'
-							PromoCDIN_1.innerHTML += '<tr><td>' + totalCDIN/longueur + '</td></tr>'
-							PromoPT_1.innerHTML += '<tr><td>' + totalPT/longueur + '</td></tr>'
-							PromoEU12_1.innerHTML += '<tr><td>' + totalEU12/longueur + '</td></tr>'							
-							PromoMD_1.innerHTML += '<tr><td>' + totalMD/longueur + '</td></tr>'
-							PromoAL_1.innerHTML += '<tr><td>' + totalAL/longueur + '</td></tr>'
-							PromoEE_1.innerHTML += '<tr><td>' + totalEE/longueur + '</td></tr>'
-							PromoORGA_1.innerHTML += '<tr><td>' + totalORGA/longueur + '</td></tr>'
-							PromoCOM_1.innerHTML += '<tr><td>' + totalCOM/longueur + '</td></tr>'
-							PromoAI_1.innerHTML += '<tr><td>' + totalAI/longueur + '</td></tr>'
-							PromoPPP_1.innerHTML += '<tr><td>' + totalPPP/longueur + '</td></tr>'
+							PromoMGS1_1.innerHTML += '<tr><td>' + sumMGS1/longueur + '</td></tr>'
+							PromoUE11_1.innerHTML += '<tr><td>' + sumUE11/longueur + '</td></tr>'
+							PromoSE_1.innerHTML += '<tr><td>' + sumSE/longueur + '</td></tr>'
+							PromoAP_1.innerHTML += '<tr><td>' + sumAP/longueur + '</td></tr>'
+							PromoBD_1.innerHTML += '<tr><td>' + sumBD/longueur + '</td></tr>'
+							PromoCDIN_1.innerHTML += '<tr><td>' + sumCDIN/longueur + '</td></tr>'
+							PromoPT_1.innerHTML += '<tr><td>' + sumPT/longueur + '</td></tr>'
+							PromoEU12_1.innerHTML += '<tr><td>' + sumEU12/longueur + '</td></tr>'							
+							PromoMD_1.innerHTML += '<tr><td>' + sumMD/longueur + '</td></tr>'
+							PromoAL_1.innerHTML += '<tr><td>' + sumAL/longueur + '</td></tr>'
+							PromoEE_1.innerHTML += '<tr><td>' + sumEE/longueur + '</td></tr>'
+							PromoORGA_1.innerHTML += '<tr><td>' + sumORGA/longueur + '</td></tr>'
+							PromoCOM_1.innerHTML += '<tr><td>' + sumCOM/longueur + '</td></tr>'
+							PromoAI_1.innerHTML += '<tr><td>' + sumAI/longueur + '</td></tr>'
+							PromoPPP_1.innerHTML += '<tr><td>' + sumPPP/longueur + '</td></tr>'
 							
 							/* Classement */ 
 							function classement(){
@@ -220,44 +251,111 @@
 								}
 								
 								/* Moyenne Promo */
+								var tds = document.getElementById('table2').getElementsByTagName('td');
 								var trs = document.getElementById('table2').getElementsByTagName('tr');							
-								var totalMGS2 = 0, totalUE21 = 0, totalSE = 0, totalRX = 0, totalPOO = 0, totalCOO = 0, totalIHM = 0, totalPT = 0;
-								var totalEU22 = 0, totalGL = 0, totalAN = 0, totalECFJS = 0, totalGPI = 0, totalCOM = 0, totalAI = 0, totalPPP = 0;
-								Semestre2.find().map(function(doc) {
-									totalMGS2 += doc.mgs2;
-									totalUE21 += doc.ue.ue21;
-						/*			totalSE += doc.ue.matiere.se;
-									totalRX += doc.ue.matiere.rx;
-									totalPOO += doc.ue.matiere.poo;
-									totalCOO += doc.ue.matiere.coo;
-									totalIHM += doc.ue.matiere.ihm;
-									totalPT += doc.ue.matiere.pt;
-									totalEU22 += doc.eu.eu22;
-									totalGL += doc.eu.matiere.gl;
-									totalAN += doc.eu.matiere.an;
-									totalECFJS += doc.eu.matiere.ecfjs;
-									totalGPI += doc.eu.matiere.gpi;
-									totalCOM += doc.eu.matiere.com;
-									totalAI += doc.eu.matiere.ai;
-									totalPPP += doc.eu.matiere.ppp; */
-								});	
+								var sumMGS2 = 0, sumUE21 = 0, sumSE = 0, sumRX = 0, sumPOO = 0, sumCOO = 0, sumIHM = 0, sumPT = 0;
+								var sumEU22 = 0, sumGL = 0, sumAN = 0, sumECFJS = 0, sumGPI = 0, sumCOM = 0, sumAI = 0, sumPPP = 0;
+
+								for(var k = 2; k < tds.length; k ++) {
+									if(tds[k].id == 'mgs2') {
+										sumMGS2 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
+										
+									}			
+									if(tds[k].id == 'ue21') {
+										sumUE21 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
+										
+									}					
+									if(tds[k].id == 'se') {
+										sumSE += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+										
+									}
+									if(tds[k].id == 'rx') {
+										sumRX += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+										
+									}
+									if(tds[k].id == 'coo') {
+										sumCOO += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+										
+									}
+									if(tds[k].id == 'poo') {
+										sumPOO += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+										
+									}
+									if(tds[k].id == 'ihm') {
+										sumIHM += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+										
+									}
+									if(tds[k].id == 'pt') {
+										sumPT += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+										
+									}
+									if(tds[k].id == 'eu22') {
+										sumEU22 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
+										
+									}							
+									if(tds[k].id == 'gl') {
+										sumGL += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+										
+									}
+									if(tds[k].id == 'an') {
+										sumAN += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+										
+									}
+									if(tds[k].id == 'ecfjs') {
+										sumECFJS += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+										
+									}
+									if(tds[k].id == 'gpi') {
+										sumGPI += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+										
+									}
+									if(tds[k].id == 'com') {
+										sumCOM += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+										
+									}
+									if(tds[k].id == 'ai') {
+										sumAI += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+										
+									}
+									if(tds[k].id == 'ppp') {
+										sumPPP += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+										
+									}
+								}
+								
 								var longueur=trs.length-2;
-								PromoMGS2_2.innerHTML += '<tr><td>' + totalMGS2/longueur + '</td></tr>'
-								PromoUE21_2.innerHTML += '<tr><td>' + totalUE21/longueur + '</td></tr>'					
-								PromoSE_2.innerHTML += '<tr><td>' + totalSE/longueur + '</td></tr>'
-								PromoRX_2.innerHTML += '<tr><td>' + totalRX/longueur + '</td></tr>'
-								PromoPOO_2.innerHTML += '<tr><td>' + totalPOO/longueur + '</td></tr>'
-								PromoCOO_2.innerHTML += '<tr><td>' + totalCOO/longueur + '</td></tr>'
-								PromoIHM_2.innerHTML += '<tr><td>' + totalIHM/longueur + '</td></tr>'
-								PromoPT_2.innerHTML += '<tr><td>' + totalPT/longueur + '</td></tr>'
-								PromoEU22_2.innerHTML += '<tr><td>' + totalEU22/longueur + '</td></tr>'							
-								PromoGL_2.innerHTML += '<tr><td>' + totalGL/longueur + '</td></tr>'
-								PromoAN_2.innerHTML += '<tr><td>' + totalAN/longueur + '</td></tr>'
-								PromoECFJS_2.innerHTML += '<tr><td>' + totalECFJS/longueur + '</td></tr>'
-								PromoGPI_2.innerHTML += '<tr><td>' + totalGPI/longueur + '</td></tr>'
-								PromoCOM_2.innerHTML += '<tr><td>' + totalCOM/longueur + '</td></tr>'
-								PromoAI_2.innerHTML += '<tr><td>' + totalAI/longueur + '</td></tr>'
-								PromoPPP_2.innerHTML += '<tr><td>' + totalPPP/longueur + '</td></tr>'
+								var moyenneMGS2 = sumMGS2/longueur;
+								var moyenneUE21 = sumUE21/longueur;
+								var moyenneSE = sumSE/longueur;
+								var moyenneRX = sumRX/longueur;
+								var moyennePOO = sumPOO/longueur;
+								var moyenneCOO = sumCOO/longueur;
+								var moyenneIHM = sumIHM/longueur;
+								var moyennePT = sumPT/longueur;
+								var moyenneEU22 = sumEU22/longueur;
+								var moyenneGL = sumGL/longueur;
+								var moyenneAN = sumAN/longueur;
+								var moyenneECFJS = sumECFJS/longueur;
+								var moyenneGPI = sumGPI/longueur;
+								var moyenneCOM = sumCOM/longueur;
+								var moyenneAI = sumAI/longueur;
+								var moyennePPP = sumPPP/longueur;
+								PromoMGS2_2.innerHTML += '<tr><td>' + moyenneMGS2 + '</td></tr>'
+								PromoUE21_2.innerHTML += '<tr><td>' + moyenneUE21 + '</td></tr>'					
+								PromoSE_2.innerHTML += '<tr><td>' + moyenneSE + '</td></tr>'
+								PromoRX_2.innerHTML += '<tr><td>' + moyenneRX + '</td></tr>'
+								PromoCOO_2.innerHTML += '<tr><td>' + moyenneCOO + '</td></tr>'
+								PromoPOO_2.innerHTML += '<tr><td>' + moyennePOO + '</td></tr>'
+								PromoIHM_2.innerHTML += '<tr><td>' + moyenneIHM + '</td></tr>'
+								PromoPT_2.innerHTML += '<tr><td>' + moyennePT + '</td></tr>'
+								PromoEU22_2.innerHTML += '<tr><td>' + moyenneEU22 + '</td></tr>'							
+								PromoGL_2.innerHTML += '<tr><td>' + moyenneGL + '</td></tr>'
+								PromoAN_2.innerHTML += '<tr><td>' + moyenneAN + '</td></tr>'
+								PromoECFJS_2.innerHTML += '<tr><td>' + moyenneECFJS + '</td></tr>'
+								PromoGPI_2.innerHTML += '<tr><td>' + moyenneGPI + '</td></tr>'
+								PromoCOM_2.innerHTML += '<tr><td>' + moyenneCOM + '</td></tr>'
+								PromoAI_2.innerHTML += '<tr><td>' + moyenneAI + '</td></tr>'
+								PromoPPP_2.innerHTML += '<tr><td>' + moyennePPP + '</td></tr>'
 								
 								function classementS2(){
 									var items = document.getElementsByClassName("classementS2"),i, len;
@@ -367,71 +465,124 @@
 						<script type="text/javascript" src="/js/jquery-latest.js"></script> 
 						<script type="text/javascript" src="/js/jquery.tablesorter.js"></script> 
 						<script>
-						/* Couleurs en fonction de la moyenne */
-						function colorTest3(){
-							var tds = document.getElementById('table3').getElementsByTagName('td');
-							for(var k = 0; k < tds.length; k ++) {
-								if(tds[k].className != 'classementS3'){
-									if(tds[k].innerHTML>9)
-									{ 
-										tds[k].style.backgroundColor='#9bdb10';
-									}
-									else if(tds[k].innerHTML<10 && tds[k].innerHTML>7)
-									{
-										tds[k].style.backgroundColor='#ff953d';
-									}
-									else if(tds[k].innerHTML<8 && tds[k].innerHTML>0)
-									{
-										tds[k].style.backgroundColor='#ff1b1b';
+							/* Couleurs en fonction de la moyenne */
+							function colorTest3(){
+								var tds = document.getElementById('table3').getElementsByTagName('td');
+								for(var k = 0; k < tds.length; k ++) {
+									if(tds[k].className != 'classementS3'){
+										if(tds[k].innerHTML>9)
+										{ 
+											tds[k].style.backgroundColor='#9bdb10';
+										}
+										else if(tds[k].innerHTML<10 && tds[k].innerHTML>7)
+										{
+											tds[k].style.backgroundColor='#ff953d';
+										}
+										else if(tds[k].innerHTML<8 && tds[k].innerHTML>0)
+										{
+											tds[k].style.backgroundColor='#ff1b1b';
+										}
 									}
 								}
 							}
-						}
-						
-						var trs = document.getElementById('table2').getElementsByTagName('tr');							
-						var totalMGS3 = 0, totalUE31 = 0, totalSE = 0, totalRX = 0, totalAPA = 0, totalPOO = 0, totalCOO = 0, totalIHM = 0, totalPT = 0;
-						var totalEU22 = 0, totalGL = 0, totalAN = 0, totalECFJS = 0, totalGPI = 0, totalCOM = 0, totalAI = 0, totalPPP = 0;
-						Semestre3.find({},{"nom": 1}).map(function(doc) {
-							totalMGS3 += doc.mgs3;
-					/*		totalUE31 += doc.ue31;
-							totalSE += doc.se;
-							totalRX += doc.rx;
-							totalAPA += doc.apa;
-							totalPWEB += doc.pweb;
-							totalCPA += doc.cpa;
-							totalBDA += doc.bda;
-							totalEU32 += doc.eu32;
-							totalPROBA += doc.proba;
-							totalMODMATH += doc.modmath;
-							totalDROIT += doc.droit;
-							totalGSI += doc.gsi;
-							totalCOM += doc.com;
-							totalAI += doc.ai;*/
-						});	
-						var longueur=trs.length-2;
-						PromoMGS3_3.innerHTML += '<tr><td>' + totalMGS3/longueur + '</td></tr>'
-						PromoUE31_3.innerHTML += '<tr><td>' + totalUE31/longueur + '</td></tr>'					
-						PromoSE_3.innerHTML += '<tr><td>' + totalSE/longueur + '</td></tr>'
-						PromoRX_3.innerHTML += '<tr><td>' + totalRX/longueur + '</td></tr>'
-						PromoAPA_3.innerHTML += '<tr><td>' + totalAPA/longueur + '</td></tr>'
-						PromoPWEB_3.innerHTML += '<tr><td>' + totalPWEB/longueur + '</td></tr>'
-						PromoCPA_3.innerHTML += '<tr><td>' + totalCPA/longueur + '</td></tr>'
-						PromoBDA_3.innerHTML += '<tr><td>' + totalBDA/longueur + '</td></tr>'
-						PromoEU32_3.innerHTML += '<tr><td>' + totalEU32/longueur + '</td></tr>'							
-						PromoPROBA_3.innerHTML += '<tr><td>' + totalPROBA/longueur + '</td></tr>'
-						PromoMODMATH_3.innerHTML += '<tr><td>' + totalMODMATH/longueur + '</td></tr>'
-						PromoDROIT_3.innerHTML += '<tr><td>' + totalDROIT/longueur + '</td></tr>'
-						PromoGSI_3.innerHTML += '<tr><td>' + totalGSI/longueur + '</td></tr>'
-						PromoCOM_3.innerHTML += '<tr><td>' + totalCOM/longueur + '</td></tr>'
-						PromoAI_3.innerHTML += '<tr><td>' + totalAI/longueur + '</td></tr>'
-						
 							
-						function classementS3(){
-							var items = document.getElementsByClassName("classementS3"),i, len;
-							for (i = 0, len = items.length; i < len; i++) {
-								items[i].innerHTML = i+1;
+							/* Moyenne Promo */
+							var tds = document.getElementById('table3').getElementsByTagName('td');
+							var trs = document.getElementById('table3').getElementsByTagName('tr');							
+							var sumMGS3 = 0,sumUE31 = 0,sumSE = 0,sumRX = 0,sumAPA = 0,sumPWEB = 0;
+							var sumCPA = 0,sumBDA = 0,sumEU32 = 0,sumPROBA = 0,sumMODMATH = 0,sumDROIT = 0;
+							var sumGSI = 0,sumCOM = 0,sumAI = 0;
+
+							for(var k = 2; k < tds.length; k ++) {
+								if(tds[k].id == 'mgs3') {
+									sumMGS3 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
+									
+								}			
+								if(tds[k].id == 'ue31') {
+									sumUE31 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
+									
+								}					
+								if(tds[k].id == 'se') {
+									sumSE += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
+								if(tds[k].id == 'rx') {
+									sumRX += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
+								if(tds[k].id == 'apa') {
+									sumAPA += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
+								if(tds[k].id == 'pweb') {
+									sumPWEB += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
+								if(tds[k].id == 'cpa') {
+									sumCPA += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
+								if(tds[k].id == 'bda') {
+									sumBDA += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
+								if(tds[k].id == 'eu32') {
+									sumEU32 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
+									
+								}							
+								if(tds[k].id == 'proba') {
+									sumPROBA += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
+								if(tds[k].id == 'modmath') {
+									sumMODMATH += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
+								if(tds[k].id == 'droit') {
+									sumDROIT += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
+								if(tds[k].id == 'gsi') {
+									sumGSI += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
+								if(tds[k].id == 'com') {
+									sumCOM += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
+								if(tds[k].id == 'ai') {
+									sumAI += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
+								if(tds[k].id == 'ppp') {
+									sumPPP += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
 							}
-						}
+							
+							var longueur=trs.length-2;
+							PromoMGS3_3.innerHTML += '<tr><td>' + sumMGS3/longueur + '</td></tr>'
+							PromoUE31_3.innerHTML += '<tr><td>' + sumUE31/longueur + '</td></tr>'					
+							PromoSE_3.innerHTML += '<tr><td>' + sumSE/longueur + '</td></tr>'
+							PromoRX_3.innerHTML += '<tr><td>' + sumRX/longueur + '</td></tr>'
+							PromoAPA_3.innerHTML += '<tr><td>' + sumAPA/longueur + '</td></tr>'
+							PromoPWEB_3.innerHTML += '<tr><td>' + sumPWEB/longueur + '</td></tr>'
+							PromoCPA_3.innerHTML += '<tr><td>' + sumCPA/longueur + '</td></tr>'
+							PromoBDA_3.innerHTML += '<tr><td>' + sumBDA/longueur + '</td></tr>'
+							PromoEU32_3.innerHTML += '<tr><td>' + sumEU32/longueur + '</td></tr>'							
+							PromoPROBA_3.innerHTML += '<tr><td>' + sumPROBA/longueur + '</td></tr>'
+							PromoMODMATH_3.innerHTML += '<tr><td>' + sumMODMATH/longueur + '</td></tr>'
+							PromoDROIT_3.innerHTML += '<tr><td>' + sumDROIT/longueur + '</td></tr>'
+							PromoGSI_3.innerHTML += '<tr><td>' + sumGSI/longueur + '</td></tr>'
+							PromoCOM_3.innerHTML += '<tr><td>' + sumCOM/longueur + '</td></tr>'
+							PromoAI_3.innerHTML += '<tr><td>' + sumAI/longueur + '</td></tr>'
+							
+							function classementS3(){
+								var items = document.getElementsByClassName("classementS3"),i, len;
+								for (i = 0, len = items.length; i < len; i++) {
+									items[i].innerHTML = i+1;
+								}
+							}
 						</script>
 						<table class="table" id="table3">
 							<thead>
@@ -550,42 +701,83 @@
 									}
 								}
 							}
-
+							
+							/* Moyenne Promo */
+							var tds = document.getElementById('table4').getElementsByTagName('td');
 							var trs = document.getElementById('table4').getElementsByTagName('tr');
-							var totalMGS4 = 0, totalUE41 = 0,totalADMSR = 0,totalPROGREP = 0,totalPWEB = 0,totalPROGMOB = 0;
-							var totalCOMPINFO = 0,totalPT = 0,totalEU42 = 0,totalAT = 0,totalRO = 0,totalCOM = 0,totalAI = 0;
-		
-							Semestre4.find({},{"nom": 1}).map(function(doc) {
-								totalMGS4 += doc.mgs4;
-							/*	totalUE41 += doc.ue41;
-								totalADMSR += doc.admsr;
-								totalPROGREP += doc.progrep;
-								totalPWEB += doc.pweb;
-								totalPROGMOB += doc.progmob;
-								totalCOMPINFO += doc.compinfo;
-								totalPT += doc.pt;
-								totalEU42 += doc.eu42;
-								totalAT += doc.at;
-								totalRO += doc.ro;
-								totalCOM += doc.com;
-								totalAI += doc.ai;*/
-							});	
+							var sumMGS4 = 0, sumUE41 = 0,sumADMSR = 0,sumPROGREP = 0,sumPWEB = 0,sumPROGMOB = 0;
+							var sumCOMPINFO = 0,sumPT = 0,sumEU42 = 0,sumAT = 0,sumRO = 0,sumCOM = 0,sumAI = 0;
+							
+							for(var k = 2; k < tds.length; k ++) {
+								if(tds[k].id == 'mgs4') {
+									sumMGS4 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
+									
+								}
+								if(tds[k].id == 'ue41') {
+									sumUE41 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
+									
+								}
+								if(tds[k].id == 'admsr') {
+									sumADMSR += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
+								if(tds[k].id == 'progrep') {
+									sumPROGREP += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
+								if(tds[k].id == 'pweb') {
+									sumPWEB += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
+								if(tds[k].id == 'progmob') {
+									sumPROGMOB += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
+								if(tds[k].id == 'compinfo') {
+									sumCOMPINFO += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
+								if(tds[k].id == 'pt') {
+									sumPT += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
+								if(tds[k].id == 'eu42') {
+									sumEU42 += isNaN(tds[k].innerHTML) ? 0 : parseInt(tds[k].innerHTML);
+									
+								}
+								if(tds[k].id == 'at') {
+									sumAT += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
+								if(tds[k].id == 'ro') {
+									sumRO += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
+								if(tds[k].id == 'com') {
+									sumCOM += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
+								if(tds[k].id == 'ai') {
+									sumAI += isNaN(tds[k].innerHTML) ? 0 : parseFloat(tds[k].innerHTML);
+									
+								}
+							}
 							
 							var longueur=trs.length-2;
-							PromoMGS4_4.innerHTML += '<tr><td>' + totalMGS4/longueur + '</td></tr>'
-							PromoUE41_4.innerHTML += '<tr><td>' + totalUE41/longueur + '</td></tr>'					
-							PromoADMSR_4.innerHTML += '<tr><td>' + totalADMSR/longueur + '</td></tr>'
-							PromoPROGREP_4.innerHTML += '<tr><td>' + totalPROGREP/longueur + '</td></tr>'
-							PromoPWEB_4.innerHTML += '<tr><td>' + totalPWEB/longueur + '</td></tr>'
-							PromoPROGMOB_4.innerHTML += '<tr><td>' + totalPROGMOB/longueur + '</td></tr>'
-							PromoCOMPINFO_4.innerHTML += '<tr><td>' + totalCOMPINFO/longueur + '</td></tr>'
-							PromoPT_4.innerHTML += '<tr><td>' + totalPT/longueur + '</td></tr>'
-							PromoEU42_4.innerHTML += '<tr><td>' + totalEU42/longueur + '</td></tr>'							
-							PromoAT_4.innerHTML += '<tr><td>' + totalAT/longueur + '</td></tr>'
-							PromoRO_4.innerHTML += '<tr><td>' + totalRO/longueur + '</td></tr>'
-							PromoCOM_4.innerHTML += '<tr><td>' + totalCOM/longueur + '</td></tr>'
-							PromoAI_4.innerHTML += '<tr><td>' + totalAI/longueur + '</td></tr>'	
-							
+							PromoMGS4_4.innerHTML += '<tr><td>' + sumMGS4/longueur + '</td></tr>'
+							PromoUE41_4.innerHTML += '<tr><td>' + sumUE41/longueur + '</td></tr>'					
+							PromoADMSR_4.innerHTML += '<tr><td>' + sumADMSR/longueur + '</td></tr>'
+							PromoPROGREP_4.innerHTML += '<tr><td>' + sumPROGREP/longueur + '</td></tr>'
+							PromoPWEB_4.innerHTML += '<tr><td>' + sumPWEB/longueur + '</td></tr>'
+							PromoPROGMOB_4.innerHTML += '<tr><td>' + sumPROGMOB/longueur + '</td></tr>'
+							PromoCOMPINFO_4.innerHTML += '<tr><td>' + sumCOMPINFO/longueur + '</td></tr>'
+							PromoPT_4.innerHTML += '<tr><td>' + sumPT/longueur + '</td></tr>'
+							PromoEU42_4.innerHTML += '<tr><td>' + sumEU42/longueur + '</td></tr>'							
+							PromoAT_4.innerHTML += '<tr><td>' + sumAT/longueur + '</td></tr>'
+							PromoRO_4.innerHTML += '<tr><td>' + sumRO/longueur + '</td></tr>'
+							PromoCOM_4.innerHTML += '<tr><td>' + sumCOM/longueur + '</td></tr>'
+							PromoAI_4.innerHTML += '<tr><td>' + sumAI/longueur + '</td></tr>'
+						
 							function classementS4(){
 								var items = document.getElementsByClassName("classementS4"),i, len;
 								for (i = 0, len = items.length; i < len; i++) {

@@ -38,30 +38,26 @@
 								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
 							</div>
 						</div>
-						<table class="table" id="table">
-							<!--<thead>
-                                <td class='rowToClick' colspan="3">
-                                    <p></p>
-                                    <tr><b>{{ titre }}</b></tr>
-                                    <p></p>
-                                </td>
-                            </thead>-->
-							{{#each semestre}}
+							<table class="table" id="table">
+
+								<!--<thead>
+									<td class='rowToClick' colspan="3">
+										<p></p>
+										<tr><b>{{ titre }}</b></tr>
+										<p></p>
+									</td>
+								</thead>-->
+								{{#each semestre}}
 								<tbody>
-								<tr class="rowToClick" colspan="3">
-									<p></p>
-									<center><td><b>{{ titre }}</b></td></center>
-									<p></p>
-								</tr>
-								<table class="table" id="table">
-									<tbody>
-										<tr class="rowToClick2">
-											<td colspan="2"><i>General</i></td>
-										</tr>
+									<td class='rowToClick' colspan="3">
+										<p></p>
+										<center><tr><b>{{ titre }}</b></tr></center>
+										<p></p>
+									</td>
 										<tr>
-											<td>Moy. General</td>
-											<td colspan="2"> {{ moyenne }}</td>
-										</tr>
+											<td colspan="3"><i>Moy. General > {{ moyenne }}</i></td>
+										</tr>			
+										<!--
 										<tr>
 											<td>Decision du jury</td>
 											<td colspan="2">{{ decision }}</td>
@@ -70,24 +66,23 @@
 											<td>Nombre d'absences</td>
 											<td colspan="2">{{ nbAbsences }} abs.</td>
 										</tr>
+										-->
 										{{#each ue}}
-											<tr class="rowToClick2">
-												<td colspan="2"><i> {{ eu }} : {{ moyenne }} </i></td>
+										<tr class='rowToClick2'>
+											<td colspan="2"><i> {{ eu }} > {{ moyenne }} </i></td>
+										</tr>
+											{{#each matiere}}
+											<tr>
+												<td> {{ nom	}} </td>
+												<td colspan="2"> {{ moyenne }} </td>
 											</tr>
-												{{#each matiere}}
-													<tr>
-														<td> {{ nom	}} </td>
-														<td colspan="2"> {{ moyenne }} </td>
-													</tr>
-												{{/each}}
+											{{/each}}
 										{{/each}}
-									</tbody>
-								</table>
+									<tr class='rowToClick2'></tr>
 								</tbody>
-							{{/each}}
+								{{/each}}
 						</table>
-
-					</div>
+					</div>	
 					<div class="panel panel-primary filterable">
 						<table class="table" id="table">
 							<tfoot>
@@ -126,21 +121,17 @@
 	</body>
 	<script type="text/javascript" src="/jquery-latest.js"></script> 
 	<script>
-
-	
+/*
+	$(document).ready(function(){
+		$("button").click(function(){
+			$("td").toggle();
+		});
+	});
+*/
 	$(document).ready(function()
 	 {
-		 /*
 		 $(".rowToClick").click(function() {
 			 $(this).nextUntil(".rowToClick").toggle();
-			 $(this).nextUntil(".rowToClick3").toggle();
-		 });
-		 $(".rowToClick2").click(function() {
-			 $(this).nextUntil(".rowToClick2").toggle();
-		 });*/
-
-		 $('.rowToClick').click(function () {
-			 $(this).nextUntil("rowToClick").toggle();
 		 });
 		 $(".rowToClick2").click(function() {
 			 $(this).nextUntil(".rowToClick2").toggle();

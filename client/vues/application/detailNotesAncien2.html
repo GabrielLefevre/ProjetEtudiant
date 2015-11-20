@@ -1,0 +1,717 @@
+<template name='detailNotes'>
+	<body>
+		<div class="container">
+			<div class="jumbotron">
+				<div class="row">
+					<div class="panel panel-primary filterable">
+						<div class="panel-heading">
+							<h3 class="panel-title">Detail des notes du Semestre 1</h3>
+							<a class="btn btn-info" onClick="colorTest();">color</a>
+							<a class="btn btn-info" href="/promotion/:promotion">Semestre 1</a>
+							<a class="btn btn-info" onClick="classement();">Classement</a>
+							<div class="pull-right">
+								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
+							</div>
+						</div>
+						<script type="text/javascript" src="/js/jquery-latest.js"></script> 
+						<script type="text/javascript" src="/js/jquery.tablesorter.js"></script> 
+						<script type="text/javascript">
+							$(function() {
+								/* Trier le tableau */
+								$("table").tablesorter({
+									sortInitialOrder: 'desc',
+								});
+							});	
+								/* Selectionner ligne du tableau */
+								$("tr").click(function(){
+									$(this).addClass("selected").siblings().removeClass("selected");
+								});
+								
+						</script>
+						<script>
+										
+							/* Couleurs en fonction de la moyenne */
+							function colorTest(){
+								var tds = document.getElementById('table').getElementsByTagName('td');
+								for(var k = 0; k < tds.length; k ++) {
+									if(tds[k].className != 'classement'){
+										if(tds[k].innerHTML>9)
+										{ 
+											tds[k].style.backgroundColor='#9bdb10';
+										}
+										else if(tds[k].innerHTML<10 && tds[k].innerHTML>7)
+										{
+											tds[k].style.backgroundColor='#ff953d';
+										}
+										else if(tds[k].innerHTML<8 && tds[k].innerHTML>0)
+										{
+											tds[k].style.backgroundColor='#ff1b1b';
+										}
+									}
+								}
+							}
+							
+							/* Moyenne Promo */
+							var trs = document.getElementById('table').getElementsByTagName('tr');
+							var totalMGS1 = 0, totalUE11 = 0, totalSE = 0, totalAP = 0, totalBD = 0, totalCDIN = 0, totalPT = 0, totalEU12 = 0;, totalMD = 0
+							var totalAL = 0, totalEE = 0, totalORGA = 0, totalCOM = 0, totalAI = 0, totalPPP = 0;
+							Semestre1.find({},{"nom": 1}).map(function(doc) {
+								totalMGS1 += doc.mgs1;
+						/*		totalUE11 += doc.ue11;
+								totalSE += doc.se;
+								totalAP += doc.ap;
+								totalBD += doc.bd;
+								totalCDIN += doc.cdin;
+								totalPT += doc.pt;
+								totalEU12 += doc.eu12;
+								totalMD += doc.md;
+								totalAL += doc.al;
+								totalEE += doc.ee;
+								totalORGA += doc.orga;
+								totalCOM += doc.com;
+								totalAI += doc.ai;
+								totalPPP += doc.ppp;
+
+								*/
+							});	
+							
+							var longueur=trs.length-2;
+							PromoMGS1_1.innerHTML += '<tr><td>' + totalMGS1/longueur + '</td></tr>'
+							PromoUE11_1.innerHTML += '<tr><td>' + totalUE11/longueur + '</td></tr>'
+							PromoSE_1.innerHTML += '<tr><td>' + totalSE/longueur + '</td></tr>'
+							PromoAP_1.innerHTML += '<tr><td>' + totalAP/longueur + '</td></tr>'
+							PromoBD_1.innerHTML += '<tr><td>' + totalBD/longueur + '</td></tr>'
+							PromoCDIN_1.innerHTML += '<tr><td>' + totalCDIN/longueur + '</td></tr>'
+							PromoPT_1.innerHTML += '<tr><td>' + totalPT/longueur + '</td></tr>'
+							PromoEU12_1.innerHTML += '<tr><td>' + totalEU12/longueur + '</td></tr>'							
+							PromoMD_1.innerHTML += '<tr><td>' + totalMD/longueur + '</td></tr>'
+							PromoAL_1.innerHTML += '<tr><td>' + totalAL/longueur + '</td></tr>'
+							PromoEE_1.innerHTML += '<tr><td>' + totalEE/longueur + '</td></tr>'
+							PromoORGA_1.innerHTML += '<tr><td>' + totalORGA/longueur + '</td></tr>'
+							PromoCOM_1.innerHTML += '<tr><td>' + totalCOM/longueur + '</td></tr>'
+							PromoAI_1.innerHTML += '<tr><td>' + totalAI/longueur + '</td></tr>'
+							PromoPPP_1.innerHTML += '<tr><td>' + totalPPP/longueur + '</td></tr>'
+							
+							/* Classement */ 
+							function classement(){
+								var items = document.getElementsByClassName("classement"),i, len;
+								for (i = 0, len = items.length; i < len; i++) {
+									items[i].innerHTML = i+1;
+								}
+							}
+						</script>
+						<table class="table" id="table">
+							<thead>
+								<tr class="filters">
+									<th><input type="text" class="form-control" placeholder="Nom" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Prenom" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Classement" disabled></th>
+									<th><input type="text" class="form-control" placeholder="MGS1" disabled></th>
+									<th><input type="text" class="form-control" placeholder="UE11" disabled></th>
+									<th><input type="text" class="form-control" placeholder="SE" disabled></th>
+									<th><input type="text" class="form-control" placeholder="AP" disabled></th>
+									<th><input type="text" class="form-control" placeholder="BD" disabled></th>
+									<th><input type="text" class="form-control" placeholder="CDIN" disabled></th>
+									<th><input type="text" class="form-control" placeholder="PT" disabled></th>
+									<th><input type="text" class="form-control" placeholder="EU12" disabled></th>
+									<th><input type="text" class="form-control" placeholder="MD" disabled></th>
+									<th><input type="text" class="form-control" placeholder="AL" disabled></th>
+									<th><input type="text" class="form-control" placeholder="EE" disabled></th>
+									<th><input type="text" class="form-control" placeholder="ORGA" disabled></th>
+									<th><input type="text" class="form-control" placeholder="COM" disabled></th>
+									<th><input type="text" class="form-control" placeholder="AI" disabled></th>
+									<th><input type="text" class="form-control" placeholder="PPP" disabled></th>
+									</tr>
+							</thead>
+							<tbody>
+								{{#each semestre1}}
+								<tr>
+									<td name="nom">{{ nom }}</td>
+									<td name="prenom">{{ prenom }}</td>	
+									<td class="classement"></td>  									
+									<td id="mgs1">{{ mgs1 }}</td>
+									{{#each ue}}
+										<td id="ue11">{{ ue11 }}</td>
+									{{#each matiere}}
+										<td id="se">{{ se }}</td>
+										<td id="ap">{{ ap }}</td>
+										<td id="bd">{{ bd }}</td>
+										<td id="cdin">{{ cdin }}</td>
+										<td id="pt">{{ pt }}</td>
+									{{/each}}
+									{{/each}}
+									{{#each eu}}
+										<td id="eu12">{{ eu12 }}</td>
+									{{#each matiere}}
+										<td id="md">{{ md }}</td>
+										<td id="al">{{ al }}</td>
+										<td id="ee">{{ ee }}</td>
+										<td id="orga">{{ orga }}</td>
+										<td id="com">{{ com }}</td>
+										<td id="ai">{{ ai }}</td>
+										<td id="ppp">{{ ppp }}</td>				
+									{{/each}}
+									{{/each}}
+									</tr>
+								{{/each}}
+							</tbody>
+							<tfoot>
+								<tr class="filters">
+									<td colspan="2">Moyenne Promo</td>
+									<td></td>
+									<td id="PromoMGS1_1"></td>
+									<td id="PromoUE11_1"></td>
+									<td id="PromoSE_1"></td>
+									<td id="PromoAP_1"></td>
+									<td id="PromoBD_1"></td>
+									<td id="PromoCDIN_1"></td>
+									<td id="PromoPT_1"></td>
+									<td id="PromoEU12_1"></td>									
+									<td id="PromoMD_1"></td>
+									<td id="PromoAL_1"></td>
+									<td id="PromoEE_1"></td>
+									<td id="PromoORGA_1"></td>
+									<td id="PromoCOM_1"></td>
+									<td id="PromoAI_1"></td>
+									<td id="PromoPPP_1"></td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+				</div>
+			</div>	
+		</div>
+		<div class="container">
+				<div class="jumbotron">
+					<div class="row">
+						<div class="panel panel-primary filterable">
+							<div class="panel-heading">
+								<h3 class="panel-title">Detail des notes du Semestre 2</h3>
+								<a class="btn btn-info" onClick="colorTest2();">color</a>
+								<a class="btn btn-info" href="/promotion/:promotion">Semestre 2</a>
+								<a class="btn btn-info" onClick="classementS2();">Classement</a>
+								<div class="pull-right">
+									<button class="btn btn-default btn-xs btn-filter">Filtre</button>
+								</div>
+							</div>
+							<script type="text/javascript" src="/js/jquery-latest.js"></script> 
+							<script type="text/javascript" src="/js/jquery.tablesorter.js"></script> 
+							<script>
+								
+								/* Couleurs en fonction de la moyenne */
+								function colorTest2(){
+									var tds = document.getElementById('table2').getElementsByTagName('td');
+									for(var k = 0; k < tds.length; k ++) {
+										if(tds[k].className != 'classementS2'){
+											if(tds[k].innerHTML>9)
+											{ 
+												tds[k].style.backgroundColor='#9bdb10';
+											}
+											else if(tds[k].innerHTML<10 && tds[k].innerHTML>7)
+											{
+												tds[k].style.backgroundColor='#ff953d';
+											}
+											else if(tds[k].innerHTML<8 && tds[k].innerHTML>0)
+											{
+												tds[k].style.backgroundColor='#ff1b1b';
+											}
+										}
+									}
+								}
+								
+								/* Moyenne Promo */
+								var trs = document.getElementById('table2').getElementsByTagName('tr');							
+								var totalMGS2 = 0, totalUE21 = 0, totalSE = 0, totalRX = 0, totalPOO = 0, totalCOO = 0, totalIHM = 0, totalPT = 0;
+								var totalEU22 = 0, totalGL = 0, totalAN = 0, totalECFJS = 0, totalGPI = 0, totalCOM = 0, totalAI = 0, totalPPP = 0;
+								Semestre2.find().map(function(doc) {
+									totalMGS2 += doc.mgs2;
+									totalUE21 += doc.ue.ue21;
+						/*			totalSE += doc.ue.matiere.se;
+									totalRX += doc.ue.matiere.rx;
+									totalPOO += doc.ue.matiere.poo;
+									totalCOO += doc.ue.matiere.coo;
+									totalIHM += doc.ue.matiere.ihm;
+									totalPT += doc.ue.matiere.pt;
+									totalEU22 += doc.eu.eu22;
+									totalGL += doc.eu.matiere.gl;
+									totalAN += doc.eu.matiere.an;
+									totalECFJS += doc.eu.matiere.ecfjs;
+									totalGPI += doc.eu.matiere.gpi;
+									totalCOM += doc.eu.matiere.com;
+									totalAI += doc.eu.matiere.ai;
+									totalPPP += doc.eu.matiere.ppp; */
+								});	
+								var longueur=trs.length-2;
+								PromoMGS2_2.innerHTML += '<tr><td>' + totalMGS2/longueur + '</td></tr>'
+								PromoUE21_2.innerHTML += '<tr><td>' + totalUE21/longueur + '</td></tr>'					
+								PromoSE_2.innerHTML += '<tr><td>' + totalSE/longueur + '</td></tr>'
+								PromoRX_2.innerHTML += '<tr><td>' + totalRX/longueur + '</td></tr>'
+								PromoPOO_2.innerHTML += '<tr><td>' + totalPOO/longueur + '</td></tr>'
+								PromoCOO_2.innerHTML += '<tr><td>' + totalCOO/longueur + '</td></tr>'
+								PromoIHM_2.innerHTML += '<tr><td>' + totalIHM/longueur + '</td></tr>'
+								PromoPT_2.innerHTML += '<tr><td>' + totalPT/longueur + '</td></tr>'
+								PromoEU22_2.innerHTML += '<tr><td>' + totalEU22/longueur + '</td></tr>'							
+								PromoGL_2.innerHTML += '<tr><td>' + totalGL/longueur + '</td></tr>'
+								PromoAN_2.innerHTML += '<tr><td>' + totalAN/longueur + '</td></tr>'
+								PromoECFJS_2.innerHTML += '<tr><td>' + totalECFJS/longueur + '</td></tr>'
+								PromoGPI_2.innerHTML += '<tr><td>' + totalGPI/longueur + '</td></tr>'
+								PromoCOM_2.innerHTML += '<tr><td>' + totalCOM/longueur + '</td></tr>'
+								PromoAI_2.innerHTML += '<tr><td>' + totalAI/longueur + '</td></tr>'
+								PromoPPP_2.innerHTML += '<tr><td>' + totalPPP/longueur + '</td></tr>'
+								
+								function classementS2(){
+									var items = document.getElementsByClassName("classementS2"),i, len;
+									for (i = 0, len = items.length; i < len; i++) {
+										items[i].innerHTML = i+1;
+									}
+								}
+							</script>
+							<table class="table" id="table2">
+								<thead>
+									<tr class="filters">
+										<th><input type="text" class="form-control" placeholder="Nom" disabled></th>
+										<th><input type="text" class="form-control" placeholder="Prenom" disabled></th>
+										<th><input type="text" class="form-control" placeholder="Classement" disabled></th>
+										<th><input type="text" class="form-control" placeholder="MGS2" disabled></th>
+										<th><input type="text" class="form-control" placeholder="UE21" disabled></th>
+										<th><input type="text" class="form-control" placeholder="SE" disabled></th>
+										<th><input type="text" class="form-control" placeholder="RX" disabled></th>
+										<th><input type="text" class="form-control" placeholder="POO" disabled></th>
+										<th><input type="text" class="form-control" placeholder="COO" disabled></th>
+										<th><input type="text" class="form-control" placeholder="IHM" disabled></th>
+										<th><input type="text" class="form-control" placeholder="PT" disabled></th>
+										<th><input type="text" class="form-control" placeholder="EU22" disabled></th>									
+										<th><input type="text" class="form-control" placeholder="GL" disabled></th>
+										<th><input type="text" class="form-control" placeholder="AN" disabled></th>
+										<th><input type="text" class="form-control" placeholder="ECFJS" disabled></th>
+										<th><input type="text" class="form-control" placeholder="GPI" disabled></th>
+										<th><input type="text" class="form-control" placeholder="COM" disabled></th>
+										<th><input type="text" class="form-control" placeholder="AI" disabled></th>
+										<th><input type="text" class="form-control" placeholder="PPP" disabled></th>
+
+										</tr>
+								</thead>
+								<tbody>
+									{{#each semestre2}}
+									<tr>
+										<td name="nom">{{ nom }}</td>
+										<td name="prenom">{{ prenom }}</td>
+										<td class="classementS2"></td>									
+										<td id="mgs2">{{ mgs2 }}</td>	
+										{{#each ue}}
+											<td id="ue21">{{ ue21 }}</td>
+										{{#each matiere}}
+											<td id="se">{{ se }}</td>
+											<td id="rx">{{ rx }}</td>
+											<td id="poo">{{ poo }}</td>
+											<td id="coo">{{ coo }}</td>
+											<td id="ihm">{{ ihm }}</td>
+											<td id="pt">{{ pt }}</td>
+										{{/each}}
+										{{/each}}
+										{{#each eu}}
+											<td id="eu22">{{ eu22 }}</td>
+										{{#each matiere}}
+											<td id="gl">{{ gl }}</td>
+											<td id="an">{{ an }}</td>
+											<td id="ecfjs">{{ ecfjs }}</td>
+											<td id="gpi">{{ gpi }}</td>
+											<td id="com">{{ com }}</td>
+											<td id="ai">{{ ai }}</td>
+											<td id="ppp">{{ ppp }}</td>				
+										{{/each}}
+										{{/each}}
+										</tr>
+									{{/each}}
+								</tbody>
+								<tfoot>
+									<tr class="filters">
+										<td colspan="2">Moyenne Promo</td>
+										<td></td>
+										<td id="PromoMGS2_2"></td>
+										<td id="PromoUE21_2"></td>
+										<td id="PromoSE_2"></td>
+										<td id="PromoRX_2"></td>
+										<td id="PromoPOO_2"></td>
+										<td id="PromoCOO_2"></td>
+										<td id="PromoIHM_2"></td>
+										<td id="PromoPT_2"></td>
+										<td id="PromoEU22_2"></td>																		
+										<td id="PromoGL_2"></td>
+										<td id="PromoAN_2"></td>
+										<td id="PromoECFJS_2"></td>
+										<td id="PromoGPI_2"></td>
+										<td id="PromoCOM_2"></td>
+										<td id="PromoAI_2"></td>
+										<td id="PromoPPP_2"></td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+				</div>	
+			</div>
+			<div class="container">
+			<div class="jumbotron">
+				<div class="row">
+					<div class="panel panel-primary filterable">
+						<div class="panel-heading">
+							<h3 class="panel-title">Detail des notes du Semestre 3</h3>
+							<a class="btn btn-info" onClick="colorTest3();">color</a>
+							<a class="btn btn-info" href="/promotion/:promotion">Semestre 3</a>
+							<a class="btn btn-info" onClick="classementS3();">Classement</a>
+							<div class="pull-right">
+								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
+							</div>
+						</div>
+						<script type="text/javascript" src="/js/jquery-latest.js"></script> 
+						<script type="text/javascript" src="/js/jquery.tablesorter.js"></script> 
+						<script>
+						/* Couleurs en fonction de la moyenne */
+						function colorTest3(){
+							var tds = document.getElementById('table3').getElementsByTagName('td');
+							for(var k = 0; k < tds.length; k ++) {
+								if(tds[k].className != 'classementS3'){
+									if(tds[k].innerHTML>9)
+									{ 
+										tds[k].style.backgroundColor='#9bdb10';
+									}
+									else if(tds[k].innerHTML<10 && tds[k].innerHTML>7)
+									{
+										tds[k].style.backgroundColor='#ff953d';
+									}
+									else if(tds[k].innerHTML<8 && tds[k].innerHTML>0)
+									{
+										tds[k].style.backgroundColor='#ff1b1b';
+									}
+								}
+							}
+						}
+						
+						var trs = document.getElementById('table2').getElementsByTagName('tr');							
+						var totalMGS3 = 0, totalUE31 = 0, totalSE = 0, totalRX = 0, totalAPA = 0, totalPOO = 0, totalCOO = 0, totalIHM = 0, totalPT = 0;
+						var totalEU22 = 0, totalGL = 0, totalAN = 0, totalECFJS = 0, totalGPI = 0, totalCOM = 0, totalAI = 0, totalPPP = 0;
+						Semestre3.find({},{"nom": 1}).map(function(doc) {
+							totalMGS3 += doc.mgs3;
+					/*		totalUE31 += doc.ue31;
+							totalSE += doc.se;
+							totalRX += doc.rx;
+							totalAPA += doc.apa;
+							totalPWEB += doc.pweb;
+							totalCPA += doc.cpa;
+							totalBDA += doc.bda;
+							totalEU32 += doc.eu32;
+							totalPROBA += doc.proba;
+							totalMODMATH += doc.modmath;
+							totalDROIT += doc.droit;
+							totalGSI += doc.gsi;
+							totalCOM += doc.com;
+							totalAI += doc.ai;*/
+						});	
+						var longueur=trs.length-2;
+						PromoMGS3_3.innerHTML += '<tr><td>' + totalMGS3/longueur + '</td></tr>'
+						PromoUE31_3.innerHTML += '<tr><td>' + totalUE31/longueur + '</td></tr>'					
+						PromoSE_3.innerHTML += '<tr><td>' + totalSE/longueur + '</td></tr>'
+						PromoRX_3.innerHTML += '<tr><td>' + totalRX/longueur + '</td></tr>'
+						PromoAPA_3.innerHTML += '<tr><td>' + totalAPA/longueur + '</td></tr>'
+						PromoPWEB_3.innerHTML += '<tr><td>' + totalPWEB/longueur + '</td></tr>'
+						PromoCPA_3.innerHTML += '<tr><td>' + totalCPA/longueur + '</td></tr>'
+						PromoBDA_3.innerHTML += '<tr><td>' + totalBDA/longueur + '</td></tr>'
+						PromoEU32_3.innerHTML += '<tr><td>' + totalEU32/longueur + '</td></tr>'							
+						PromoPROBA_3.innerHTML += '<tr><td>' + totalPROBA/longueur + '</td></tr>'
+						PromoMODMATH_3.innerHTML += '<tr><td>' + totalMODMATH/longueur + '</td></tr>'
+						PromoDROIT_3.innerHTML += '<tr><td>' + totalDROIT/longueur + '</td></tr>'
+						PromoGSI_3.innerHTML += '<tr><td>' + totalGSI/longueur + '</td></tr>'
+						PromoCOM_3.innerHTML += '<tr><td>' + totalCOM/longueur + '</td></tr>'
+						PromoAI_3.innerHTML += '<tr><td>' + totalAI/longueur + '</td></tr>'
+						
+							
+						function classementS3(){
+							var items = document.getElementsByClassName("classementS3"),i, len;
+							for (i = 0, len = items.length; i < len; i++) {
+								items[i].innerHTML = i+1;
+							}
+						}
+						</script>
+						<table class="table" id="table3">
+							<thead>
+								<tr class="filters">
+									<th><input type="text" class="form-control" placeholder="Nom" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Prenom" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Classement" disabled></th>
+									<th><input type="text" class="form-control" placeholder="MGS3" disabled></th>
+									<th><input type="text" class="form-control" placeholder="UE31" disabled></th>
+									<th><input type="text" class="form-control" placeholder="SE" disabled></th>
+									<th><input type="text" class="form-control" placeholder="RX" disabled></th>
+									<th><input type="text" class="form-control" placeholder="APA" disabled></th>
+									<th><input type="text" class="form-control" placeholder="PWEB" disabled></th>
+									<th><input type="text" class="form-control" placeholder="CPA" disabled></th>
+									<th><input type="text" class="form-control" placeholder="BDA" disabled></th>
+									<th><input type="text" class="form-control" placeholder="EU32" disabled></th>									
+									<th><input type="text" class="form-control" placeholder="PROBA" disabled></th>
+									<th><input type="text" class="form-control" placeholder="MODMATH" disabled></th>
+									<th><input type="text" class="form-control" placeholder="DROIT" disabled></th>
+									<th><input type="text" class="form-control" placeholder="GSI" disabled></th>
+									<th><input type="text" class="form-control" placeholder="COM" disabled></th>
+									<th><input type="text" class="form-control" placeholder="AI" disabled></th>
+									</tr>
+							</thead>
+							<tbody>
+								{{#each semestre3}}
+								<tr>
+									<td name="nom">{{ nom }}</td>
+									<td name="prenom">{{ prenom }}</td>
+									<td class="classementS3"></td>
+									<td id="mgs3">{{ mgs3 }}</td>	
+									{{#each ue}}
+										<td id="ue31">{{ ue31 }}</td>
+									{{#each matiere}}
+										<td id="se">{{ se }}</td>
+										<td id="rx">{{ rx }}</td>
+										<td id="apa">{{ apa }}</td>
+										<td id="pweb">{{ pweb }}</td>
+										<td id="cpa">{{ cpa }}</td>
+										<td id="bda">{{ bda }}</td>
+									{{/each}}
+									{{/each}}
+									{{#each eu}}
+										<td id="eu32">{{ eu32 }}</td>
+									{{#each matiere}}
+										<td id="proba">{{ proba }}</td>
+										<td id="modmath">{{ modmath }}</td>
+										<td id="droit">{{ droit }}</td>
+										<td id="gsi">{{ gsi }}</td>
+										<td id="com">{{ com }}</td>
+										<td id="ai">{{ ai }}</td>				
+									{{/each}}
+									{{/each}}
+									</tr>
+								{{/each}}
+							</tbody>
+							<tfoot>
+								<tr class="filters">
+									<td colspan="2">Moyenne Promo</td>
+									<td></td>
+									<td id="PromoMGS3_3"></td>
+									<td id="PromoUE31_3"></td>
+									<td id="PromoSE_3"></td>
+									<td id="PromoRX_3"></td>
+									<td id="PromoAPA_3"></td>
+									<td id="PromoPWEB_3"></td>
+									<td id="PromoCPA_3"></td>
+									<td id="PromoBDA_3"></td>
+									<td id="PromoEU32_3"></td>																		
+									<td id="PromoPROBA_3"></td>
+									<td id="PromoMODMATH_3"></td>
+									<td id="PromoDROIT_3"></td>
+									<td id="PromoGSI_3"></td>
+									<td id="PromoCOM_3"></td>
+									<td id="PromoAI_3"></td>								
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+				</div>
+			</div>	
+		</div>
+		<div class="container">
+			<div class="jumbotron">
+				<div class="row">
+					<div class="panel panel-primary filterable">
+						<div class="panel-heading">
+							<h3 class="panel-title">Detail des notes du Semestre 4</h3>
+							<a class="btn btn-info" onClick="colorTest4();">color</a>
+							<a class="btn btn-info" href="/promotion/:promotion">Semestre 4</a>
+							<a class="btn btn-info" onClick="classementS4();">Classement</a>
+							<div class="pull-right">
+								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
+							</div>
+						</div>
+						<script type="text/javascript" src="/js/jquery-latest.js"></script> 
+						<script type="text/javascript" src="/js/jquery.tablesorter.js"></script> 
+						<script>
+							/* Couleurs en fonction de la moyenne */
+							function colorTest4(){
+								var tds = document.getElementById('table4').getElementsByTagName('td');
+								for(var k = 0; k < tds.length; k ++) {
+									if(tds[k].className != 'classementS4'){
+										if(tds[k].innerHTML>9)
+										{ 
+											tds[k].style.backgroundColor='#9bdb10';
+										}
+										else if(tds[k].innerHTML<10 && tds[k].innerHTML>7)
+										{
+											tds[k].style.backgroundColor='#ff953d';
+										}
+										else if(tds[k].innerHTML<8 && tds[k].innerHTML>0)
+										{
+											tds[k].style.backgroundColor='#ff1b1b';
+										}
+									}
+								}
+							}
+
+							var trs = document.getElementById('table4').getElementsByTagName('tr');
+							var totalMGS4 = 0, totalUE41 = 0,totalADMSR = 0,totalPROGREP = 0,totalPWEB = 0,totalPROGMOB = 0;
+							var totalCOMPINFO = 0,totalPT = 0,totalEU42 = 0,totalAT = 0,totalRO = 0,totalCOM = 0,totalAI = 0;
+		
+							Semestre4.find({},{"nom": 1}).map(function(doc) {
+								totalMGS4 += doc.mgs4;
+							/*	totalUE41 += doc.ue41;
+								totalADMSR += doc.admsr;
+								totalPROGREP += doc.progrep;
+								totalPWEB += doc.pweb;
+								totalPROGMOB += doc.progmob;
+								totalCOMPINFO += doc.compinfo;
+								totalPT += doc.pt;
+								totalEU42 += doc.eu42;
+								totalAT += doc.at;
+								totalRO += doc.ro;
+								totalCOM += doc.com;
+								totalAI += doc.ai;*/
+							});	
+							
+							var longueur=trs.length-2;
+							PromoMGS4_4.innerHTML += '<tr><td>' + totalMGS4/longueur + '</td></tr>'
+							PromoUE41_4.innerHTML += '<tr><td>' + totalUE41/longueur + '</td></tr>'					
+							PromoADMSR_4.innerHTML += '<tr><td>' + totalADMSR/longueur + '</td></tr>'
+							PromoPROGREP_4.innerHTML += '<tr><td>' + totalPROGREP/longueur + '</td></tr>'
+							PromoPWEB_4.innerHTML += '<tr><td>' + totalPWEB/longueur + '</td></tr>'
+							PromoPROGMOB_4.innerHTML += '<tr><td>' + totalPROGMOB/longueur + '</td></tr>'
+							PromoCOMPINFO_4.innerHTML += '<tr><td>' + totalCOMPINFO/longueur + '</td></tr>'
+							PromoPT_4.innerHTML += '<tr><td>' + totalPT/longueur + '</td></tr>'
+							PromoEU42_4.innerHTML += '<tr><td>' + totalEU42/longueur + '</td></tr>'							
+							PromoAT_4.innerHTML += '<tr><td>' + totalAT/longueur + '</td></tr>'
+							PromoRO_4.innerHTML += '<tr><td>' + totalRO/longueur + '</td></tr>'
+							PromoCOM_4.innerHTML += '<tr><td>' + totalCOM/longueur + '</td></tr>'
+							PromoAI_4.innerHTML += '<tr><td>' + totalAI/longueur + '</td></tr>'	
+							
+							function classementS4(){
+								var items = document.getElementsByClassName("classementS4"),i, len;
+								for (i = 0, len = items.length; i < len; i++) {
+									items[i].innerHTML = i+1;
+								}
+							}
+						</script>
+						<table class="table" id="table4">
+							<thead>
+								<tr class="filters">
+									<th><input type="text" class="form-control" placeholder="Nom" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Prenom" disabled></th>
+									<th><input type="text" class="form-control" placeholder="Classement" disabled></th>
+									<th><input type="text" class="form-control" placeholder="MGS4" disabled></th>
+									<th><input type="text" class="form-control" placeholder="UE41" disabled></th>
+									<th><input type="text" class="form-control" placeholder="AdmSR" disabled></th>
+									<th><input type="text" class="form-control" placeholder="ProgRep" disabled></th>
+									<th><input type="text" class="form-control" placeholder="PWeb" disabled></th>
+									<th><input type="text" class="form-control" placeholder="ProgMob" disabled></th>
+									<th><input type="text" class="form-control" placeholder="CompInfo" disabled></th>
+									<th><input type="text" class="form-control" placeholder="PT" disabled></th>
+									<th><input type="text" class="form-control" placeholder="EU42" disabled></th>
+									<th><input type="text" class="form-control" placeholder="AT" disabled></th>
+									<th><input type="text" class="form-control" placeholder="RO" disabled></th>
+									<th><input type="text" class="form-control" placeholder="COM" disabled></th>
+									<th><input type="text" class="form-control" placeholder="AI" disabled></th>
+									</tr>
+							</thead>
+							<tbody>
+								{{#each semestre4}}
+								<tr>
+									<td name="nom">{{ nom }}</td>
+									<td name="prenom">{{ prenom }}</td>	
+									<td class="classementS4"></td>
+									<td id="mgs4">{{ mgs4 }}</td>
+									{{#each ue}}
+										<td id="ue41">{{ ue41 }}</td>
+									{{#each matiere}}
+										<td id="admsr">{{ admsr }}</td>
+										<td id="progrep">{{ progrep }}</td>
+										<td id="pweb">{{ pweb }}</td>
+										<td id="progmob">{{ progmob }}</td>
+										<td id="compinfo">{{ compinfo }}</td>
+										<td id="pt">{{ pt }}</td>
+									{{/each}}
+									{{/each}}
+									{{#each eu}}
+										<td id="eu42">{{ eu42 }}</td>
+									{{#each matiere}}
+										<td id="at">{{ at }}</td>
+										<td id="ro">{{ ro }}</td>
+										<td id="com">{{ com }}</td>
+										<td id="ai">{{ ai }}</td>			
+									{{/each}}
+									{{/each}}
+									</tr>
+								{{/each}}
+							</tbody>
+							<tfoot>
+								<tr class="filters">
+									<td colspan="2">Moyenne Promo</td>
+									<td></td>
+									<td id="PromoMGS4_4"></td>
+									<td id="PromoUE41_4"></td>
+									<td id="PromoADMSR_4"></td>
+									<td id="PromoPROGREP_4"></td>
+									<td id="PromoPWEB_4"></td>
+									<td id="PromoPROGMOB_4"></td>
+									<td id="PromoCOMPINFO_4"></td>
+									<td id="PromoPT_4"></td>
+									<td id="PromoEU42_4"></td>		
+									<td id="PromoAT_4"></td>
+									<td id="PromoRO_4"></td>
+									<td id="PromoCOM_4"></td>
+									<td id="PromoAI_4"></td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+				</div>
+			</div>	
+		</div>
+
+		<script>
+			$(document).ready(function(){
+				$('.filterable .btn-filter').click(function(){
+					var $panel = $(this).parents('.filterable'),
+					$filters = $panel.find('.filters input'),
+					$tbody = $panel.find('.table tbody');
+					if ($filters.prop('disabled') == true) {
+						$filters.prop('disabled', false);
+						$filters.first().focus();
+					} else {
+						$filters.val('').prop('disabled', true);
+						$tbody.find('.no-result').remove();
+						$tbody.find('tr').show();
+					}
+				});
+
+				$('.filterable .filters input').keyup(function(e){
+					/* Ignore tab key */
+					var code = e.keyCode || e.which;
+					if (code == '9') return;
+					/* Useful DOM data and selectors */
+					var $input = $(this),
+					inputContent = $input.val().toLowerCase(),
+					$panel = $input.parents('.filterable'),
+					column = $panel.find('.filters th').index($input.parents('th')),
+					$table = $panel.find('.table'),
+					$rows = $table.find('tbody tr');
+					/* Dirtiest filter function ever ;) */
+					var $filteredRows = $rows.filter(function(){
+						var value = $(this).find('td').eq(column).text().toLowerCase();
+						return value.indexOf(inputContent) === -1;
+					});
+					/* Clean previous no-result if exist */
+					$table.find('tbody .no-result').remove();
+					/* Show all rows, hide filtered ones (never do that outside of a demo ! xD) */
+					$rows.show();
+					$filteredRows.hide();
+					/* Prepend no-result row if all rows are filtered */
+					if ($filteredRows.length === $rows.length) {
+						$table.find('tbody').prepend($('<tr class="no-result text-center"><td colspan="'+ $table.find('.filters th').length +'">Aucun résultat pour cette recherche !</td></tr>'));
+					}
+				});
+			});
+		</script>
+	</body>
+</template>

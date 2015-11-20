@@ -1,6 +1,8 @@
 Template.carnetPromo.helpers({
-    'moyenne': function(){
-		Semestre1.aggregate([{$group:{_id: "$id",avgQuantity: { $avg: "$mgs1" }}}])
-	}
-	
+    return Semestre2.find("s2":1).map(function(sem2, index) {
+      if (index === 0)
+        sem2.isFirst = true;
+
+      return sem2;
+    });
 });

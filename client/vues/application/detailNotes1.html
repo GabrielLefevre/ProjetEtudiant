@@ -16,11 +16,16 @@
 						<script type="text/javascript" src="/js/jquery.tablesorter.js"></script> 
 						<script>
 							/* Trier chaque colonne du tableau */
-							$(document).ready(function() 
-								{ 
-									$("#table").tablesorter(); 
-								} 
-							); 
+							$(function() {
+								/* Trier le tableau */
+								$("table").tablesorter({
+									sortInitialOrder: 'desc',
+								});
+							});	
+								/* Selectionner ligne du tableau */
+								$("tr").click(function(){
+									$(this).addClass("selected").siblings().removeClass("selected");
+								});
 							
 							/* Couleurs en fonction de la moyenne */
 							function colorTest(){

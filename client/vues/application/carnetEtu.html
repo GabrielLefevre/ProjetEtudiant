@@ -30,10 +30,10 @@
 						<div class="panel-heading">
 							<h3 class="panel-title">Etudiant</h3>
 							<p></p>
-							<a class="btn btn-info" onClick="colorTest();">Color</a>										
-							<a class="btn btn-info" onClick="avisEtudes();">Avis etudes</a>	
-							<a class="btn btn-info" href="/etudiant">Retour Liste</a>										
-							
+							<a class="btn btn-info" onClick="colorier();" >Color</a>
+							<a class="btn btn-info" onClick="avisEtudes();">Avis etudes</a>
+							<a class="btn btn-info" href="/etudiant">Retour Liste</a>
+
 							<div class="pull-right">
 								<button class="btn btn-default btn-xs btn-filter">Filtre</button>
 							</div>
@@ -41,41 +41,41 @@
 						<table class="table" id="table">
 							{{#each semestre}}
 								<tbody>
-								<tr class="rowToClick" colspan="3">
-									<p></p>
-									<center><td><b>{{ titre }}</b></td></center>
-									<p></p>
-								</tr>
-								<table class="table" id="table" style="display:none;">
-									<tbody>
-										<tr class="rowToClick2">
-											<td colspan="2"><i>General</i></td>
-										</tr>
-										<tr>
-											<td>Moy. General</td>
-											<td colspan="2"> {{ moyenne }}</td>
-										</tr>
-										<tr>
-											<td>Decision du jury</td>
-											<td colspan="2">{{ decision }}</td>
-										</tr>
-										<tr>
-											<td>Nombre d'absences</td>
-											<td colspan="2">{{ nbAbsences }} abs.</td>
-										</tr>
-										{{#each ue}}
+									<tr class="rowToClick" colspan="3">
+										<p></p>
+										<center><td><b>{{ titre }}</b></td></center>
+										<p></p>
+									</tr>
+									<table class="table" id="table" style="display:none;">
+										<tbody>
 											<tr class="rowToClick2">
-												<td colspan="2"><i> {{ eu }} : {{ moyenne }} </i></td>
+												<td colspan="2"><i>General</i></td>
 											</tr>
-												{{#each matiere}}
-													<tr>
-														<td> {{ nom	}} </td>
-														<td colspan="2"> {{ moyenne }} </td>
-													</tr>
-												{{/each}}
-										{{/each}}
-									</tbody>
-								</table>
+											<tr style="display:none;">
+												<td>Moy. General</td>
+												<td colspan="2"> {{ moyenne }}</td>
+											</tr>
+											<tr style="display:none;">
+												<td>Decision du jury</td>
+												<td colspan="2">{{ decision }}</td>
+											</tr>
+											<tr style="display:none;">
+												<td>Nombre d'absences</td>
+												<td id="absences" colspan="2">{{ nbAbsences }}</td>
+											</tr>
+											{{#each ue}}
+												<tr class="rowToClick2">
+													<td colspan="2"><i> {{ eu }} : {{ moyenne }} </i></td>
+												</tr>
+													{{#each matiere}}
+														<tr style="display:none;">
+															<td> {{ nom	}} </td>
+															<td> {{ moyenne }} </td>
+														</tr>
+													{{/each}}
+											{{/each}}
+										</tbody>
+									</table>
 								</tbody>
 							{{/each}}
 						</table>
@@ -89,35 +89,35 @@
 									<center><tr><b>Avis poursuite d'études</b></tr></center>
 									<p></p>
 								</td>
-								<tr>		
+								<tr style="display:none;">
 									<td> Matiere </td>
 									<td> Favorable </td>
 									<td> Dévaforable </td>
 								</tr>
-								<tr>		
+								<tr style="display:none;">
 									<td> License </td>
 									<td id="favl"></td>
 									<td id="devl"></td>
 
 								</tr>
-								<tr>		
+								<tr style="display:none;">
 									<td> License Professionelle </td>
 									<td id="favlp"></td>
 									<td id="devlp"></td>
 								</tr>
-								<tr>		
+								<tr style="display:none;">
 									<td> Ecole d'Ingénieur </td>
 									<td id="faving"></td>
 									<td id="deving"></td>
 								</tr>
-							</tfoot>	
-						</table>		
+							</tfoot>
+						</table>
 					</div>
 				</div>
 			</div>
 		</div>
 	</body>
-	<script type="text/javascript" src="/jquery-latest.js"></script> 
+	<script type="text/javascript" src="/jquery-latest.js"></script>
 	<script>
 	$(document).ready(function()
 	 {
@@ -131,23 +131,46 @@
 	 });
 	</script>
 	<script>
-		function colorTest(){
+		function color(){
 			var tds = document.getElementById('table').getElementsByTagName('td');
+			var absences = document.getElementById('absences');
 			for(var k = 0; k < tds.length; k ++) {
-				if(tds[k].innerHTML>9)
-				{ 
-					tds[k].style.backgroundColor='#9bdb10';
-				}
-				else if(tds[k].innerHTML<10 && tds[k].innerHTML>7)
-				{
-					tds[k].style.backgroundColor='#ff953d';
-				}
-				else if(tds[k].innerHTML<8 && tds[k].innerHTML>0)
-				{
-					tds[k].style.backgroundColor='#ff1b1b';
+				if (tds[k].id != 'absences') {
+					if (tds[k].innerHTML > 9) {
+						tds[k].style.backgroundColor = '#9bdb10';
+					}
+					else if (tds[k].innerHTML < 10 && tds[k].innerHTML > 7) {
+						tds[k].style.backgroundColor = '#ff953d';
+					}
+					else if (tds[k].innerHTML < 8 && tds[k].innerHTML > 0) {
+						tds[k].style.backgroundColor = '#ff1b1b';
+					}
 				}
 			}
+			return true;
 		}
+
+		function decolor(){
+			var tds = document.getElementById('table').getElementsByTagName('td');
+			for(var k = 0; k < tds.length; k ++) {
+				tds[k].style.backgroundColor='';
+			}
+			return true;
+		}
+
+		var action = 1;
+
+		function colorier() {
+			if ( action == 1 ) {
+				color();
+				action = 2;
+			} else {
+				decolor();
+				action = 1;
+			}
+		}
+
+
 		function avisEtudes(){
 			var tds = document.getElementById('table').getElementsByTagName('td');
 			for(var k = 0; k < tds.length; k ++) {
@@ -168,7 +191,7 @@
 						document.getElementById("devlp").innerHTML = "X";
 						document.getElementById("deving").innerHTML = "X";
 					}
-				}	
+				}
 			}
 		}
 	</script>

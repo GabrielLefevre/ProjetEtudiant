@@ -2,7 +2,6 @@
     <head>
 		<title>Gestion des etudiants</title>
 	</head>
-
 	<header>
 		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container">
@@ -17,7 +16,7 @@
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{pathFor route='etudiant'}}">Liste des Etudiants</a></li>
+					<li class="active"><a href="{{pathFor route='etudiant'}}">Liste des Etudiants</a></li>
 					<li><a href="{{pathFor route='inscription'}}">Inscription</a></li>
 					<li><a href="{{pathFor route='promotion'}}">Promotion</a></li>
 					<li><a href="{{pathFor route='note'}}">Note</a></li>
@@ -39,4 +38,19 @@
 			</div>  
 		</div>
 	</footer>
+	<script>
+		// li active lors du click
+		$("li").click(function(){
+			// If this isn't already active
+			if (!$(this).hasClass("active")) {
+				// Remove the class from anything that is active
+				$("li.active").removeClass("active");
+				// And make this active
+				$(this).addClass("active");
+			}
+		});
+		
+	</script>
+	<script type="text/javascript" src="/jquery-latest.js"></script>
+	<script type="text/javascript" src="/jquery.tablesorter.js"></script>
 </template>
